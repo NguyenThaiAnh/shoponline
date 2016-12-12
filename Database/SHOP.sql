@@ -1,0 +1,154 @@
+﻿CREATE DATABASE SHOP;
+GO
+
+USE SHOP;
+GO
+
+CREATE TABLE CUAHANG(
+	ID VARCHAR(3) NOT NULL,
+	TenCH NVARCHAR(20) NOT NULL, 
+	DiaChi NVARCHAR(50) NOT NULL, 
+	DiaChiGMap NVARCHAR(20), 
+	SDT VARCHAR(20),
+	PRIMARY KEY (ID)
+);
+
+CREATE TABLE LOAIHANG(
+	ID VARCHAR(5) NOT NULL, 
+	TenLoai NVARCHAR(20) NOT NULL, 
+	MoTa NVARCHAR(50),
+	PRIMARY KEY (ID)
+);
+
+CREATE TABLE MATHANG(
+	ID VARCHAR(6) NOT NULL, 
+	TenMH VARCHAR(20) NOT NULL,
+	IDLoaiHang VARCHAR(5) NOT NULL,
+	URLHinhAnh1 VARCHAR(100),
+	URLHinhAnh2 VARCHAR(100),
+	URLHinhAnh3 VARCHAR(100),
+	PRIMARY KEY(ID, IDChiTiet, IDLoaiHang),
+	FOREIGN KEY (IDLoaiHang) REFERENCES LOAIHANG(ID)
+);
+
+CREATE TABLE CHITIETMATHANG(
+	ID VARCHAR(6) NOT NULL,
+	IDMatHang VARCHAR(6) NOT NULL,
+	MoTa NVARCHAR(100),
+	MauSac NVARCHAR(20),
+	Size VARCHAR(3),
+	Gia INT,
+	Loai VARCHAR(3),
+	SoLuong INT,
+	PRIMARY KEY (ID),
+	FOREIGN KEY (IDMatHang) REFERENCES MATHANG(ID),
+);
+
+CREATE TABLE ACCOUNTTYPE(
+	ID VARCHAR(5) NOT NULL,
+	TenLoai NVARCHAR(20) NOT NULL,
+	PRIMARY KEY (ID)
+);
+
+CREATE TABLE ACCOUNT(
+	ID VARCHAR(5) NOT NULL, 
+	Username VARCHAR(20) NOT NULL,
+	Password VARCHAR(20) NOT NULL, 
+	IDType VARCHAR(5) NOT NULL,
+	PRIMARY KEY (ID),
+	FOREIGN KEY (IDType) REFERENCES ACCOUNTTYPE(ID)
+);
+
+CREATE TABLE KHACHHANG(
+	ID VARCHAR(7) NOT NULL,
+	Ten NVARCHAR(20) NOT NULL,
+	Email VARCHAR(30), 
+	SDT INT,
+	DiaChi NVARCHAR(50),
+	Loai VARCHAR(10),
+	IDAccount VARCHAR(5),
+	PRIMARY KEY (ID),
+	FOREIGN KEY (IDAccount) REFERENCES ACCOUNT(ID)
+);
+
+CREATE TABLE HOADON(
+	ID VARCHAR(5) NOT NULL,
+	IDKhachHang VARCHAR (7) NOT NULL,
+	Ngay DATE NOT NULL,
+	TongTien INT,
+	TinhTrang NVARCHAR(10),
+	PRIMARY KEY (ID)
+);
+
+CREATE TABLE CHITIETHOADON(
+	ID VARCHAR(7) NOT NULL,
+	IDChiTietMatHang VARCHAR(6) NOT NULL,
+	IDHoaDon VARCHAR(5) NOT NULL,
+	SoLuong INT,
+	PRIMARY KEY (ID),
+	FOREIGN KEY (IDChiTietMatHang) REFERENCES CHITIETMATHANG(ID),
+	FOREIGN KEY (IDHoaDon) REFERENCES HOADON(ID)
+);
+
+CREATE TABLE ACCOUNTADMIN(
+	ID VARCHAR(5) NOT NULL,
+	Ten NVARCHAR(20) NOT NULL,
+	Email VARCHAR(50) NOT NULL,
+	SDT INT NOT NULL,
+	IDAccount VARCHAR(5) NOT NULL,
+	PRIMARY KEY (ID),
+	FOREIGN KEY (IDAccount) REFERENCES ACCOUNT(ID)
+);
+
+INSERT INTO CUAHANG VALUES ('001', 'SHOP QUẦN ÁO RAIN','28 Nhật Tảo, Phường 4, Quận 10, TP HCM', '', '0975187293');
+
+INSERT INTO LOAIHANG VALUES ('Q0001','QUẦN JEAN', ''),
+						    ('Q0002','QUẦN KAKI',''),
+							('Q0003','QUẦN SHORT JEAN',''),
+							('Q0004','QUẦN SHORT KAKI',''),
+							('Q0005','QUẦN SHORT THUN',''),
+							('A0001', 'ÁO THUN TAY DÀI', ''),
+							('A0002', 'ÁO THUN TAY NGẮN', ''),
+							('A0003', 'ÁO SƠ MI TAY DÀI', ''),
+							('A0004', 'ÁO SƠ MI TAY NGẮN', '');
+
+INSERT INTO MATHANG VALUES ('MHQ001', 'QUẦN JEAN 116001','Q0001', '', '', ''),
+						   ('MHQ002', 'QUẦN JEAN 116002', 'Q0001', '', '', ''),
+						   ('MHQ003', 'QUẦN JEAN 116004', 'Q0001', '', '', ''),
+						   ('MHQ004', 'QUẦN KAKI 106010NV', 'Q0002', '', '', ''),
+						   ('MHQ005', 'QUẦN KAKI 106010GR', 'Q0002', '', '', ''),
+						   ('MHQ006', 'QUẦN KAKI 106010BL', 'Q0002', '', '', ''),
+						   ('MHS001', 'QUẦN SHORT JEAN 106005', 'Q0003', '', '', ''),
+						   ('MHS002', 'QUẦN SHORT JEAN 106004', 'Q0003', '', '', ''),
+						   ('MHS003', 'QUẦN SHORT JEAN 106003', 'Q0003', '', '', ''),
+						   ('MHS004', 'QUẦN SHORT KAKI 096001GR', 'Q0004', '', '', ''),
+						   ('MHS005', 'QUẦN SHORT KAKI 096001WH', 'Q0004', '', '', ''),
+						   ('MHS006', 'QUẦN SHORT THUN QT07155', 'Q0005', '', '', ''),
+						   ('MHA001', 'ÁO THUN 086014GR', 'A0001', '', '', ''),
+						   ('MHA002', 'ÁO THUN 086014BU', 'A0001', '', '', ''),
+						   ('MHA003', 'ÁO THUN 106067BR', 'A0001', '', '', ''),
+						   ('MHA004', 'ÁO THUN 086014GR', 'A0002', '', '', ''),
+						   ('MHA005', 'ÁO THUN 086014BU', 'A0002', '', '', ''),
+						   ('MHA006', 'ÁO THUN 106067BR', 'A0002', '', '', ''),
+						   ('MHA007', 'ÁO THUN 086014GR', 'A0003', '', '', ''),
+						   ('MHA008', 'ÁO THUN 086014BU', 'A0003', '', '', ''),
+						   ('MHA009', 'ÁO THUN 106067BR', 'A0003', '', '', ''),
+						   ('MHA010', 'ÁO THUN 086014GR', 'A0004', '', '', ''),
+						   ('MHA011', 'ÁO THUN 086014BU', 'A0004', '', '', ''),
+						   ('MHA012', 'ÁO THUN 106067BR', 'A0004', '', '', ''),
+
+INSERT INTO CHITIETMATHANG VALUES ('CTQ001', 'MHQ01', '','XANH', '29', '385000', 'NAM', '5'),
+								  ('CTQ002', 'MHQ01', '','XANH', '30', '385000', 'NAM', '6')
+								  ('CTQ003', 'MHQ01', '','XANH', '31', '385000', 'NAM', '7'),
+								  ('CTQ004', 'MHQ02', '','XANH', '28', '385000', 'NAM', '8'),
+								  ('CTQ005', 'MHQ02', '','XANH', '29', '385000', 'NAM', '5'),
+								  ('CTQ006', 'MHQ02', '','XANH', '30', '385000', 'NAM', '4'),
+								  ('CTQ007', 'MHQ02', '','XANH', '31', '385000', 'NAM', '3'),
+								  ('CTQ008', 'MHQ03', '','XANH', '28', '365000', 'NAM', '7'),
+								  ('CTQ009', 'MHQ03', '','XANH', '29', '365000', 'NAM', '9'),
+								  ('CTQ010', 'MHQ03', '','XANH', '30', '365000', 'NAM', '7'),
+								  ('CTQ011', 'MHQ03', '','XANH', '31', '365000', 'NAM', '7'),
+								  ('CTQ013', 'MHQ04', '','ĐEN', '29', '365000', 'NAM', '5'),
+								  ('CTQ014', 'MHQ04', '','ĐEN', '30', '365000', 'NAM', '6'),
+								  ('CTQ015', 'MHQ04', '','ĐEN', '31', '365000', 'NAM', '5');
+
