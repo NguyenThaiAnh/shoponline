@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="systemdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AccountType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="adminaccounts" Relationship="Self.adminaccount_ibfk_1" FromRole="account" ToRole="adminaccount" />
+    <NavigationProperty Name="clientaccounts" Relationship="Self.clientaccount_ibfk_1" FromRole="account" ToRole="clientaccount" />
+    <NavigationProperty Name="storeaccounts" Relationship="Self.storeaccount_ibfk_1" FromRole="account" ToRole="storeaccount" />
+  </EntityType>
+  <EntityType Name="adminaccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdACCOUNT" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NumberPhone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="account" Relationship="Self.adminaccount_ibfk_1" FromRole="adminaccount" ToRole="account" />
+  </EntityType>
+  <EntityType Name="bussinesstype">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="stores" Relationship="Self.store_ibfk_1" FromRole="bussinesstype" ToRole="store" />
+  </EntityType>
+  <EntityType Name="clientaccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdACCOUNT" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Avartar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="DateBirth" Type="DateTime" />
+    <NavigationProperty Name="account" Relationship="Self.clientaccount_ibfk_1" FromRole="clientaccount" ToRole="account" />
+    <NavigationProperty Name="tickets" Relationship="Self.ticket_ibfk_3" FromRole="clientaccount" ToRole="ticket" />
+  </EntityType>
+  <EntityType Name="listreward">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdList" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="IdReward" Type="Int32" />
+  </EntityType>
+  <EntityType Name="promotion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdSTORE" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="DateBegin" Type="DateTime" />
+    <Property Name="DateEnd" Type="DateTime" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="IdListReward" Type="Int32" />
+    <NavigationProperty Name="store" Relationship="Self.promotion_ibfk_1" FromRole="promotion" ToRole="store" />
+    <NavigationProperty Name="qrcodes" Relationship="Self.qrcode_ibfk_1" FromRole="promotion" ToRole="qrcode" />
+    <NavigationProperty Name="tickets" Relationship="Self.ticket_ibfk_1" FromRole="promotion" ToRole="ticket" />
+  </EntityType>
+  <EntityType Name="qrcode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPromotion" Type="Int32" />
+    <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="promotion" Relationship="Self.qrcode_ibfk_1" FromRole="qrcode" ToRole="promotion" />
+  </EntityType>
+  <EntityType Name="reward">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ChanceToGet" Type="Int32" />
+    <Property Name="ChanceToRoll" Type="Int32" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="TimeRemain" Type="Int32" />
+    <NavigationProperty Name="tickets" Relationship="Self.ticket_ibfk_2" FromRole="reward" ToRole="ticket" />
+  </EntityType>
+  <EntityType Name="store">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MapAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhysicAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="BussinessType" Type="Int32" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bussinesstype1" Relationship="Self.store_ibfk_1" FromRole="store" ToRole="bussinesstype" />
+    <NavigationProperty Name="promotions" Relationship="Self.promotion_ibfk_1" FromRole="store" ToRole="promotion" />
+    <NavigationProperty Name="storeaccounts" Relationship="Self.storeaccount_ibfk_2" FromRole="store" ToRole="storeaccount" />
+  </EntityType>
+  <EntityType Name="storeaccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdACCOUNT" Type="Int32" />
+    <Property Name="IdSTORE" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Sex" Type="Boolean" />
+    <NavigationProperty Name="account" Relationship="Self.storeaccount_ibfk_1" FromRole="storeaccount" ToRole="account" />
+    <NavigationProperty Name="store" Relationship="Self.storeaccount_ibfk_2" FromRole="storeaccount" ToRole="store" />
+  </EntityType>
+  <EntityType Name="ticket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPromotion" Type="Int32" />
+    <Property Name="IdReWard" Type="Int32" />
+    <Property Name="IdClientUser" Type="Int32" />
+    <Property Name="IsWin" Type="Boolean" />
+    <Property Name="Date" Type="DateTime" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="clientaccount" Relationship="Self.ticket_ibfk_3" FromRole="ticket" ToRole="clientaccount" />
+    <NavigationProperty Name="promotion" Relationship="Self.ticket_ibfk_1" FromRole="ticket" ToRole="promotion" />
+    <NavigationProperty Name="reward" Relationship="Self.ticket_ibfk_2" FromRole="ticket" ToRole="reward" />
+  </EntityType>
+  <Association Name="adminaccount_ibfk_1">
+    <End Role="account" Type="Self.account" Multiplicity="0..1" />
+    <End Role="adminaccount" Type="Self.adminaccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="adminaccount">
+        <PropertyRef Name="IdACCOUNT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="clientaccount_ibfk_1">
+    <End Role="account" Type="Self.account" Multiplicity="0..1" />
+    <End Role="clientaccount" Type="Self.clientaccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="clientaccount">
+        <PropertyRef Name="IdACCOUNT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="storeaccount_ibfk_1">
+    <End Role="account" Type="Self.account" Multiplicity="0..1" />
+    <End Role="storeaccount" Type="Self.storeaccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="storeaccount">
+        <PropertyRef Name="IdACCOUNT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="store_ibfk_1">
+    <End Role="bussinesstype" Type="Self.bussinesstype" Multiplicity="0..1" />
+    <End Role="store" Type="Self.store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bussinesstype">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="store">
+        <PropertyRef Name="BussinessType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ticket_ibfk_3">
+    <End Role="clientaccount" Type="Self.clientaccount" Multiplicity="0..1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientaccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="IdClientUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="promotion_ibfk_1">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="promotion" Type="Self.promotion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="promotion">
+        <PropertyRef Name="IdSTORE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qrcode_ibfk_1">
+    <End Role="promotion" Type="Self.promotion" Multiplicity="0..1" />
+    <End Role="qrcode" Type="Self.qrcode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promotion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="qrcode">
+        <PropertyRef Name="IdPromotion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ticket_ibfk_1">
+    <End Role="promotion" Type="Self.promotion" Multiplicity="0..1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promotion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="IdPromotion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ticket_ibfk_2">
+    <End Role="reward" Type="Self.reward" Multiplicity="0..1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reward">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="IdReWard" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="storeaccount_ibfk_2">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="storeaccount" Type="Self.storeaccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="storeaccount">
+        <PropertyRef Name="IdSTORE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="systemdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="accounts" EntityType="Self.account" />
+    <EntitySet Name="adminaccounts" EntityType="Self.adminaccount" />
+    <EntitySet Name="bussinesstypes" EntityType="Self.bussinesstype" />
+    <EntitySet Name="clientaccounts" EntityType="Self.clientaccount" />
+    <EntitySet Name="listrewards" EntityType="Self.listreward" />
+    <EntitySet Name="promotions" EntityType="Self.promotion" />
+    <EntitySet Name="qrcodes" EntityType="Self.qrcode" />
+    <EntitySet Name="rewards" EntityType="Self.reward" />
+    <EntitySet Name="stores" EntityType="Self.store" />
+    <EntitySet Name="storeaccounts" EntityType="Self.storeaccount" />
+    <EntitySet Name="tickets" EntityType="Self.ticket" />
+    <AssociationSet Name="adminaccount_ibfk_1" Association="Self.adminaccount_ibfk_1">
+      <End Role="account" EntitySet="accounts" />
+      <End Role="adminaccount" EntitySet="adminaccounts" />
+    </AssociationSet>
+    <AssociationSet Name="clientaccount_ibfk_1" Association="Self.clientaccount_ibfk_1">
+      <End Role="account" EntitySet="accounts" />
+      <End Role="clientaccount" EntitySet="clientaccounts" />
+    </AssociationSet>
+    <AssociationSet Name="storeaccount_ibfk_1" Association="Self.storeaccount_ibfk_1">
+      <End Role="account" EntitySet="accounts" />
+      <End Role="storeaccount" EntitySet="storeaccounts" />
+    </AssociationSet>
+    <AssociationSet Name="store_ibfk_1" Association="Self.store_ibfk_1">
+      <End Role="bussinesstype" EntitySet="bussinesstypes" />
+      <End Role="store" EntitySet="stores" />
+    </AssociationSet>
+    <AssociationSet Name="ticket_ibfk_3" Association="Self.ticket_ibfk_3">
+      <End Role="clientaccount" EntitySet="clientaccounts" />
+      <End Role="ticket" EntitySet="tickets" />
+    </AssociationSet>
+    <AssociationSet Name="promotion_ibfk_1" Association="Self.promotion_ibfk_1">
+      <End Role="store" EntitySet="stores" />
+      <End Role="promotion" EntitySet="promotions" />
+    </AssociationSet>
+    <AssociationSet Name="qrcode_ibfk_1" Association="Self.qrcode_ibfk_1">
+      <End Role="promotion" EntitySet="promotions" />
+      <End Role="qrcode" EntitySet="qrcodes" />
+    </AssociationSet>
+    <AssociationSet Name="ticket_ibfk_1" Association="Self.ticket_ibfk_1">
+      <End Role="promotion" EntitySet="promotions" />
+      <End Role="ticket" EntitySet="tickets" />
+    </AssociationSet>
+    <AssociationSet Name="ticket_ibfk_2" Association="Self.ticket_ibfk_2">
+      <End Role="reward" EntitySet="rewards" />
+      <End Role="ticket" EntitySet="tickets" />
+    </AssociationSet>
+    <AssociationSet Name="storeaccount_ibfk_2" Association="Self.storeaccount_ibfk_2">
+      <End Role="store" EntitySet="stores" />
+      <End Role="storeaccount" EntitySet="storeaccounts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

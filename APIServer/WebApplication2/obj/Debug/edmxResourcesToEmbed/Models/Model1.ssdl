@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SHOPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ACCOUNT">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="IDType" Type="varchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ACCOUNTADMIN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SDT" Type="int" Nullable="false" />
+    <Property Name="Account" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ACCOUNTTYPE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="TenLoai" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CHITIETHOADON">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="IDChiTietMatHang" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="IDHoaDon" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="SoLuong" Type="int" />
+  </EntityType>
+  <EntityType Name="CHITIETMATHANG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="IDMatHang" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
+    <Property Name="MauSac" Type="nvarchar" MaxLength="20" />
+    <Property Name="Size" Type="varchar" MaxLength="3" />
+    <Property Name="Gia" Type="int" />
+    <Property Name="Loai" Type="varchar" MaxLength="3" />
+    <Property Name="SoLuong" Type="int" />
+  </EntityType>
+  <EntityType Name="CUAHANG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="TenCH" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DiaChiGMap" Type="nvarchar" MaxLength="20" />
+    <Property Name="SDT" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="IDKhachHang" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Ngay" Type="date" Nullable="false" />
+    <Property Name="TongTien" Type="int" Nullable="false" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="30" />
+    <Property Name="SDT" Type="int" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+    <Property Name="IDAccount" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="LOAIHANG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="TenLoai" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MATHANG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="TenMH" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="IDLoaiHang" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="URLHinhAnh1" Type="varchar" MaxLength="100" />
+    <Property Name="URLHinhAnh2" Type="varchar" MaxLength="100" />
+    <Property Name="URLHinhAnh3" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__ACCOUNT__IDType__1BFD2C07">
+    <End Role="ACCOUNTTYPE" Type="Self.ACCOUNTTYPE" Multiplicity="1" />
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNTTYPE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ACCOUNT">
+        <PropertyRef Name="IDType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ACCOUNTAD__Accou__1ED998B2">
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+    <End Role="ACCOUNTADMIN" Type="Self.ACCOUNTADMIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNT">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="ACCOUNTADMIN">
+        <PropertyRef Name="Account" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHITIETHO__IDChi__276EDEB3">
+    <End Role="CHITIETMATHANG" Type="Self.CHITIETMATHANG" Multiplicity="1" />
+    <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHITIETMATHANG">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CHITIETHOADON">
+        <PropertyRef Name="IDChiTietMatHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHITIETHO__IDHoa__286302EC">
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+    <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CHITIETHOADON">
+        <PropertyRef Name="IDHoaDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHITIETMA__IDMat__173876EA">
+    <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="1" />
+    <End Role="CHITIETMATHANG" Type="Self.CHITIETMATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATHANG">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CHITIETMATHANG">
+        <PropertyRef Name="IDMatHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADON__IDKhachH__24927208">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="IDKhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KHACHHANG__IDAcc__21B6055D">
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNT">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="KHACHHANG">
+        <PropertyRef Name="IDAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MATHANG__IDLoaiH__145C0A3F">
+    <End Role="LOAIHANG" Type="Self.LOAIHANG" Multiplicity="1" />
+    <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIHANG">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MATHANG">
+        <PropertyRef Name="IDLoaiHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SHOPModelStoreContainer">
+    <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ACCOUNTADMIN" EntityType="Self.ACCOUNTADMIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ACCOUNTTYPE" EntityType="Self.ACCOUNTTYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHITIETHOADON" EntityType="Self.CHITIETHOADON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHITIETMATHANG" EntityType="Self.CHITIETMATHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUAHANG" EntityType="Self.CUAHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOAIHANG" EntityType="Self.LOAIHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MATHANG" EntityType="Self.MATHANG" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ACCOUNT__IDType__1BFD2C07" Association="Self.FK__ACCOUNT__IDType__1BFD2C07">
+      <End Role="ACCOUNTTYPE" EntitySet="ACCOUNTTYPE" />
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ACCOUNTAD__Accou__1ED998B2" Association="Self.FK__ACCOUNTAD__Accou__1ED998B2">
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+      <End Role="ACCOUNTADMIN" EntitySet="ACCOUNTADMIN" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHITIETHO__IDChi__276EDEB3" Association="Self.FK__CHITIETHO__IDChi__276EDEB3">
+      <End Role="CHITIETMATHANG" EntitySet="CHITIETMATHANG" />
+      <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHITIETHO__IDHoa__286302EC" Association="Self.FK__CHITIETHO__IDHoa__286302EC">
+      <End Role="HOADON" EntitySet="HOADON" />
+      <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHITIETMA__IDMat__173876EA" Association="Self.FK__CHITIETMA__IDMat__173876EA">
+      <End Role="MATHANG" EntitySet="MATHANG" />
+      <End Role="CHITIETMATHANG" EntitySet="CHITIETMATHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADON__IDKhachH__24927208" Association="Self.FK__HOADON__IDKhachH__24927208">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KHACHHANG__IDAcc__21B6055D" Association="Self.FK__KHACHHANG__IDAcc__21B6055D">
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MATHANG__IDLoaiH__145C0A3F" Association="Self.FK__MATHANG__IDLoaiH__145C0A3F">
+      <End Role="LOAIHANG" EntitySet="LOAIHANG" />
+      <End Role="MATHANG" EntitySet="MATHANG" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

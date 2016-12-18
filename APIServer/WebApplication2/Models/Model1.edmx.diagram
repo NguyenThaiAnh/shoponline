@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="451127e59cd8483690312970f04b75c6" Name="Diagram1">
+        <EntityTypeShape EntityType="SHOPModel.ACCOUNT" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPModel.ACCOUNTADMIN" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPModel.ACCOUNTTYPE" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPModel.CHITIETHOADON" Width="1.5" PointX="9.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPModel.CHITIETMATHANG" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPModel.CUAHANG" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPModel.HOADON" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPModel.KHACHHANG" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPModel.LOAIHANG" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPModel.MATHANG" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="SHOPModel.FK__ACCOUNT__IDType__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPModel.FK__ACCOUNTAD__Accou__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPModel.FK__KHACHHANG__IDAcc__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPModel.FK__CHITIETHO__IDChi__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPModel.FK__CHITIETHO__IDHoa__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPModel.FK__CHITIETMA__IDMat__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPModel.FK__HOADON__IDKhachH__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPModel.FK__MATHANG__IDLoaiH__145C0A3F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="01708033673f4db2a2419d23229e30f4" Name="Diagram1">
+        <EntityTypeShape EntityType="systemdbModel.account" Width="1.5" PointX="0.625" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="systemdbModel.adminaccount" Width="1.5" PointX="1" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="systemdbModel.bussinesstype" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="systemdbModel.clientaccount" Width="1.5" PointX="3.625" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="systemdbModel.listreward" Width="1.5" PointX="7.875" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="systemdbModel.promotion" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="systemdbModel.qrcode" Width="1.5" PointX="5.875" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="systemdbModel.reward" Width="1.5" PointX="3.375" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="systemdbModel.store" Width="1.5" PointX="3.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="systemdbModel.storeaccount" Width="1.5" PointX="6" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="systemdbModel.ticket" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="systemdbModel.adminaccount_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="systemdbModel.clientaccount_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="systemdbModel.storeaccount_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="systemdbModel.store_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="systemdbModel.ticket_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="systemdbModel.promotion_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="systemdbModel.qrcode_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="systemdbModel.ticket_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="systemdbModel.ticket_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="systemdbModel.storeaccount_ibfk_2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

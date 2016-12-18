@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="systemdbModelStoreContainer" CdmEntityContainer="systemdbEntities">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="systemdbModel.account">
+        <MappingFragment StoreEntitySet="account">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adminaccounts">
+      <EntityTypeMapping TypeName="systemdbModel.adminaccount">
+        <MappingFragment StoreEntitySet="adminaccount">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdACCOUNT" ColumnName="IdACCOUNT" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="NumberPhone" ColumnName="NumberPhone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bussinesstypes">
+      <EntityTypeMapping TypeName="systemdbModel.bussinesstype">
+        <MappingFragment StoreEntitySet="bussinesstype">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clientaccounts">
+      <EntityTypeMapping TypeName="systemdbModel.clientaccount">
+        <MappingFragment StoreEntitySet="clientaccount">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdACCOUNT" ColumnName="IdACCOUNT" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="listrewards">
+      <EntityTypeMapping TypeName="systemdbModel.listreward">
+        <MappingFragment StoreEntitySet="listreward">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdList" ColumnName="IdList" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="IdReward" ColumnName="IdReward" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="promotions">
+      <EntityTypeMapping TypeName="systemdbModel.promotion">
+        <MappingFragment StoreEntitySet="promotion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdSTORE" ColumnName="IdSTORE" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DateBegin" ColumnName="DateBegin" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IdListReward" ColumnName="IdListReward" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qrcodes">
+      <EntityTypeMapping TypeName="systemdbModel.qrcode">
+        <MappingFragment StoreEntitySet="qrcode">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPromotion" ColumnName="IdPromotion" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rewards">
+      <EntityTypeMapping TypeName="systemdbModel.reward">
+        <MappingFragment StoreEntitySet="reward">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ChanceToGet" ColumnName="ChanceToGet" />
+          <ScalarProperty Name="ChanceToRoll" ColumnName="ChanceToRoll" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TimeRemain" ColumnName="TimeRemain" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stores">
+      <EntityTypeMapping TypeName="systemdbModel.store">
+        <MappingFragment StoreEntitySet="store">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MapAddress" ColumnName="MapAddress" />
+          <ScalarProperty Name="PhysicAddress" ColumnName="PhysicAddress" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="BussinessType" ColumnName="BussinessType" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="storeaccounts">
+      <EntityTypeMapping TypeName="systemdbModel.storeaccount">
+        <MappingFragment StoreEntitySet="storeaccount">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdACCOUNT" ColumnName="IdACCOUNT" />
+          <ScalarProperty Name="IdSTORE" ColumnName="IdSTORE" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tickets">
+      <EntityTypeMapping TypeName="systemdbModel.ticket">
+        <MappingFragment StoreEntitySet="ticket">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPromotion" ColumnName="IdPromotion" />
+          <ScalarProperty Name="IdReWard" ColumnName="IdReWard" />
+          <ScalarProperty Name="IdClientUser" ColumnName="IdClientUser" />
+          <ScalarProperty Name="IsWin" ColumnName="IsWin" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

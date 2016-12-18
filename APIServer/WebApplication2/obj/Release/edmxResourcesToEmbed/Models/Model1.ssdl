@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="systemdbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="AccountType" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="adminaccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdACCOUNT" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="varchar" MaxLength="20" />
+    <Property Name="NumberPhone" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="bussinesstype">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="10" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="clientaccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdACCOUNT" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="varchar" MaxLength="30" />
+    <Property Name="Email" Type="varchar" MaxLength="30" />
+    <Property Name="Avartar" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Sex" Type="bit" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="12" />
+    <Property Name="DateBirth" Type="date" />
+  </EntityType>
+  <EntityType Name="listreward">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdList" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="IdReward" Type="int" />
+  </EntityType>
+  <EntityType Name="promotion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdSTORE" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="DateBegin" Type="datetime" Precision="0" />
+    <Property Name="DateEnd" Type="datetime" Precision="0" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="IdListReward" Type="int" />
+  </EntityType>
+  <EntityType Name="qrcode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPromotion" Type="int" />
+    <Property Name="Url" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="reward">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="ChanceToGet" Type="int" />
+    <Property Name="ChanceToRoll" Type="int" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="TimeRemain" Type="int" />
+  </EntityType>
+  <EntityType Name="store">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="MapAddress" Type="varchar" MaxLength="50" />
+    <Property Name="PhysicAddress" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="30" />
+    <Property Name="Avatar" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="BussinessType" Type="int" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="storeaccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdACCOUNT" Type="int" />
+    <Property Name="IdSTORE" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="varchar" MaxLength="30" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Sex" Type="bit" />
+  </EntityType>
+  <EntityType Name="ticket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPromotion" Type="int" />
+    <Property Name="IdReWard" Type="int" />
+    <Property Name="IdClientUser" Type="int" />
+    <Property Name="IsWin" Type="bit" />
+    <Property Name="Date" Type="datetime" Precision="0" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <Association Name="adminaccount_ibfk_1">
+    <End Role="account" Type="Self.account" Multiplicity="0..1" />
+    <End Role="adminaccount" Type="Self.adminaccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="adminaccount">
+        <PropertyRef Name="IdACCOUNT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="clientaccount_ibfk_1">
+    <End Role="account" Type="Self.account" Multiplicity="0..1" />
+    <End Role="clientaccount" Type="Self.clientaccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="clientaccount">
+        <PropertyRef Name="IdACCOUNT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="promotion_ibfk_1">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="promotion" Type="Self.promotion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="promotion">
+        <PropertyRef Name="IdSTORE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qrcode_ibfk_1">
+    <End Role="promotion" Type="Self.promotion" Multiplicity="0..1" />
+    <End Role="qrcode" Type="Self.qrcode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promotion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="qrcode">
+        <PropertyRef Name="IdPromotion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="store_ibfk_1">
+    <End Role="bussinesstype" Type="Self.bussinesstype" Multiplicity="0..1" />
+    <End Role="store" Type="Self.store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bussinesstype">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="store">
+        <PropertyRef Name="BussinessType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="storeaccount_ibfk_1">
+    <End Role="account" Type="Self.account" Multiplicity="0..1" />
+    <End Role="storeaccount" Type="Self.storeaccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="storeaccount">
+        <PropertyRef Name="IdACCOUNT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="storeaccount_ibfk_2">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="storeaccount" Type="Self.storeaccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="storeaccount">
+        <PropertyRef Name="IdSTORE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ticket_ibfk_1">
+    <End Role="promotion" Type="Self.promotion" Multiplicity="0..1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promotion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="IdPromotion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ticket_ibfk_2">
+    <End Role="reward" Type="Self.reward" Multiplicity="0..1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reward">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="IdReWard" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ticket_ibfk_3">
+    <End Role="clientaccount" Type="Self.clientaccount" Multiplicity="0..1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientaccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="IdClientUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="systemdbModelStoreContainer">
+    <EntitySet Name="account" EntityType="Self.account" Schema="systemdb" store:Type="Tables" />
+    <EntitySet Name="adminaccount" EntityType="Self.adminaccount" Schema="systemdb" store:Type="Tables" />
+    <EntitySet Name="bussinesstype" EntityType="Self.bussinesstype" Schema="systemdb" store:Type="Tables" />
+    <EntitySet Name="clientaccount" EntityType="Self.clientaccount" Schema="systemdb" store:Type="Tables" />
+    <EntitySet Name="listreward" EntityType="Self.listreward" Schema="systemdb" store:Type="Tables" />
+    <EntitySet Name="promotion" EntityType="Self.promotion" Schema="systemdb" store:Type="Tables" />
+    <EntitySet Name="qrcode" EntityType="Self.qrcode" Schema="systemdb" store:Type="Tables" />
+    <EntitySet Name="reward" EntityType="Self.reward" Schema="systemdb" store:Type="Tables" />
+    <EntitySet Name="store" EntityType="Self.store" Schema="systemdb" store:Type="Tables" />
+    <EntitySet Name="storeaccount" EntityType="Self.storeaccount" Schema="systemdb" store:Type="Tables" />
+    <EntitySet Name="ticket" EntityType="Self.ticket" Schema="systemdb" store:Type="Tables" />
+    <AssociationSet Name="adminaccount_ibfk_1" Association="Self.adminaccount_ibfk_1">
+      <End Role="account" EntitySet="account" />
+      <End Role="adminaccount" EntitySet="adminaccount" />
+    </AssociationSet>
+    <AssociationSet Name="clientaccount_ibfk_1" Association="Self.clientaccount_ibfk_1">
+      <End Role="account" EntitySet="account" />
+      <End Role="clientaccount" EntitySet="clientaccount" />
+    </AssociationSet>
+    <AssociationSet Name="promotion_ibfk_1" Association="Self.promotion_ibfk_1">
+      <End Role="store" EntitySet="store" />
+      <End Role="promotion" EntitySet="promotion" />
+    </AssociationSet>
+    <AssociationSet Name="qrcode_ibfk_1" Association="Self.qrcode_ibfk_1">
+      <End Role="promotion" EntitySet="promotion" />
+      <End Role="qrcode" EntitySet="qrcode" />
+    </AssociationSet>
+    <AssociationSet Name="store_ibfk_1" Association="Self.store_ibfk_1">
+      <End Role="bussinesstype" EntitySet="bussinesstype" />
+      <End Role="store" EntitySet="store" />
+    </AssociationSet>
+    <AssociationSet Name="storeaccount_ibfk_1" Association="Self.storeaccount_ibfk_1">
+      <End Role="account" EntitySet="account" />
+      <End Role="storeaccount" EntitySet="storeaccount" />
+    </AssociationSet>
+    <AssociationSet Name="storeaccount_ibfk_2" Association="Self.storeaccount_ibfk_2">
+      <End Role="store" EntitySet="store" />
+      <End Role="storeaccount" EntitySet="storeaccount" />
+    </AssociationSet>
+    <AssociationSet Name="ticket_ibfk_1" Association="Self.ticket_ibfk_1">
+      <End Role="promotion" EntitySet="promotion" />
+      <End Role="ticket" EntitySet="ticket" />
+    </AssociationSet>
+    <AssociationSet Name="ticket_ibfk_2" Association="Self.ticket_ibfk_2">
+      <End Role="reward" EntitySet="reward" />
+      <End Role="ticket" EntitySet="ticket" />
+    </AssociationSet>
+    <AssociationSet Name="ticket_ibfk_3" Association="Self.ticket_ibfk_3">
+      <End Role="clientaccount" EntitySet="clientaccount" />
+      <End Role="ticket" EntitySet="ticket" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
