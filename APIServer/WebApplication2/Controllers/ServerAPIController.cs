@@ -73,7 +73,7 @@ namespace WebApplication2.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize(Roles ="Manager")]
         [HttpGet]
         [Route("inforItem")]
 

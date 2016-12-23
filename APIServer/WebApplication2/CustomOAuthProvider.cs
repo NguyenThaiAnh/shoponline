@@ -60,10 +60,9 @@ namespace WebApplication2
 
             var identity = new ClaimsIdentity("JWT");
 
-            identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-            identity.AddClaim(new Claim("sub", context.UserName));
+            
             identity.AddClaim(new Claim(ClaimTypes.Role, "Manager"));
-            identity.AddClaim(new Claim(ClaimTypes.Role, "Supervisor"));
+            //identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
 
             var props = new AuthenticationProperties(new Dictionary<string, string>
                 {
