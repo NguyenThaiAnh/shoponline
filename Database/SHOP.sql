@@ -1,6 +1,7 @@
 ﻿CREATE DATABASE SHOP;
 GO
 
+
 USE SHOP;
 GO
 
@@ -16,19 +17,33 @@ CREATE TABLE CUAHANG(
 CREATE TABLE LOAIHANG(
 	ID VARCHAR(5) NOT NULL, 
 	TenLoai NVARCHAR(20) NOT NULL, 
+	
 	MoTa NVARCHAR(50),
+	
 	PRIMARY KEY (ID)
+);
+
+CREATE TABLE SUBLOAIHANG
+(
+ID VARCHAR(5),
+IDLoaiHang VARCHAR(5),
+TenLoai NVARCHAR(20) not null,
+MoTa NVARCHAR(50),
+PRIMARY KEY(ID),
+foreign key(IDLoaiHang) references LOAIHANG(ID)
 );
 
 CREATE TABLE MATHANG(
 	ID VARCHAR(6) NOT NULL, 
 	TenMH NVARCHAR(40) NOT NULL,
 	IDLoaiHang VARCHAR(5) NOT NULL,
+	IDSubLoaiHang VARCHAR(5),
 	URLHinhAnh1 VARCHAR(100),
 	URLHinhAnh2 VARCHAR(100),
 	URLHinhAnh3 VARCHAR(100),
 	PRIMARY KEY(ID),
-	FOREIGN KEY (IDLoaiHang) REFERENCES LOAIHANG(ID)
+	FOREIGN KEY (IDLoaiHang) REFERENCES LOAIHANG(ID),
+	foreign key(IDSubLoaiHang) references SUBLOAIHANG(ID)
 );
 
 CREATE TABLE CHITIETMATHANG(
@@ -103,28 +118,27 @@ CREATE TABLE CHITIETHOADON(
 
 INSERT INTO CUAHANG VALUES ('001', 'SHOP QUẦN ÁO RAIN','28 Nhật Tảo, Phường 4, Quận 10, TP HCM', '', '0975187293');
 
-INSERT INTO LOAIHANG VALUES ('Q0001','QUẦN JEAN', ''),
-						    ('Q0002','QUẦN KAKI',''),
-							('Q0003','QUẦN SHORT JEAN',''),
-							('Q0004','QUẦN SHORT KAKI',''),
-							('Q0005','QUẦN SHORT THUN',''),
-							('A0001', 'ÁO THUN TAY DÀI', ''),
-							('A0002', 'ÁO THUN TAY NGẮN', ''),
-							('A0003', 'ÁO SƠ MI TAY DÀI', ''),
-							('A0004', 'ÁO SƠ MI TAY NGẮN', '');
+INSERT INTO LOAIHANG VALUES ('Q0001',N'QUẦN', ''),						    
+							('A0001', N'ÁO', '');
+							
+INSERT INTO SUBLOAIHANG VALUES('SQ001', 'Q0001', N'QUẦN JEAN',''),
+							('SQ002', 'Q0001', N'QUẦN KAKI',''),
+							('SQ003', 'Q0001', N'QUẦN NGỐ', ''),
+							('SA001', 'A0001', N'ÁO SƠ MI TÀY DÀI', ''),
+							('SA002', 'A0001', N'ÁO SƠ MI TAY NGẮN', '');
 
-INSERT INTO MATHANG VALUES ('MHQ001', 'QUẦN JEAN 116001','Q0001', 'http://totoshop.vn/cdn/store/7136/ps/20161124/jean_nam_32__3__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161109/3486895/JEAN_NAM_116001_(jean_nam_32_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161109/3486895/JEAN_NAM_116001_(jean_nam_32_(2)).jpg'),
-						   ('MHQ002', 'QUẦN JEAN 116002', 'Q0001', 'http://totoshop.vn/cdn/store/7136/ps/20161128/jan_nam_63__4__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161109/3486896/JEAN_NAM_116002_(jan_nam_63_(2)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161109/3486896/JEAN_NAM_116002_(jan_nam_63_(3)).jpg'),
-						   ('MHQ003', 'QUẦN JEAN 116004', 'Q0001', 'http://totoshop.vn/cdn/store/7136/ps/20161130/jean_nam_21__3__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161106/3476330/JEAN_NAM_106014_(jean_nam_21_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161106/3476330/JEAN_NAM_106014_(jean_nam_21_(4)).jpg'),
-						   ('MHQ004', 'QUẦN KAKI 106010NV', 'Q0002', 'http://totoshop.vn/cdn/store/7136/ps/20161116/quna_nam_13__4__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161018/3415541/KAKI_NAM_106010NV_(quna_nam_13_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161018/3415541/KAKI_NAM_106010NV_(quna_nam_13_(2)).jpg'),
-						   ('MHQ005', 'QUẦN KAKI 106010GR', 'Q0002', 'http://totoshop.vn/cdn/store/7136/ps/20161115/quan_nam_2__4__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161018/3415540/KAKI_NAM_106010GR_(quan_nam_2_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161018/3415540/KAKI_NAM_106010GR_(quan_nam_2_(2)).jpg'),
-						   ('MHS001', 'QUẦN SHORT JEAN 106005', 'Q0003', 'http://totoshop.vn/cdn/store/7136/ps/20161109/short_nam_7__3__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161029/3445428/SHORT_JEAN_NAM_106005_(short_nam_7_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161029/3445428/SHORT_JEAN_NAM_106005_(short_nam_7_(2)).jpg'),
-						   ('MHS002', 'QUẦN SHORT KAKI 096001WH', 'Q0004', 'http://totoshop.vn/cdn/store/7136/ps/20161026/short_nam_35__2__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20160924/3344542/SHORT_KK_096001WH_(short_nam_35_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20160924/3344542/SHORT_KK_096001WH_(short_nam_35_(3)).jpg'),
-						   ('MHS003', 'QUẦN SHORT THUN QT07155', 'Q0005', 'http://totoshop.vn/cdn/store/7136/ps/20151025/384212020_500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20150813/1867187/QT07155_(quan_short_nam_20_(2)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20150813/1867187/QT07155_(quan_short_nam_20_(2)).jpg'),
-						   ('MHA001', 'ÁO THUN 086014GR', 'A0001', 'http://totoshop.vn/cdn/store/7136/ps/20161208/thun_nam_20__2__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161111/3495765/THUN_086014GR_(thun_nam_20_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161111/3495765/THUN_086014GR_(thun_nam_20_(3)).jpg'),
-						   ('MHA002', 'ÁO THUN 096036GN', 'A0002', 'http://totoshop.vn/cdn/store/7136/ps/20161103/thun_nam_22__7__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20160930/3366725/THUN_NAM_TN_096036GN_(thun_nam_22_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20160930/3366725/THUN_NAM_TN_096036GN_(thun_nam_22_(2)).jpg'),
-						   ('MHA003', 'ÁO SƠ MI 116004WH', 'A0003', 'http://totoshop.vn/cdn/store/7136/ps/20161208/somi_nam_15__3__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161110/3492112/SO_MI_TD_116004WH_(somi_nam_15_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161110/3492112/SO_MI_TD_116004WH_(somi_nam_15_(2)).jpg'),
-						   ('MHA004', 'ÁO SƠ MI 116005BL', 'A0004', 'http://totoshop.vn/cdn/store/7136/ps/20161125/somi_nam_51__5__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161110/3492113/SO_MI_TN_116005BL_(somi_nam_51_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161110/3492113/SO_MI_TN_116005BL_(somi_nam_51_(2)).jpg');
+INSERT INTO MATHANG VALUES ('MHQ001', 'QUẦN JEAN 116001','Q0001','SQ001' , 'http://totoshop.vn/cdn/store/7136/ps/20161124/jean_nam_32__3__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161109/3486895/JEAN_NAM_116001_(jean_nam_32_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161109/3486895/JEAN_NAM_116001_(jean_nam_32_(2)).jpg'),
+						   ('MHQ002', 'QUẦN JEAN 116002', 'Q0001', 'SQ001', 'http://totoshop.vn/cdn/store/7136/ps/20161128/jan_nam_63__4__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161109/3486896/JEAN_NAM_116002_(jan_nam_63_(2)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161109/3486896/JEAN_NAM_116002_(jan_nam_63_(3)).jpg'),
+						   ('MHQ003', 'QUẦN JEAN 116004', 'Q0001', 'SQ001', 'http://totoshop.vn/cdn/store/7136/ps/20161130/jean_nam_21__3__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161106/3476330/JEAN_NAM_106014_(jean_nam_21_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161106/3476330/JEAN_NAM_106014_(jean_nam_21_(4)).jpg'),
+						   ('MHQ004', 'QUẦN KAKI 106010NV', 'Q0001','SQ002' , 'http://totoshop.vn/cdn/store/7136/ps/20161116/quna_nam_13__4__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161018/3415541/KAKI_NAM_106010NV_(quna_nam_13_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161018/3415541/KAKI_NAM_106010NV_(quna_nam_13_(2)).jpg'),
+						   ('MHQ005', 'QUẦN KAKI 106010GR', 'Q0001', 'SQ002', 'http://totoshop.vn/cdn/store/7136/ps/20161115/quan_nam_2__4__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161018/3415540/KAKI_NAM_106010GR_(quan_nam_2_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161018/3415540/KAKI_NAM_106010GR_(quan_nam_2_(2)).jpg'),
+						   ('MHS001', 'QUẦN SHORT JEAN 106005', 'Q0001','SQ001', 'http://totoshop.vn/cdn/store/7136/ps/20161109/short_nam_7__3__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161029/3445428/SHORT_JEAN_NAM_106005_(short_nam_7_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161029/3445428/SHORT_JEAN_NAM_106005_(short_nam_7_(2)).jpg'),
+						   ('MHS002', 'QUẦN SHORT KAKI 096001WH', 'Q0001','SQ001', 'http://totoshop.vn/cdn/store/7136/ps/20161026/short_nam_35__2__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20160924/3344542/SHORT_KK_096001WH_(short_nam_35_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20160924/3344542/SHORT_KK_096001WH_(short_nam_35_(3)).jpg'),
+						   ('MHS003', 'QUẦN SHORT THUN QT07155', 'Q0001','SQ001', 'http://totoshop.vn/cdn/store/7136/ps/20151025/384212020_500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20150813/1867187/QT07155_(quan_short_nam_20_(2)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20150813/1867187/QT07155_(quan_short_nam_20_(2)).jpg'),
+						   ('MHA001', 'ÁO THUN 086014GR', 'A0001','SA001', 'http://totoshop.vn/cdn/store/7136/ps/20161208/thun_nam_20__2__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161111/3495765/THUN_086014GR_(thun_nam_20_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161111/3495765/THUN_086014GR_(thun_nam_20_(3)).jpg'),
+						   ('MHA002', 'ÁO THUN 096036GN', 'A0001','SA001', 'http://totoshop.vn/cdn/store/7136/ps/20161103/thun_nam_22__7__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20160930/3366725/THUN_NAM_TN_096036GN_(thun_nam_22_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20160930/3366725/THUN_NAM_TN_096036GN_(thun_nam_22_(2)).jpg'),
+						   ('MHA003', 'ÁO SƠ MI 116004WH', 'A0001','SA001', 'http://totoshop.vn/cdn/store/7136/ps/20161208/somi_nam_15__3__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161110/3492112/SO_MI_TD_116004WH_(somi_nam_15_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161110/3492112/SO_MI_TD_116004WH_(somi_nam_15_(2)).jpg'),
+						   ('MHA004', 'ÁO SƠ MI 116005BL', 'A0001','SA001', 'http://totoshop.vn/cdn/store/7136/ps/20161125/somi_nam_51__5__500x750.jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161110/3492113/SO_MI_TN_116005BL_(somi_nam_51_(1)).jpg', 'http://totoshop.vn/cdn/store/7136/psCT/20161110/3492113/SO_MI_TN_116005BL_(somi_nam_51_(2)).jpg');
 						   
 
 INSERT INTO CHITIETMATHANG VALUES ('CTQ001', 'MHQ001', '','XANH', '29', 385000, 'NAM', 5),

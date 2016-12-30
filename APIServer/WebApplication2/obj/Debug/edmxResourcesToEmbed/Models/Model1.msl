@@ -102,9 +102,20 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="TenMH" ColumnName="TenMH" />
           <ScalarProperty Name="IDLoaiHang" ColumnName="IDLoaiHang" />
+          <ScalarProperty Name="IDSubLoaiHang" ColumnName="IDSubLoaiHang" />
           <ScalarProperty Name="URLHinhAnh1" ColumnName="URLHinhAnh1" />
           <ScalarProperty Name="URLHinhAnh2" ColumnName="URLHinhAnh2" />
           <ScalarProperty Name="URLHinhAnh3" ColumnName="URLHinhAnh3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUBLOAIHANGs">
+      <EntityTypeMapping TypeName="SHOPModel.SUBLOAIHANG">
+        <MappingFragment StoreEntitySet="SUBLOAIHANG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDLoaiHang" ColumnName="IDLoaiHang" />
+          <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

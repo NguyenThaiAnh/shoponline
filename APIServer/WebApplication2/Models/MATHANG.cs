@@ -23,6 +23,7 @@ namespace WebApplication2.Models
         public string ID { get; set; }
         public string TenMH { get; set; }
         public string IDLoaiHang { get; set; }
+        public string IDSubLoaiHang { get; set; }
         public string URLHinhAnh1 { get; set; }
         public string URLHinhAnh2 { get; set; }
         public string URLHinhAnh3 { get; set; }
@@ -30,5 +31,6 @@ namespace WebApplication2.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETMATHANG> CHITIETMATHANGs { get; set; }
         public virtual LOAIHANG LOAIHANG { get; set; }
+        public virtual SUBLOAIHANG SUBLOAIHANG { get; set; }
     }
 }

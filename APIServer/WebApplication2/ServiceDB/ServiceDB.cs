@@ -17,7 +17,7 @@ namespace WebApplication2.ServiceDB
     {
         SHOPEntities db = new SHOPEntities();
 
-        
+
 
         public bool checkAcc(string _userName, string _passWord)
         {
@@ -47,7 +47,7 @@ namespace WebApplication2.ServiceDB
             #region if have exist account
             else
             {
-                
+
                 var q = (from e in db.ACCOUNTs
                          where e.Username == _userName && e.Password == _passWord
                          select new
@@ -59,7 +59,7 @@ namespace WebApplication2.ServiceDB
                 result.Username = q[0].useName;
                 result.Password = q[0].passWord;
                 result.IDType = q[0].idType;
-                if(result.IDType == "TYP01")
+                if (result.IDType == "TYP01")
                 {
                     var r = (from e in db.ACCOUNTs
                              join f in db.ACCOUNTADMINs on e.Username equals f.Account
@@ -118,7 +118,7 @@ namespace WebApplication2.ServiceDB
                          url3 = e.URLHinhAnh3,
 
                      }).ToList();
-            for(int i = 0; i < q.Count; i++)
+            for (int i = 0; i < q.Count; i++)
             {
                 listMatHang item = new listMatHang();
                 item.ID = q[i].id;
@@ -152,7 +152,7 @@ namespace WebApplication2.ServiceDB
                          MoTa = e.MoTa
 
                      }).ToList();
-            for(int i = 0; i < q.Count; i++)
+            for (int i = 0; i < q.Count; i++)
             {
                 itemMatHang item = new itemMatHang();
                 item.Gia = q[i].Gia;
@@ -182,7 +182,7 @@ namespace WebApplication2.ServiceDB
                          TinhTrang = e.TinhTrang,
                          TongTien = e.TongTien
                      }).ToList();
-            for(int i = 0; i < q.Count; i++)
+            for (int i = 0; i < q.Count; i++)
             {
                 HoaDonKH item = new HoaDonKH();
                 item.ID = q[i].Id;
@@ -212,7 +212,7 @@ namespace WebApplication2.ServiceDB
                          idHD = e.IDHoaDon,
                          soLuong = e.SoLuong
                      }).ToList();
-            for(int i = 0; i < q.Count; i++)
+            for (int i = 0; i < q.Count; i++)
             {
                 ChiTietHD item = new ChiTietHD();
                 item.ID = q[i].id;
@@ -240,7 +240,7 @@ namespace WebApplication2.ServiceDB
                 db.SaveChanges();
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
             }
@@ -260,10 +260,79 @@ namespace WebApplication2.ServiceDB
                 db.SaveChanges();
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
             }
         }
+
+        //get list mat hang voi loai xac dinh(VD: Quan)
+
+        public List<listMatHang> listLoaiHang(string loai)
+        {
+            List<listMatHang> result = new List<listMatHang>();
+            var q = (from e in db.MATHANGs
+                     join m in db.LOAIHANGs on e.IDLoaiHang equals m.ID
+                     join k in db.SUBLOAIHANGs on e.IDSubLoaiHang equals k.ID
+                     where m.TenLoai == loai
+                     select new
+                     {
+                         id = e.ID,
+                         loai = m.TenLoai,
+                         SubLoai = k.TenLoai,
+                         Ten = e.TenMH,
+                         url1 = e.URLHinhAnh1,
+                         url2 = e.URLHinhAnh2,
+                         url3 = e.URLHinhAnh3
+                     }).ToList();
+            for(int i = 0; i < q.Count; i++)
+            {
+                listMatHang tmp = new listMatHang();
+                tmp.ID = q[i].id;
+                tmp.Loai = q[i].loai;
+                tmp.SubLoai = q[i].SubLoai;
+                tmp.Ten = q[i].Ten;
+                tmp.URLHinhAnh1 = q[i].url1;
+                tmp.URLHinhAnh2 = q[i].url2;
+                tmp.URLHinhAnh3 = q[i].url3;
+                result.Add(tmp);
+            }
+            return result;
+        }
+
+        //get list mat hang voi loai va subloai duoc chon(VIDU: Quan => Quan caro)
+        public List<listMatHang> listSubLoaiHang(string loai, string subloai)
+        {
+            List<listMatHang> result = new List<listMatHang>();
+            var q = (from e in db.MATHANGs
+                     join m in db.LOAIHANGs on e.IDLoaiHang equals m.ID
+                     join k in db.SUBLOAIHANGs on e.IDSubLoaiHang equals k.ID
+                     where m.TenLoai == loai && k.TenLoai == subloai
+                     select new
+                     {
+                         id = e.ID,
+                         loai = m.TenLoai,
+                         SubLoai = k.TenLoai,
+                         Ten = e.TenMH,
+                         url1 = e.URLHinhAnh1,
+                         url2 = e.URLHinhAnh2,
+                         url3 = e.URLHinhAnh3
+                     }).ToList();
+            for (int i = 0; i < q.Count; i++)
+            {
+                listMatHang tmp = new listMatHang();
+                tmp.ID = q[i].id;
+                tmp.Loai = q[i].loai;
+                tmp.SubLoai = q[i].SubLoai;
+                tmp.Ten = q[i].Ten;
+                tmp.URLHinhAnh1 = q[i].url1;
+                tmp.URLHinhAnh2 = q[i].url2;
+                tmp.URLHinhAnh3 = q[i].url3;
+                result.Add(tmp);
+            }
+            return result;
+        }
+
+
     }
 }

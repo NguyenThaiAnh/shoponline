@@ -35,5 +35,6 @@ namespace WebApplication2.Models
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<LOAIHANG> LOAIHANGs { get; set; }
         public virtual DbSet<MATHANG> MATHANGs { get; set; }
+        public virtual DbSet<SUBLOAIHANG> SUBLOAIHANGs { get; set; }
     }
 }

@@ -14,6 +14,9 @@ namespace WebApplication2.Models
         public string Size { get; set; }
         public Nullable<int> Gia { get; set; }
         public string Loai { get; set; }
+
+        public string SubLoai { get; set; }
+
         public Nullable<int> SoLuong { get; set; }
 
     }

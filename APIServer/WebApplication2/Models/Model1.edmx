@@ -98,11 +98,21 @@
           <Property Name="ID" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="TenMH" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="IDLoaiHang" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IDSubLoaiHang" Type="varchar" MaxLength="5" />
           <Property Name="URLHinhAnh1" Type="varchar" MaxLength="100" />
           <Property Name="URLHinhAnh2" Type="varchar" MaxLength="100" />
           <Property Name="URLHinhAnh3" Type="varchar" MaxLength="100" />
         </EntityType>
-        <Association Name="FK__ACCOUNT__IDType__1BFD2C07">
+        <EntityType Name="SUBLOAIHANG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IDLoaiHang" Type="varchar" MaxLength="5" />
+          <Property Name="TenLoai" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__ACCOUNT__IDType__1FCDBCEB">
           <End Role="ACCOUNTTYPE" Type="Self.ACCOUNTTYPE" Multiplicity="1" />
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -114,7 +124,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ACCOUNTAD__Accou__1ED998B2">
+        <Association Name="FK__ACCOUNTAD__Accou__22AA2996">
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
           <End Role="ACCOUNTADMIN" Type="Self.ACCOUNTADMIN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -126,7 +136,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHO__IDChi__276EDEB3">
+        <Association Name="FK__CHITIETHO__IDChi__2B3F6F97">
           <End Role="CHITIETMATHANG" Type="Self.CHITIETMATHANG" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -138,7 +148,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHO__IDHoa__286302EC">
+        <Association Name="FK__CHITIETHO__IDHoa__2C3393D0">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -150,7 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETMA__IDMat__173876EA">
+        <Association Name="FK__CHITIETMA__IDMat__1B0907CE">
           <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="1" />
           <End Role="CHITIETMATHANG" Type="Self.CHITIETMATHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -162,7 +172,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__IDKhachH__24927208">
+        <Association Name="FK__HOADON__IDKhachH__286302EC">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -174,7 +184,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KHACHHANG__IDAcc__21B6055D">
+        <Association Name="FK__KHACHHANG__IDAcc__25869641">
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -186,7 +196,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MATHANG__IDLoaiH__145C0A3F">
+        <Association Name="FK__MATHANG__IDLoaiH__173876EA">
           <End Role="LOAIHANG" Type="Self.LOAIHANG" Multiplicity="1" />
           <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -194,6 +204,30 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="MATHANG">
+              <PropertyRef Name="IDLoaiHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATHANG__IDSubLo__182C9B23">
+          <End Role="SUBLOAIHANG" Type="Self.SUBLOAIHANG" Multiplicity="0..1" />
+          <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBLOAIHANG">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MATHANG">
+              <PropertyRef Name="IDSubLoaiHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SUBLOAIHA__IDLoa__145C0A3F">
+          <End Role="LOAIHANG" Type="Self.LOAIHANG" Multiplicity="0..1" />
+          <End Role="SUBLOAIHANG" Type="Self.SUBLOAIHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIHANG">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SUBLOAIHANG">
               <PropertyRef Name="IDLoaiHang" />
             </Dependent>
           </ReferentialConstraint>
@@ -209,37 +243,46 @@
           <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOAIHANG" EntityType="Self.LOAIHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MATHANG" EntityType="Self.MATHANG" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ACCOUNT__IDType__1BFD2C07" Association="Self.FK__ACCOUNT__IDType__1BFD2C07">
+          <EntitySet Name="SUBLOAIHANG" EntityType="Self.SUBLOAIHANG" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ACCOUNT__IDType__1FCDBCEB" Association="Self.FK__ACCOUNT__IDType__1FCDBCEB">
             <End Role="ACCOUNTTYPE" EntitySet="ACCOUNTTYPE" />
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
           </AssociationSet>
-          <AssociationSet Name="FK__ACCOUNTAD__Accou__1ED998B2" Association="Self.FK__ACCOUNTAD__Accou__1ED998B2">
+          <AssociationSet Name="FK__ACCOUNTAD__Accou__22AA2996" Association="Self.FK__ACCOUNTAD__Accou__22AA2996">
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
             <End Role="ACCOUNTADMIN" EntitySet="ACCOUNTADMIN" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHO__IDChi__276EDEB3" Association="Self.FK__CHITIETHO__IDChi__276EDEB3">
+          <AssociationSet Name="FK__CHITIETHO__IDChi__2B3F6F97" Association="Self.FK__CHITIETHO__IDChi__2B3F6F97">
             <End Role="CHITIETMATHANG" EntitySet="CHITIETMATHANG" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHO__IDHoa__286302EC" Association="Self.FK__CHITIETHO__IDHoa__286302EC">
+          <AssociationSet Name="FK__CHITIETHO__IDHoa__2C3393D0" Association="Self.FK__CHITIETHO__IDHoa__2C3393D0">
             <End Role="HOADON" EntitySet="HOADON" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETMA__IDMat__173876EA" Association="Self.FK__CHITIETMA__IDMat__173876EA">
+          <AssociationSet Name="FK__CHITIETMA__IDMat__1B0907CE" Association="Self.FK__CHITIETMA__IDMat__1B0907CE">
             <End Role="MATHANG" EntitySet="MATHANG" />
             <End Role="CHITIETMATHANG" EntitySet="CHITIETMATHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__IDKhachH__24927208" Association="Self.FK__HOADON__IDKhachH__24927208">
+          <AssociationSet Name="FK__HOADON__IDKhachH__286302EC" Association="Self.FK__HOADON__IDKhachH__286302EC">
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__KHACHHANG__IDAcc__21B6055D" Association="Self.FK__KHACHHANG__IDAcc__21B6055D">
+          <AssociationSet Name="FK__KHACHHANG__IDAcc__25869641" Association="Self.FK__KHACHHANG__IDAcc__25869641">
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__MATHANG__IDLoaiH__145C0A3F" Association="Self.FK__MATHANG__IDLoaiH__145C0A3F">
+          <AssociationSet Name="FK__MATHANG__IDLoaiH__173876EA" Association="Self.FK__MATHANG__IDLoaiH__173876EA">
             <End Role="LOAIHANG" EntitySet="LOAIHANG" />
             <End Role="MATHANG" EntitySet="MATHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATHANG__IDSubLo__182C9B23" Association="Self.FK__MATHANG__IDSubLo__182C9B23">
+            <End Role="SUBLOAIHANG" EntitySet="SUBLOAIHANG" />
+            <End Role="MATHANG" EntitySet="MATHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SUBLOAIHA__IDLoa__145C0A3F" Association="Self.FK__SUBLOAIHA__IDLoa__145C0A3F">
+            <End Role="LOAIHANG" EntitySet="LOAIHANG" />
+            <End Role="SUBLOAIHANG" EntitySet="SUBLOAIHANG" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -254,9 +297,9 @@
           <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ACCOUNTTYPE" Relationship="Self.FK__ACCOUNT__IDType__1BFD2C07" FromRole="ACCOUNT" ToRole="ACCOUNTTYPE" />
-          <NavigationProperty Name="ACCOUNTADMINs" Relationship="Self.FK__ACCOUNTAD__Accou__1ED998B2" FromRole="ACCOUNT" ToRole="ACCOUNTADMIN" />
-          <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__IDAcc__21B6055D" FromRole="ACCOUNT" ToRole="KHACHHANG" />
+          <NavigationProperty Name="ACCOUNTTYPE" Relationship="Self.FK__ACCOUNT__IDType__1FCDBCEB" FromRole="ACCOUNT" ToRole="ACCOUNTTYPE" />
+          <NavigationProperty Name="ACCOUNTADMINs" Relationship="Self.FK__ACCOUNTAD__Accou__22AA2996" FromRole="ACCOUNT" ToRole="ACCOUNTADMIN" />
+          <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__IDAcc__25869641" FromRole="ACCOUNT" ToRole="KHACHHANG" />
         </EntityType>
         <EntityType Name="ACCOUNTADMIN">
           <Key>
@@ -267,7 +310,7 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SDT" Type="Int32" Nullable="false" />
           <Property Name="Account" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ACCOUNT1" Relationship="Self.FK__ACCOUNTAD__Accou__1ED998B2" FromRole="ACCOUNTADMIN" ToRole="ACCOUNT" />
+          <NavigationProperty Name="ACCOUNT1" Relationship="Self.FK__ACCOUNTAD__Accou__22AA2996" FromRole="ACCOUNTADMIN" ToRole="ACCOUNT" />
         </EntityType>
         <EntityType Name="ACCOUNTTYPE">
           <Key>
@@ -275,7 +318,7 @@
           </Key>
           <Property Name="ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ACCOUNTs" Relationship="Self.FK__ACCOUNT__IDType__1BFD2C07" FromRole="ACCOUNTTYPE" ToRole="ACCOUNT" />
+          <NavigationProperty Name="ACCOUNTs" Relationship="Self.FK__ACCOUNT__IDType__1FCDBCEB" FromRole="ACCOUNTTYPE" ToRole="ACCOUNT" />
         </EntityType>
         <EntityType Name="CHITIETHOADON">
           <Key>
@@ -285,8 +328,8 @@
           <Property Name="IDChiTietMatHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDHoaDon" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" />
-          <NavigationProperty Name="CHITIETMATHANG" Relationship="Self.FK__CHITIETHO__IDChi__276EDEB3" FromRole="CHITIETHOADON" ToRole="CHITIETMATHANG" />
-          <NavigationProperty Name="HOADON" Relationship="Self.FK__CHITIETHO__IDHoa__286302EC" FromRole="CHITIETHOADON" ToRole="HOADON" />
+          <NavigationProperty Name="CHITIETMATHANG" Relationship="Self.FK__CHITIETHO__IDChi__2B3F6F97" FromRole="CHITIETHOADON" ToRole="CHITIETMATHANG" />
+          <NavigationProperty Name="HOADON" Relationship="Self.FK__CHITIETHO__IDHoa__2C3393D0" FromRole="CHITIETHOADON" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="CHITIETMATHANG">
           <Key>
@@ -300,8 +343,8 @@
           <Property Name="Gia" Type="Int32" />
           <Property Name="Loai" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="SoLuong" Type="Int32" />
-          <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHO__IDChi__276EDEB3" FromRole="CHITIETMATHANG" ToRole="CHITIETHOADON" />
-          <NavigationProperty Name="MATHANG" Relationship="Self.FK__CHITIETMA__IDMat__173876EA" FromRole="CHITIETMATHANG" ToRole="MATHANG" />
+          <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHO__IDChi__2B3F6F97" FromRole="CHITIETMATHANG" ToRole="CHITIETHOADON" />
+          <NavigationProperty Name="MATHANG" Relationship="Self.FK__CHITIETMA__IDMat__1B0907CE" FromRole="CHITIETMATHANG" ToRole="MATHANG" />
         </EntityType>
         <EntityType Name="CUAHANG">
           <Key>
@@ -322,8 +365,8 @@
           <Property Name="Ngay" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TongTien" Type="Int32" Nullable="false" />
           <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHO__IDHoa__286302EC" FromRole="HOADON" ToRole="CHITIETHOADON" />
-          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__IDKhachH__24927208" FromRole="HOADON" ToRole="KHACHHANG" />
+          <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHO__IDHoa__2C3393D0" FromRole="HOADON" ToRole="CHITIETHOADON" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__IDKhachH__286302EC" FromRole="HOADON" ToRole="KHACHHANG" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
@@ -335,8 +378,8 @@
           <Property Name="SDT" Type="Int32" Nullable="false" />
           <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IDAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__KHACHHANG__IDAcc__21B6055D" FromRole="KHACHHANG" ToRole="ACCOUNT" />
-          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__IDKhachH__24927208" FromRole="KHACHHANG" ToRole="HOADON" />
+          <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__KHACHHANG__IDAcc__25869641" FromRole="KHACHHANG" ToRole="ACCOUNT" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__IDKhachH__286302EC" FromRole="KHACHHANG" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="LOAIHANG">
           <Key>
@@ -345,7 +388,8 @@
           <Property Name="ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MATHANGs" Relationship="Self.FK__MATHANG__IDLoaiH__145C0A3F" FromRole="LOAIHANG" ToRole="MATHANG" />
+          <NavigationProperty Name="MATHANGs" Relationship="Self.FK__MATHANG__IDLoaiH__173876EA" FromRole="LOAIHANG" ToRole="MATHANG" />
+          <NavigationProperty Name="SUBLOAIHANGs" Relationship="Self.FK__SUBLOAIHA__IDLoa__145C0A3F" FromRole="LOAIHANG" ToRole="SUBLOAIHANG" />
         </EntityType>
         <EntityType Name="MATHANG">
           <Key>
@@ -354,13 +398,26 @@
           <Property Name="ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenMH" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDLoaiHang" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDSubLoaiHang" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="URLHinhAnh1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="URLHinhAnh2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="URLHinhAnh3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CHITIETMATHANGs" Relationship="Self.FK__CHITIETMA__IDMat__173876EA" FromRole="MATHANG" ToRole="CHITIETMATHANG" />
-          <NavigationProperty Name="LOAIHANG" Relationship="Self.FK__MATHANG__IDLoaiH__145C0A3F" FromRole="MATHANG" ToRole="LOAIHANG" />
+          <NavigationProperty Name="CHITIETMATHANGs" Relationship="Self.FK__CHITIETMA__IDMat__1B0907CE" FromRole="MATHANG" ToRole="CHITIETMATHANG" />
+          <NavigationProperty Name="LOAIHANG" Relationship="Self.FK__MATHANG__IDLoaiH__173876EA" FromRole="MATHANG" ToRole="LOAIHANG" />
+          <NavigationProperty Name="SUBLOAIHANG" Relationship="Self.FK__MATHANG__IDSubLo__182C9B23" FromRole="MATHANG" ToRole="SUBLOAIHANG" />
         </EntityType>
-        <Association Name="FK__ACCOUNT__IDType__1BFD2C07">
+        <EntityType Name="SUBLOAIHANG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDLoaiHang" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TenLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LOAIHANG" Relationship="Self.FK__SUBLOAIHA__IDLoa__145C0A3F" FromRole="SUBLOAIHANG" ToRole="LOAIHANG" />
+          <NavigationProperty Name="MATHANGs" Relationship="Self.FK__MATHANG__IDSubLo__182C9B23" FromRole="SUBLOAIHANG" ToRole="MATHANG" />
+        </EntityType>
+        <Association Name="FK__ACCOUNT__IDType__1FCDBCEB">
           <End Role="ACCOUNTTYPE" Type="Self.ACCOUNTTYPE" Multiplicity="1" />
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -372,7 +429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ACCOUNTAD__Accou__1ED998B2">
+        <Association Name="FK__ACCOUNTAD__Accou__22AA2996">
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
           <End Role="ACCOUNTADMIN" Type="Self.ACCOUNTADMIN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -384,7 +441,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KHACHHANG__IDAcc__21B6055D">
+        <Association Name="FK__KHACHHANG__IDAcc__25869641">
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -396,7 +453,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHO__IDChi__276EDEB3">
+        <Association Name="FK__CHITIETHO__IDChi__2B3F6F97">
           <End Role="CHITIETMATHANG" Type="Self.CHITIETMATHANG" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -408,7 +465,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHO__IDHoa__286302EC">
+        <Association Name="FK__CHITIETHO__IDHoa__2C3393D0">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -420,7 +477,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETMA__IDMat__173876EA">
+        <Association Name="FK__CHITIETMA__IDMat__1B0907CE">
           <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="1" />
           <End Role="CHITIETMATHANG" Type="Self.CHITIETMATHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -432,7 +489,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__IDKhachH__24927208">
+        <Association Name="FK__HOADON__IDKhachH__286302EC">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -444,7 +501,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MATHANG__IDLoaiH__145C0A3F">
+        <Association Name="FK__MATHANG__IDLoaiH__173876EA">
           <End Role="LOAIHANG" Type="Self.LOAIHANG" Multiplicity="1" />
           <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -453,6 +510,30 @@
             </Principal>
             <Dependent Role="MATHANG">
               <PropertyRef Name="IDLoaiHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SUBLOAIHA__IDLoa__145C0A3F">
+          <End Role="LOAIHANG" Type="Self.LOAIHANG" Multiplicity="0..1" />
+          <End Role="SUBLOAIHANG" Type="Self.SUBLOAIHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIHANG">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SUBLOAIHANG">
+              <PropertyRef Name="IDLoaiHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATHANG__IDSubLo__182C9B23">
+          <End Role="SUBLOAIHANG" Type="Self.SUBLOAIHANG" Multiplicity="0..1" />
+          <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBLOAIHANG">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MATHANG">
+              <PropertyRef Name="IDSubLoaiHang" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -467,36 +548,45 @@
           <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
           <EntitySet Name="LOAIHANGs" EntityType="Self.LOAIHANG" />
           <EntitySet Name="MATHANGs" EntityType="Self.MATHANG" />
-          <AssociationSet Name="FK__ACCOUNT__IDType__1BFD2C07" Association="Self.FK__ACCOUNT__IDType__1BFD2C07">
+          <EntitySet Name="SUBLOAIHANGs" EntityType="Self.SUBLOAIHANG" />
+          <AssociationSet Name="FK__ACCOUNT__IDType__1FCDBCEB" Association="Self.FK__ACCOUNT__IDType__1FCDBCEB">
             <End Role="ACCOUNTTYPE" EntitySet="ACCOUNTTYPEs" />
             <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ACCOUNTAD__Accou__1ED998B2" Association="Self.FK__ACCOUNTAD__Accou__1ED998B2">
+          <AssociationSet Name="FK__ACCOUNTAD__Accou__22AA2996" Association="Self.FK__ACCOUNTAD__Accou__22AA2996">
             <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
             <End Role="ACCOUNTADMIN" EntitySet="ACCOUNTADMINs" />
           </AssociationSet>
-          <AssociationSet Name="FK__KHACHHANG__IDAcc__21B6055D" Association="Self.FK__KHACHHANG__IDAcc__21B6055D">
+          <AssociationSet Name="FK__KHACHHANG__IDAcc__25869641" Association="Self.FK__KHACHHANG__IDAcc__25869641">
             <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHO__IDChi__276EDEB3" Association="Self.FK__CHITIETHO__IDChi__276EDEB3">
+          <AssociationSet Name="FK__CHITIETHO__IDChi__2B3F6F97" Association="Self.FK__CHITIETHO__IDChi__2B3F6F97">
             <End Role="CHITIETMATHANG" EntitySet="CHITIETMATHANGs" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHO__IDHoa__286302EC" Association="Self.FK__CHITIETHO__IDHoa__286302EC">
+          <AssociationSet Name="FK__CHITIETHO__IDHoa__2C3393D0" Association="Self.FK__CHITIETHO__IDHoa__2C3393D0">
             <End Role="HOADON" EntitySet="HOADONs" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETMA__IDMat__173876EA" Association="Self.FK__CHITIETMA__IDMat__173876EA">
+          <AssociationSet Name="FK__CHITIETMA__IDMat__1B0907CE" Association="Self.FK__CHITIETMA__IDMat__1B0907CE">
             <End Role="MATHANG" EntitySet="MATHANGs" />
             <End Role="CHITIETMATHANG" EntitySet="CHITIETMATHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__IDKhachH__24927208" Association="Self.FK__HOADON__IDKhachH__24927208">
+          <AssociationSet Name="FK__HOADON__IDKhachH__286302EC" Association="Self.FK__HOADON__IDKhachH__286302EC">
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="HOADON" EntitySet="HOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MATHANG__IDLoaiH__145C0A3F" Association="Self.FK__MATHANG__IDLoaiH__145C0A3F">
+          <AssociationSet Name="FK__MATHANG__IDLoaiH__173876EA" Association="Self.FK__MATHANG__IDLoaiH__173876EA">
             <End Role="LOAIHANG" EntitySet="LOAIHANGs" />
+            <End Role="MATHANG" EntitySet="MATHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SUBLOAIHA__IDLoa__145C0A3F" Association="Self.FK__SUBLOAIHA__IDLoa__145C0A3F">
+            <End Role="LOAIHANG" EntitySet="LOAIHANGs" />
+            <End Role="SUBLOAIHANG" EntitySet="SUBLOAIHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATHANG__IDSubLo__182C9B23" Association="Self.FK__MATHANG__IDSubLo__182C9B23">
+            <End Role="SUBLOAIHANG" EntitySet="SUBLOAIHANGs" />
             <End Role="MATHANG" EntitySet="MATHANGs" />
           </AssociationSet>
         </EntityContainer>
@@ -607,9 +697,20 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TenMH" ColumnName="TenMH" />
                 <ScalarProperty Name="IDLoaiHang" ColumnName="IDLoaiHang" />
+                <ScalarProperty Name="IDSubLoaiHang" ColumnName="IDSubLoaiHang" />
                 <ScalarProperty Name="URLHinhAnh1" ColumnName="URLHinhAnh1" />
                 <ScalarProperty Name="URLHinhAnh2" ColumnName="URLHinhAnh2" />
                 <ScalarProperty Name="URLHinhAnh3" ColumnName="URLHinhAnh3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUBLOAIHANGs">
+            <EntityTypeMapping TypeName="SHOPModel.SUBLOAIHANG">
+              <MappingFragment StoreEntitySet="SUBLOAIHANG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDLoaiHang" ColumnName="IDLoaiHang" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

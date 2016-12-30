@@ -60,8 +60,16 @@ namespace WebApplication2
 
             var identity = new ClaimsIdentity("JWT");
 
-            
-            identity.AddClaim(new Claim(ClaimTypes.Role, "Manager"));
+            var q = (from e in db.ACCOUNTs
+                     join m in db.ACCOUNTTYPEs on e.IDType equals m.ID
+                     select m).FirstOrDefault();
+            if(q.TenLoai == "ACCOUNT ADMIN")
+            {
+                identity.AddClaim(new Claim(ClaimTypes.Role, "Manager"));
+            }
+            else
+                identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
+
             //identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
 
             var props = new AuthenticationProperties(new Dictionary<string, string>
