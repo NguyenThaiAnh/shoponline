@@ -9,21 +9,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Rain Shop</title>
   <!--css-->
-  <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
-  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-  <link href="css/font-awesome.css" rel="stylesheet">
+  <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+  <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="/css/font-awesome.css" rel="stylesheet">
   <!--css-->
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-  <script src="js/jquery.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
   <link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
   <link href='//fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300' rel='stylesheet' type='text/css'>
   <!--search jQuery-->
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
   <!--search jQuery-->
-  <script src="js/responsiveslides.min.js"></script>
+  <script src="/js/responsiveslides.min.js"></script>
   <script>
     $(function () {
       $("#slider").responsiveSlides({
@@ -36,13 +36,13 @@
     });
   </script>
   <!--mycart-->
-  <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap-3.1.1.min.js"></script>
   <!-- cart -->
-  <script src="js/simpleCart.min.js"></script>
+  <script src="/js/simpleCart.min.js"></script>
   <!-- cart -->
   <!--start-rate-->
-  <script src="js/jstarbox.js"></script>
-  <link rel="stylesheet" href="css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
+  <script src="/js/jstarbox.js"></script>
+  <link rel="stylesheet" href="/css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
   <script type="text/javascript">
     jQuery(function() {
       jQuery('.starbox').each(function() {
@@ -68,9 +68,22 @@
 
 
   <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">-->
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="app.css">
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="stylesheet" href="/bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="/app.css">
+  <script src="/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script defer src="/js/jquery.flexslider.js"></script>
+  <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
+  <script src="/js/imagezoom.js"></script>
+  <script>
+    // Can also be used with $(document).ready()
+    $(window).load(function() {
+      $('.flexslider').flexslider({
+        animation: "slide",
+        controlNav: "thumbnails"
+      });
+    });
+  </script>
+  <!--//End-rate-->
   <base href="/">
 </head>
 <body>
@@ -112,29 +125,29 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a ui-sref="home" class="act">Trang chủ</a></li>
                 <!-- Mega Menu -->
-                <li class="active"><a ui-sref="men" class="act" style="padding-right: initial;">Đồ nam</a></li>
+                <li class="active"><a ui-sref="menProduct.nam" ui-sref-active="activeState" class="act" style="padding-right: initial;">Đồ nam</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
                   <ul class="dropdown-menu multi-column columns-3">
                     <div class="row">
                       <div class="col-sm-3  multi-gd-img">
                         <ul class="multi-column-dropdown">
-                          <h6>Quần</h6>
-                          <li><a href="products.html">Jean</a></li>
-                          <li><a href="products.html">Kaki</a></li>
-                          <li><a href="products.html">Jogger</a></li>
-                          <li><a href="products.html">Short Jean</a></li>
-                          <li><a href="products.html">Short Kaki</a></li>
-                          <li><a href="products.html">Short Thun</a></li>
+                          <h6><a ui-sref="menProduct.quan" style="color: #0d59af"> Quần</a></h6>
+                          <li><a ui-sref="menProduct.quanjean">Jean</a></li>
+                          <li><a ui-sref="menProduct.quankaki">Kaki</a></li>
+                          <li><a ui-sref="menProduct.quanjogger">Jogger</a></li>
+                          <li><a ui-sref="menProduct.shortjean">Short Jean</a></li>
+                          <li><a ui-sref="menProduct.shortkaki">Short Kaki</a></li>
+                          <li><a ui-sref="menProduct.shortthun">Short Thun</a></li>
                         </ul>
                       </div>
                       <div class="col-sm-3  multi-gd-img">
                         <ul class="multi-column-dropdown">
-                          <h6>Áo</h6>
-                          <li><a href="products.html">Sơmi tay ngắn</a></li>
-                          <li><a href="products.html">Sơmi tay dài</a></li>
-                          <li><a href="products.html">Thun ngắn</a></li>
-                          <li><a href="products.html">Thun dài</a></li>
+                          <h6><a ui-sref="menProduct.ao" style="color: #0d59af"> Áo</a></h6>
+                          <li><a ui-sref="menProduct.aosomitayngan">Sơmi tay ngắn</a></li>
+                          <li><a ui-sref="menProduct.aothuntaydai">Sơmi tay dài</a></li>
+                          <li><a ui-sref="menProduct.aosomitayngan">Thun ngắn</a></li>
+                          <li><a ui-sref="menProduct.aothuntaydai">Thun dài</a></li>
                         </ul>
                       </div>
                       <div class="col-sm-3  multi-gd-img">
@@ -147,7 +160,7 @@
                     </div>
                   </ul>
                 </li>
-                <li class="active"><a ui-sref="women" class="act" style="padding-right: initial;">Đồ Nữ</a></li>
+                <li class="active"><a ui-sref="womenProduct" class="act" style="padding-right: initial;">Đồ Nữ</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
                   <ul class="dropdown-menu multi-column columns-3">
@@ -240,7 +253,7 @@
         <h4>Điều hướng</h4>
         <ul>
           <li><a ui-sref="home">Trang chủ</a></li>
-          <li><a ui-sref="men">Đồ Nam</a></li>
+          <li><a ui-sref="menProduct.nam" ui-sref-active="activeState" >Đồ Nam</a></li>
           <li><a ui-sref="women">Đồ Nữ</a></li>
           <li><a href="mail.html">Dịch vụ</a></li>
           <li><a href="products1.html">Liên hệ</a></li>
@@ -274,11 +287,14 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-  <script src="bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
   <!--<script src="bower_components/angular-route/angular-route.js"></script>-->
-  <script src="js/angular-ui-router.js"></script>
+  <script src="/js/angular-ui-router.js"></script>
   <!--<script src="app.js"></script>-->
-  <script src="controller/routes.js"></script>
+  <script src="/controller/modules.js"></script>
+  <script src="/controller/routes.js"></script>
+  <script src="/controller/menctrl.js"></script>
+  <script src="/controller/menItemCtrl.js"></script>
   <!--<script src="components/version/version.js"></script>-->
   <!--<script src="components/version/version-directive.js"></script>-->
   <!--<script src="components/version/interpolate-filter.js"></script>-->

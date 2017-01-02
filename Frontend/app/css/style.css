@@ -2635,6 +2635,7 @@ h3.tittle1,h3.tittle {
 .product-tab1-grid {
     float: left;
     width: 40%;
+
 }
 .product-tab1-grid1 {
     float: left;
@@ -3416,4 +3417,18 @@ h3.tittle1, h3.tittle {
     top: 132px;
     right: 85%;
 }
+}
+.customproduct{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.btnbackforward{
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+.customimg{
+	height: 400px;
+	width: 300px;
 }
