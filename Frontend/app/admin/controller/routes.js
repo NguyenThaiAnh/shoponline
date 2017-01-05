@@ -1,10 +1,12 @@
+'use strict';
 angular.module('admin')
-    .config(function($stateProvider,  $urlRouterProvider, $locationProvider) {
+    .config(function($stateProvider,  $urlRouterProvider, $locationProvider, $httpProvider) {
 
         $stateProvider
             .state("home", {
                 url: "/",
-                templateUrl: "views/index2.html"
+                templateUrl: "views/index2.html",
+                controller: 'InsideCtrl'
             })
             .state("parentproducts", {
                 url: "/products",
@@ -27,20 +29,26 @@ angular.module('admin')
                 abstract: true
             })
             .state("parentproducts.view.child", {
-                url: "/:id",
+                url: "/",
+                params: {
+                    id: null
+                },
                 templateUrl: "views/products.view.html",
                 controller: 'viewproductCtrl'
             })
-
-            .state("login", {
-                url: "/login",
-                templateUrl: "views/login.html"
-            })
-
             .state('otherwise', {
                 url: '/404',
                 templateUrl: 'views/404.html'
+            })
+            .state("login", {
+                url: "/login",
+                templateUrl:"views/login.html",
+                controller: 'LoginCtrl'
             });
+            // .state("orders", {
+            //     url: "/orders",
+            //     templateUrl:"views/login.html",
+            // });
 
         $urlRouterProvider.otherwise('/404');
 
@@ -49,4 +57,19 @@ angular.module('admin')
             requireBase: true,
             rewriteLinks: false
         });
+
+        //$httpProvider.interceptors.push('authInterceptorService');
+});
+
+angular.module('admin').run(function ($rootScope, $state, AuthService, AUTH_EVENTS, jwtHelper, $location) {
+    $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
+        if (!AuthService.isAuthenticated()){
+            console.log(next.name);
+            if (next.name !== 'login'){
+                event.preventDefault();
+                $state.go('login');
+
+            }
+        }
+    })
 });

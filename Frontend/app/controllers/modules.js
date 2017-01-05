@@ -3,6 +3,5 @@
  */
 angular.module('shop', [
     'ui.router',
-    'menCtrl',
-    'productCtrl'
+    'menCtrl'
 ]);

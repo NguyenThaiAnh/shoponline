@@ -18,7 +18,7 @@ angular.module('shop')
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
-                        return 'mathang?gender=nam';
+                        return 'mathang?gioitinh=nam';
                     }
                 }
 

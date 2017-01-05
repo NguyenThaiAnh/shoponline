@@ -5,7 +5,6 @@
 
 var menCtrl = angular.module('menCtrl', []);
 
-var productCtrl = angular.module('productCtrl', []);
 // Url general API
 var url_api = "http://localhost:57919/api/v1/";
 

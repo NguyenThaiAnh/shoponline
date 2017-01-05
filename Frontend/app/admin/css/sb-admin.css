@@ -237,21 +237,21 @@ ul.alert-dropdown {
     border-radius: 4px;
 }
 
-form .progress {
-    line-height: 15px;
-}
+/*form .progress {*/
+    /*line-height: 15px;*/
+/*}*/
 
-.progress {
-    display: inline-block;
-    width: 100px;
-    border: 3px groove #CCC;
-}
+/*.progress {*/
+    /*display: inline-block;*/
+    /*width: 100px;*/
+    /*border: 3px groove #CCC;*/
+/*}*/
 
-.progress div {
-    font-size: smaller;
-    background: orange;
-    width: 0;
-}
+/*.progress div {*/
+    /*font-size: smaller;*/
+    /*background: orange;*/
+    /*width: 0;*/
+/*}*/
 
 .image-frame{
     border: 1px solid #ddd;
