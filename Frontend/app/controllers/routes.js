@@ -4,17 +4,17 @@ angular.module('shop')
         $stateProvider
             .state("home", {
                 url: "/",
-                templateUrl: "/view/index2.html"
+                templateUrl: "views/index2.html"
             })
             .state("menProduct", {
                 url: "/nam",
-                templateUrl: "/view/menProduct.html",
+                templateUrl: "views/menProduct.html",
                 abstract: true
 
             })
             .state("menProduct.nam", {
                 url: "/",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -25,7 +25,7 @@ angular.module('shop')
             })
             .state("menProduct.quan", {
                 url: "/quan",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -35,7 +35,7 @@ angular.module('shop')
             })
             .state("menProduct.quanjean", {
                 url: "/quan-jean",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -45,7 +45,7 @@ angular.module('shop')
             })
             .state("menProduct.quankaki", {
                 url: "/quan-kaki",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -55,7 +55,7 @@ angular.module('shop')
             })
             .state("menProduct.quanjogger", {
                 url: "/quan-jogger",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -65,7 +65,7 @@ angular.module('shop')
             })
             .state("menProduct.ao", {
                 url: "/ao",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -75,7 +75,7 @@ angular.module('shop')
             })
             .state("menProduct.aosomitayngan", {
                 url: "/ao-somi-tay-ngan",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -85,7 +85,7 @@ angular.module('shop')
             })
             .state("menProduct.aosomitaydai", {
                 url: "/ao-somi-tay-dai",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -95,7 +95,7 @@ angular.module('shop')
             })
             .state("menProduct.aothuntayngan", {
                 url: "/ao-thun-tay-ngan",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -105,7 +105,7 @@ angular.module('shop')
             })
             .state("menProduct.aothuntaydai", {
                 url: "/ao-thun-tay-dai",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -115,7 +115,7 @@ angular.module('shop')
             })
             .state("menProduct.short", {
                 url: "/short",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -125,7 +125,7 @@ angular.module('shop')
             })
             .state("menProduct.shortjean", {
                 url: "/short-jean",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -135,7 +135,7 @@ angular.module('shop')
             })
             .state("menProduct.shortkaki", {
                 url: "/short-kaki",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -145,7 +145,7 @@ angular.module('shop')
             })
             .state("menProduct.shortthun", {
                 url: "/short-thun",
-                templateUrl: "/view/menProduct.product.html",
+                templateUrl: "views/menProduct.product.html",
                 controller: 'menCtrl',
                 resolve: {
                     url : function () {
@@ -155,7 +155,7 @@ angular.module('shop')
             })
             .state("womenProduct", {
                 url: "/women",
-                templateUrl: "/view/women.html",
+                templateUrl: "views/women.html",
                 controller: 'womenCtrl'
             })
             // .state("menItemProduct", {
@@ -165,11 +165,11 @@ angular.module('shop')
             // })
             .state("checkout", {
                 url: "/checkout",
-                templateUrl: "/view/checkout.html"
+                templateUrl: "views/checkout.html"
             })
             .state('otherwise', {
                 url: '/404',
-                templateUrl: '/view/404.html'
+                templateUrl: 'views/404.html'
             });
 
         $urlRouterProvider.otherwise('/404');
