@@ -13,16 +13,21 @@ angular.module('admin')
                 template: '<ui-view></ui-view>',
                 abstract: true
             })
+            //Khai bao route danh sach san pham
             .state("parentproducts.list", {
                 url: "/",
                 templateUrl:"views/products.html",
                 controller: 'listproductCtrl'
             })
+
+            //Khai bao route them san pham
             .state("parentproducts.add", {
                 url: "/add-product",
                 templateUrl: "views/products.add.html",
                 controller: 'addproductCtrl'
             })
+
+            //Khai bao route hien thi san pham
             .state("parentproducts.view", {
                 url: "/view-product",
                 template: "<ui-view></ui-view>",
@@ -36,19 +41,33 @@ angular.module('admin')
                 templateUrl: "views/products.view.html",
                 controller: 'viewproductCtrl'
             })
+
+            //Khai bao route cap nhat san pham
+            .state("parentproducts.update", {
+                url: "/update-product",
+                template: "<ui-view></ui-view>",
+                abstract: true
+            })
+            .state("parentproducts.update.child", {
+                url: "/",
+                params: {
+                    id: null
+                },
+                templateUrl: "views/products.update.html",
+                controller: 'updateproductCtrl'
+            })
+
             .state('otherwise', {
                 url: '/404',
                 templateUrl: 'views/404.html'
             })
+
+            //Khai bao route dang nhap
             .state("login", {
                 url: "/login",
                 templateUrl:"views/login.html",
                 controller: 'LoginCtrl'
             });
-            // .state("orders", {
-            //     url: "/orders",
-            //     templateUrl:"views/login.html",
-            // });
 
         $urlRouterProvider.otherwise('/404');
 

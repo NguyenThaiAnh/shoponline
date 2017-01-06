@@ -11,6 +11,7 @@ angular.module('admin')
         $scope.login = function() {
             AuthService.login($scope.user).then(function() {
                 //$state.go('parentproducts.list');
+                window.sessionStorage.setItem('username', $scope.user.username);
                 $window.location.href= "/admin/products/";
             }, function(errMsg) {
                 $window.alert("Tên đăng nhập hoặc mật khẩu không chính xác");
@@ -22,6 +23,9 @@ angular.module('admin')
 
 
 angular.module('admin').controller('InsideCtrl', function($scope, AuthService, API_ENDPOINT, $http, $window) {
+
+        var username = window.sessionStorage.getItem('username');
+
         $scope.destroySession = function() {
             AuthService.logout();
         };
@@ -34,12 +38,13 @@ angular.module('admin').controller('InsideCtrl', function($scope, AuthService, A
         };
 
 
-        $http.get('http://localhost:57919/api/v1/user?username=admin')
+        $http.get('http://localhost:57919/api/v1/user?username='+username)
             .success(function (response) {
                 $scope.ten =  response;
                 console.log(response);
             })
             .error(function (error) {
                 console.log(error);
+                AuthService.logout();
         })
     });

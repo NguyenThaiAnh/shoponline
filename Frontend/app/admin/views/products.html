@@ -61,8 +61,8 @@
                             <td>{{hang.GiaMoi}}</td>
                             <td align="center">
                                 <button class="btn btn-info btn-sm" ui-sref="parentproducts.view.child({id: hang.ID})"><i class="fa fa-fw fa-search"></i></button>
-                                <button class="btn btn-warning btn-sm"><i class="fa fa-fw fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm"><i class="fa fa-fw fa-remove"></i></button>
+                                <button class="btn btn-warning btn-sm" ui-sref="parentproducts.update.child({id: hang.ID})"><i class="fa fa-fw fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm" ng-click="xoaSanPham(hang.ID)"><i class="fa fa-fw fa-remove"></i></button>
                             </td>
                         </tr>
                         </tbody>

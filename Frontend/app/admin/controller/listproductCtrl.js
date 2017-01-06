@@ -5,7 +5,7 @@ var listproductCtrl = angular.module('listproductCtrl', []);
 // Url general API
 var url_api = "http://localhost:57919/api/v1/";
 
-listproductCtrl.controller('listproductCtrl', ['$scope', '$http', function ($scope, $http) {
+listproductCtrl.controller('listproductCtrl', ['$scope', '$http', '$state', 'ngDialog', function ($scope, $http, $state, ngDialog) {
     // Get list product of men
     $http.get(url_api + 'mathang')
         .success(function (response) {
@@ -26,7 +26,35 @@ listproductCtrl.controller('listproductCtrl', ['$scope', '$http', function ($sco
             };
 
             console.log(response);
-        })
+        });
+
+    $scope.xoaSanPham = function (IDMATHANG) {
+
+        console.log(IDMATHANG);
+        ngDialog.open({
+            template: 'views/product.delete.html',
+            controller: ['$scope', '$state', function($scope, $state) {
+                $scope.IDMH = IDMATHANG;
+                $scope.yes = function () {
+                    $http.delete(url_api+'MatHang?ID='+IDMATHANG)
+                        .success(function (data) {
+                            console.log(data);
+                            //$window.alert("Xoá sản phẩm thành công!");
+                            $scope.closeThisDialog('true');
+                            $state.reload();
+                        })
+                        .error(function (data) {
+                            console.log(data);
+                            $window.alert("Xoá sản phẩm thất bại!");
+                        });
+                };
+                $scope.no = function () {
+                    $scope.closeThisDialog('false');
+                }
+            }]
+        });
+
+    };
 }]);
 
 listproductCtrl.filter('startFrom', function() {

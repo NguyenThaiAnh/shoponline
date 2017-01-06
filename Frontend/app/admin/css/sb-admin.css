@@ -226,10 +226,20 @@ ul.alert-dropdown {
     color: #df8a13;
 }
 
-/*sdsd*/
+/*custom thumb for image*/
 .thumb {
     width: 100px;
     height: 100px;
+    float: none;
+    position: relative;
+    top: 7px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.thumb2 {
+    width: 200px;
+    height: 200px;
     float: none;
     position: relative;
     top: 7px;

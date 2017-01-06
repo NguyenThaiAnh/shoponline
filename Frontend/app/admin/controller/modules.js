@@ -3,9 +3,11 @@ angular.module('admin', [
     'ui.router',
     'LocalStorageModule',
     'angular-jwt',
+    'ngDialog',
     'listproductCtrl',
     'viewproductCtrl',
-    'addproductCtrl'
+    'addproductCtrl',
+    'updateproductCtrl'
 ]);
 
 angular.module('admin')

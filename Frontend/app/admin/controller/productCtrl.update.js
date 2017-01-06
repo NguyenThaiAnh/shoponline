@@ -1,11 +1,11 @@
 'use strict';
 
-var addproductCtrl = angular.module('addproductCtrl', ['angular-cloudinary','ngFileUpload']);
+var updateproductCtrl = angular.module('updateproductCtrl', ['angular-cloudinary','ngFileUpload']);
 
 // Url general API
 var url_api = "http://localhost:57919/api/v1/";
 
-addproductCtrl.config(function (cloudinaryProvider) {
+updateproductCtrl.config(function (cloudinaryProvider) {
     cloudinaryProvider.config({
         upload_endpoint: 'https://api.cloudinary.com/v1_1/', // default
         cloud_name: 'hchuzbakt', // required
@@ -13,26 +13,31 @@ addproductCtrl.config(function (cloudinaryProvider) {
     });
 });
 
-addproductCtrl.controller('addproductCtrl', ['$stateParams', '$scope', '$http', 'cloudinary', '$timeout', 'AuthService', '$state', '$window',
+updateproductCtrl.controller('updateproductCtrl', ['$stateParams', '$scope', '$http', 'cloudinary', '$timeout', 'AuthService', '$state', '$window',
     function ($stateParams, $scope, $http, cloudinary, $timeout, AuthService, $state, $window) {
-    $scope.subItems = [{Size: '', Gia: '', SoLuong:''}, {Size: '', Gia: '', SoLuong:''}, {Size: '', Gia: '', SoLuong:''}];
 
-    // //Loai loai hang theo gioi tinh
-    // $http.get(url_api+'loai?gioitinh='+$scope.item.gender)
-    //     .success(function (response) {
-    //         $scope.listloai =  response;
-    //         $http.get(url_api+'subloai?loai='+$scope.loai)
-    //             .success(function (response) {
-    //                 $scope.listsubloai =  response;
-    //                 console.log(response);
-    //             });
-    //         console.log(response);
-    //     });
+    $http.get(url_api + 'mathang?id='+$stateParams.id)
+        .success(function (response) {
+            $scope.item = response;
+
+            $http.get(url_api+'loai?gioitinh='+$scope.item.GioiTinh)
+                .success(function (response) {
+                    $scope.listloai =  response;
+                    $http.get(url_api+'subloai?loai='+$scope.item.Loai+'&gioitinh='+$scope.item.GioiTinh)
+                        .success(function (response) {
+                            $scope.listsubloai =  response;
+                            console.log(response);
+                        });
+                    console.log(response);
+                });
+
+            console.log(response);
+        });
 
     //Bat su kien thay doi gioi tinh
     $scope.gioitinh_change = function () {
-        console.log($scope.item.gender);
-        $http.get(url_api+'loai?gioitinh='+$scope.item.gender)
+        console.log($scope.item.GioiTinh);
+        $http.get(url_api+'loai?gioitinh='+$scope.item.GioiTinh)
             .success(function (response) {
                 $scope.listloai =  response;
                 console.log(response);
@@ -42,8 +47,8 @@ addproductCtrl.controller('addproductCtrl', ['$stateParams', '$scope', '$http', 
 
     //Bat su kien thay doi loai
     $scope.loai_change = function () {
-        console.log($scope.item.gender);
-        $http.get(url_api+'subloai?loai='+$scope.item.loai+'&gioitinh='+$scope.item.gender)
+        console.log($scope.item.GioiTinh);
+        $http.get(url_api+'subloai?loai='+$scope.item.Loai+'&gioitinh='+$scope.item.GioiTinh)
             .success(function (response) {
                 $scope.listsubloai =  response;
                 console.log(response);
@@ -61,7 +66,7 @@ addproductCtrl.controller('addproductCtrl', ['$stateParams', '$scope', '$http', 
                 console.log('upload done');
                 $timeout(function () {
                     file.result = resp.data;
-                    $scope.item.url = resp.data.url;
+                    $scope.item.URLHinhAnh1 = resp.data.url;
                     AuthService.useAuthorizationHeaders();
                 });
             }, function (resp) {
@@ -84,7 +89,7 @@ addproductCtrl.controller('addproductCtrl', ['$stateParams', '$scope', '$http', 
             file.upload = cloudinary.upload(file, { /* cloudinary options here */ }).then(function (resp) {
                 //alert('all done!');
                 console.log(resp);
-                $scope.item.url1 = resp.data.url;
+                $scope.item.URLHinhAnh2 = resp.data.url;
                 AuthService.useAuthorizationHeaders();
                 $timeout(function () {
                     file.result = resp.data;
@@ -108,7 +113,7 @@ addproductCtrl.controller('addproductCtrl', ['$stateParams', '$scope', '$http', 
             file.upload = cloudinary.upload(file, { /* cloudinary options here */ }).then(function (resp) {
                 //alert('all done!');
                 console.log(resp);
-                $scope.item.url2 = resp.data.url;
+                $scope.item.URLHinhAnh3 = resp.data.url;
                 AuthService.useAuthorizationHeaders();
                 $timeout(function () {
                     file.result = resp.data;
@@ -124,40 +129,28 @@ addproductCtrl.controller('addproductCtrl', ['$stateParams', '$scope', '$http', 
     };
 
     //Them san pham vao database
-    $scope.themSanPham = function () {
-        $scope.item.giacu = 0; $scope.item.giamoi = 0;
-        $scope.subItems[0].Gia = 0; $scope.subItems[0].SoLuong = 0;
-        $scope.subItems[1].Gia = 0; $scope.subItems[1].SoLuong = 0;
-        $scope.subItems[2].Gia = 0; $scope.subItems[2].SoLuong = 0;
-        var item = {
-            ID: '',
-            Loai: $scope.item.loai,
-            SubLoai : $scope.item.subloai,
-            Ten: $scope.item.ten,
-            GioiTinh: $scope.item.gender,
-            URLHinhAnh1: $scope.item.url,
-            URLHinhAnh2: $scope.item.url1,
-            URLHinhAnh3: $scope.item.url2,
-            MoTa: $scope.item.mota,
-            GiaCu: $scope.item.giacu,
-            GiaMoi: $scope.item.giamoi,
-            Items: [{ID:'', IDMatHang: '', Size: $scope.subItems[0].Size, Gia: $scope.subItems[0].Gia.toString(), SoLuong: $scope.subItems[0].SoLuong.toString()},
-                {ID:'', IDMatHang: '', Size: $scope.subItems[1].Size, Gia: $scope.subItems[1].Gia.toString(), SoLuong: $scope.subItems[1].SoLuong.toString()},
-                {ID:'', IDMatHang: '', Size: $scope.subItems[2].Size, Gia: $scope.subItems[2].Gia.toString(), SoLuong: $scope.subItems[2].SoLuong.toString()}]
-        };
+    $scope.capnhatSanPham = function () {
+        if ($scope.item.GiaCu == undefined){$scope.item.GiaCu = "0";}
+        if ($scope.item.Items[0].Gia == undefined){$scope.item.Items[0].Gia = "0";}
+        if ($scope.item.Items[0].SoLuong == undefined){$scope.item.Items[0].SoLuong = "0";}
+        if ($scope.item.Items[1].Gia == undefined){$scope.item.Items[1].Gia = "0";}
+        if ($scope.item.Items[1].SoLuong == undefined){$scope.item.Items[1].SoLuong = "0";}
+        if ($scope.item.Items[2].Gia == undefined){$scope.item.Items[2].Gia = "0";}
+        if ($scope.item.Items[2].SoLuong == undefined){$scope.item.Items[2].SoLuong = "0";}
 
+        var item = $scope.item;
+        console.log(item);
         var config = {
             headers : {
                 'Content-Type': 'application/json'
             }
         };
 
-        $http.post(url_api+'MatHang', item, config)
+        $http.put(url_api+'MatHang', item, config)
             .success(function (data, status, headers, config) {
                 console.log(data);
-                $window.alert("Thêm sản phẩm thành công!");
+                $window.alert("Cập nhật sản phẩm thành công!");
                 $state.go('parentproducts.list');
-
             })
             .error(function (data, status, header, config) {
                 console.log(data);
