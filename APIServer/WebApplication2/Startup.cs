@@ -7,6 +7,7 @@ using Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -30,6 +31,9 @@ namespace WebApplication2
 
             app.UseWebApi(config);
 
+            // Convert XML to JSON
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
         }
 
         public void ConfigureOAuth(IAppBuilder app)
@@ -47,6 +51,7 @@ namespace WebApplication2
 
             // OAuth 2.0 Bearer Access Token Generation
             app.UseOAuthAuthorizationServer(OAuthServerOptions);
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             var issuer = "http://merchantapi.apphb.com";
             var audience = "all";
             var secret = TextEncodings.Base64Url.Decode("UHxNtYMRYwvfpO1dS5pWLKL0M2DgOj40EbN4SoBWgfc");

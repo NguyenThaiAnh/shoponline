@@ -302,3 +302,264 @@ C:\Users\Hoang\Desktop\Service\WebApplication2\bin\System.Web.WebPages.Deploymen
 C:\Users\Hoang\Desktop\Service\WebApplication2\bin\System.Web.WebPages.Razor.xml
 C:\Users\Hoang\Desktop\Service\WebApplication2\bin\Thinktecture.IdentityModel.Core.pdb
 C:\Users\Hoang\Desktop\Service\WebApplication2\bin\Antlr3.Runtime.pdb
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\ApplicationInsights.config
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\csc.exe
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\vbc.exe
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\VBCSCompiler.exe
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\WebApplication2.dll.config
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\WebApplication2.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\WebApplication2.pdb
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Antlr3.Runtime.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\EntityFramework.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\EntityFramework.SqlServer.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.AI.Web.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.Cors.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.Security.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.Security.Jwt.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\MySql.Data.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\MySql.Data.Entity.EF6.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Newtonsoft.Json.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Owin.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Net.Http.Formatting.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Cors.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Helpers.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Http.Cors.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Http.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Http.Owin.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Http.WebHost.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Mvc.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Optimization.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Razor.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.WebPages.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.WebPages.Razor.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Thinktecture.IdentityModel.Core.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\WebGrease.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\EntityFramework.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\EntityFramework.SqlServer.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.AI.Web.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.Cors.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.Security.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.Security.Jwt.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Http.Cors.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Http.Owin.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Newtonsoft.Json.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Net.Http.Formatting.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Helpers.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Http.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Http.WebHost.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Mvc.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Optimization.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.Razor.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.WebPages.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\System.Web.WebPages.Razor.xml
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Thinktecture.IdentityModel.Core.pdb
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\bin\Antlr3.Runtime.pdb
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\obj\Debug\WebApplication2.dll
+C:\Users\Lucifer\Downloads\Compressed\shoponline-master\APIServer\WebApplication2\obj\Debug\WebApplication2.pdb
+E:\New folder\APIServer\WebApplication2\obj\Debug\WebApplication2.dll
+E:\New folder\APIServer\WebApplication2\obj\Debug\WebApplication2.pdb
+E:\New folder\APIServer\WebApplication2\bin\ApplicationInsights.config
+E:\New folder\APIServer\WebApplication2\bin\roslyn\csc.exe
+E:\New folder\APIServer\WebApplication2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\New folder\APIServer\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\New folder\APIServer\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\New folder\APIServer\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\New folder\APIServer\WebApplication2\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\New folder\APIServer\WebApplication2\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\New folder\APIServer\WebApplication2\bin\roslyn\System.Collections.Immutable.dll
+E:\New folder\APIServer\WebApplication2\bin\roslyn\System.Reflection.Metadata.dll
+E:\New folder\APIServer\WebApplication2\bin\roslyn\vbc.exe
+E:\New folder\APIServer\WebApplication2\bin\roslyn\VBCSCompiler.exe
+E:\New folder\APIServer\WebApplication2\bin\roslyn\VBCSCompiler.exe.config
+E:\New folder\APIServer\WebApplication2\bin\WebApplication2.dll.config
+E:\New folder\APIServer\WebApplication2\bin\WebApplication2.dll
+E:\New folder\APIServer\WebApplication2\bin\WebApplication2.pdb
+E:\New folder\APIServer\WebApplication2\bin\Antlr3.Runtime.dll
+E:\New folder\APIServer\WebApplication2\bin\EntityFramework.dll
+E:\New folder\APIServer\WebApplication2\bin\EntityFramework.SqlServer.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.AI.Agent.Intercept.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.AI.DependencyCollector.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.AI.Web.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.AI.WindowsServer.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.ApplicationInsights.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.Cors.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.Security.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.Security.Jwt.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.Security.OAuth.dll
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Web.Infrastructure.dll
+E:\New folder\APIServer\WebApplication2\bin\MySql.Data.dll
+E:\New folder\APIServer\WebApplication2\bin\MySql.Data.Entity.EF6.dll
+E:\New folder\APIServer\WebApplication2\bin\Newtonsoft.Json.dll
+E:\New folder\APIServer\WebApplication2\bin\Owin.dll
+E:\New folder\APIServer\WebApplication2\bin\System.IdentityModel.Tokens.Jwt.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Net.Http.Formatting.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Cors.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Helpers.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Http.Cors.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Http.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Http.Owin.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Http.WebHost.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Mvc.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Optimization.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Razor.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.WebPages.Deployment.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.WebPages.dll
+E:\New folder\APIServer\WebApplication2\bin\System.Web.WebPages.Razor.dll
+E:\New folder\APIServer\WebApplication2\bin\Thinktecture.IdentityModel.Core.dll
+E:\New folder\APIServer\WebApplication2\bin\WebGrease.dll
+E:\New folder\APIServer\WebApplication2\bin\EntityFramework.xml
+E:\New folder\APIServer\WebApplication2\bin\EntityFramework.SqlServer.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.AI.DependencyCollector.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.AI.Web.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.AI.WindowsServer.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.ApplicationInsights.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.Cors.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.Security.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.Security.Jwt.xml
+E:\New folder\APIServer\WebApplication2\bin\Microsoft.Owin.Security.OAuth.xml
+E:\New folder\APIServer\WebApplication2\bin\System.IdentityModel.Tokens.Jwt.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Http.Cors.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Http.Owin.xml
+E:\New folder\APIServer\WebApplication2\bin\Newtonsoft.Json.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Net.Http.Formatting.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Helpers.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Http.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Http.WebHost.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Mvc.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Optimization.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Web.Razor.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Web.WebPages.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Web.WebPages.Deployment.xml
+E:\New folder\APIServer\WebApplication2\bin\System.Web.WebPages.Razor.xml
+E:\New folder\APIServer\WebApplication2\bin\Thinktecture.IdentityModel.Core.pdb
+E:\New folder\APIServer\WebApplication2\bin\Antlr3.Runtime.pdb
+E:\New folder\APIServer\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\ApplicationInsights.config
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\csc.exe
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\vbc.exe
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\VBCSCompiler.exe
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\WebApplication2.dll.config
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\WebApplication2.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\WebApplication2.pdb
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Antlr3.Runtime.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\EntityFramework.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\EntityFramework.SqlServer.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.AI.Web.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.Cors.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.Security.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.Security.Jwt.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\MySql.Data.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\MySql.Data.Entity.EF6.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Newtonsoft.Json.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Owin.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Net.Http.Formatting.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Cors.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Helpers.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Http.Cors.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Http.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Http.Owin.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Http.WebHost.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Mvc.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Optimization.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Razor.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.WebPages.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.WebPages.Razor.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Thinktecture.IdentityModel.Core.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\WebGrease.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\EntityFramework.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\EntityFramework.SqlServer.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.AI.Web.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.Cors.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.Security.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.Security.Jwt.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Http.Cors.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Http.Owin.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Newtonsoft.Json.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Net.Http.Formatting.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Helpers.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Http.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Http.WebHost.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Mvc.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Optimization.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.Razor.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.WebPages.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\System.Web.WebPages.Razor.xml
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Thinktecture.IdentityModel.Core.pdb
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\bin\Antlr3.Runtime.pdb
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\obj\Debug\WebApplication2.dll
+C:\Users\Hoang\Desktop\APIServer\WebApplication2\obj\Debug\WebApplication2.pdb

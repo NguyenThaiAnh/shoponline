@@ -20,13 +20,17 @@ namespace WebApplication2.Models
             this.CHITIETMATHANGs = new HashSet<CHITIETMATHANG>();
         }
     
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string IDMATHANG { get; set; }
         public string TenMH { get; set; }
         public string IDLoaiHang { get; set; }
         public string IDSubLoaiHang { get; set; }
         public string URLHinhAnh1 { get; set; }
         public string URLHinhAnh2 { get; set; }
         public string URLHinhAnh3 { get; set; }
+        public string MoTa { get; set; }
+        public Nullable<int> GiaMoi { get; set; }
+        public Nullable<int> GiaCu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETMATHANG> CHITIETMATHANGs { get; set; }

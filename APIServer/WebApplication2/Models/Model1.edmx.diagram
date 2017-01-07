@@ -4,28 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="343d8d4224cd4486ae6a7eedf3fa86fa" Name="Diagram1">
-        <EntityTypeShape EntityType="SHOPModel.ACCOUNT" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SHOPModel.ACCOUNTADMIN" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SHOPModel.ACCOUNTTYPE" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SHOPModel.CHITIETHOADON" Width="1.5" PointX="9.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SHOPModel.CHITIETMATHANG" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="SHOPModel.CUAHANG" Width="1.5" PointX="7.75" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SHOPModel.HOADON" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SHOPModel.KHACHHANG" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SHOPModel.LOAIHANG" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SHOPModel.MATHANG" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="SHOPModel.SUBLOAIHANG" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <AssociationConnector Association="SHOPModel.FK__ACCOUNT__IDType__1FCDBCEB" ManuallyRouted="false" />
-        <AssociationConnector Association="SHOPModel.FK__ACCOUNTAD__Accou__22AA2996" ManuallyRouted="false" />
-        <AssociationConnector Association="SHOPModel.FK__KHACHHANG__IDAcc__25869641" ManuallyRouted="false" />
-        <AssociationConnector Association="SHOPModel.FK__CHITIETHO__IDChi__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="SHOPModel.FK__CHITIETHO__IDHoa__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="SHOPModel.FK__CHITIETMA__IDMat__1B0907CE" ManuallyRouted="false" />
-        <AssociationConnector Association="SHOPModel.FK__HOADON__IDKhachH__286302EC" ManuallyRouted="false" />
-        <AssociationConnector Association="SHOPModel.FK__MATHANG__IDLoaiH__173876EA" ManuallyRouted="false" />
-        <AssociationConnector Association="SHOPModel.FK__SUBLOAIHA__IDLoa__145C0A3F" ManuallyRouted="false" />
-        <AssociationConnector Association="SHOPModel.FK__MATHANG__IDSubLo__182C9B23" ManuallyRouted="false" />
+      <Diagram DiagramId="9e929a7df5f5473aaa305ed0997feec6" Name="Diagram1">
+        <EntityTypeShape EntityType="SHOP2Model.ACCOUNT" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOP2Model.ACCOUNTADMIN" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOP2Model.ACCOUNTTYPE" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOP2Model.CHITIETHOADON" Width="1.5" PointX="9.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOP2Model.CHITIETMATHANG" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOP2Model.CUAHANG" Width="1.5" PointX="9.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOP2Model.HOADON" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOP2Model.KHACHHANG" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOP2Model.LOAIHANG" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOP2Model.MATHANG" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOP2Model.SUBLOAIHANG" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <AssociationConnector Association="SHOP2Model.FK__ACCOUNT__IDType__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOP2Model.FK__ACCOUNTAD__Accou__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOP2Model.FK__KHACHHANG__IDAcc__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOP2Model.FK__CHITIETHO__IDChi__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOP2Model.FK__CHITIETHO__IDHoa__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOP2Model.FK__CHITIETMA__IDMat__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOP2Model.FK__HOADON__IDKhachH__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOP2Model.FK__MATHANG__IDLoaiH__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOP2Model.FK__SUBLOAIHA__IDLoa__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOP2Model.FK__MATHANG__IDSubLo__182C9B23" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

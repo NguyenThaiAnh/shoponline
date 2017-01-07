@@ -20,7 +20,8 @@ namespace WebApplication2.Models
             this.HOADONs = new HashSet<HOADON>();
         }
     
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string IDKHACHHANG { get; set; }
         public string Ten { get; set; }
         public string Email { get; set; }
         public int SDT { get; set; }

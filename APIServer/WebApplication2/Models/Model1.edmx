@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SHOPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SHOP2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACCOUNT">
           <Key>
             <PropertyRef Name="Username" />
@@ -32,24 +32,23 @@
         </EntityType>
         <EntityType Name="CHITIETHOADON">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDCTHD" />
           </Key>
-          <Property Name="ID" Type="varchar" MaxLength="6" Nullable="false" />
-          <Property Name="IDChiTietMatHang" Type="varchar" MaxLength="6" Nullable="false" />
-          <Property Name="IDHoaDon" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCTHD" Type="varchar" MaxLength="11" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="IDChiTietMatHang" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="IDHoaDon" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="SoLuong" Type="int" />
         </EntityType>
         <EntityType Name="CHITIETMATHANG">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDCTMH" />
           </Key>
-          <Property Name="ID" Type="varchar" MaxLength="6" Nullable="false" />
-          <Property Name="IDMatHang" Type="varchar" MaxLength="6" Nullable="false" />
-          <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
-          <Property Name="MauSac" Type="nvarchar" MaxLength="20" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCTMH" Type="varchar" MaxLength="9" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="IDMatHang" Type="varchar" MaxLength="7" Nullable="false" />
           <Property Name="Size" Type="varchar" MaxLength="3" />
           <Property Name="Gia" Type="int" />
-          <Property Name="Loai" Type="varchar" MaxLength="3" />
           <Property Name="SoLuong" Type="int" />
         </EntityType>
         <EntityType Name="CUAHANG">
@@ -64,19 +63,21 @@
         </EntityType>
         <EntityType Name="HOADON">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDHOADON" />
           </Key>
-          <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="IDKhachHang" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDHOADON" Type="varchar" MaxLength="8" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="IDKhachHang" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="Ngay" Type="date" Nullable="false" />
           <Property Name="TongTien" Type="int" Nullable="false" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDKHACHHANG" />
           </Key>
-          <Property Name="ID" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDKHACHHANG" Type="varchar" MaxLength="6" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="Ten" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="30" />
           <Property Name="SDT" Type="int" Nullable="false" />
@@ -85,30 +86,37 @@
         </EntityType>
         <EntityType Name="LOAIHANG">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDLOAIHANG" />
           </Key>
-          <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDLOAIHANG" Type="varchar" MaxLength="6" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="TenLoai" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MATHANG">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDMATHANG" />
           </Key>
-          <Property Name="ID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDMATHANG" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="TenMH" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="IDLoaiHang" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="IDSubLoaiHang" Type="varchar" MaxLength="5" />
+          <Property Name="IDLoaiHang" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="IDSubLoaiHang" Type="varchar" MaxLength="6" />
           <Property Name="URLHinhAnh1" Type="varchar" MaxLength="100" />
           <Property Name="URLHinhAnh2" Type="varchar" MaxLength="100" />
           <Property Name="URLHinhAnh3" Type="varchar" MaxLength="100" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
+          <Property Name="GiaMoi" Type="int" />
+          <Property Name="GiaCu" Type="int" />
         </EntityType>
         <EntityType Name="SUBLOAIHANG">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDSUBLH" />
           </Key>
-          <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="IDLoaiHang" Type="varchar" MaxLength="5" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSUBLH" Type="varchar" MaxLength="6" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="IDLoaiHang" Type="varchar" MaxLength="6" />
           <Property Name="TenLoai" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -141,7 +149,7 @@
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CHITIETMATHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDCTMH" />
             </Principal>
             <Dependent Role="CHITIETHOADON">
               <PropertyRef Name="IDChiTietMatHang" />
@@ -153,7 +161,7 @@
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HOADON">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDHOADON" />
             </Principal>
             <Dependent Role="CHITIETHOADON">
               <PropertyRef Name="IDHoaDon" />
@@ -165,7 +173,7 @@
           <End Role="CHITIETMATHANG" Type="Self.CHITIETMATHANG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MATHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDMATHANG" />
             </Principal>
             <Dependent Role="CHITIETMATHANG">
               <PropertyRef Name="IDMatHang" />
@@ -177,7 +185,7 @@
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KHACHHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDKHACHHANG" />
             </Principal>
             <Dependent Role="HOADON">
               <PropertyRef Name="IDKhachHang" />
@@ -201,7 +209,7 @@
           <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LOAIHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDLOAIHANG" />
             </Principal>
             <Dependent Role="MATHANG">
               <PropertyRef Name="IDLoaiHang" />
@@ -213,7 +221,7 @@
           <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SUBLOAIHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDSUBLH" />
             </Principal>
             <Dependent Role="MATHANG">
               <PropertyRef Name="IDSubLoaiHang" />
@@ -225,14 +233,14 @@
           <End Role="SUBLOAIHANG" Type="Self.SUBLOAIHANG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LOAIHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDLOAIHANG" />
             </Principal>
             <Dependent Role="SUBLOAIHANG">
               <PropertyRef Name="IDLoaiHang" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SHOPModelStoreContainer">
+        <EntityContainer Name="SHOP2ModelStoreContainer">
           <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ACCOUNTADMIN" EntityType="Self.ACCOUNTADMIN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ACCOUNTTYPE" EntityType="Self.ACCOUNTTYPE" Schema="dbo" store:Type="Tables" />
@@ -289,7 +297,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SHOPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="SHOP2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ACCOUNT">
           <Key>
             <PropertyRef Name="Username" />
@@ -322,26 +330,25 @@
         </EntityType>
         <EntityType Name="CHITIETHOADON">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDCTHD" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IDChiTietMatHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IDHoaDon" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCTHD" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="IDChiTietMatHang" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDHoaDon" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" />
           <NavigationProperty Name="CHITIETMATHANG" Relationship="Self.FK__CHITIETHO__IDChi__2B3F6F97" FromRole="CHITIETHOADON" ToRole="CHITIETMATHANG" />
           <NavigationProperty Name="HOADON" Relationship="Self.FK__CHITIETHO__IDHoa__2C3393D0" FromRole="CHITIETHOADON" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="CHITIETMATHANG">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDCTMH" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IDMatHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MauSac" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCTMH" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="IDMatHang" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Size" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="Gia" Type="Int32" />
-          <Property Name="Loai" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="SoLuong" Type="Int32" />
           <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHO__IDChi__2B3F6F97" FromRole="CHITIETMATHANG" ToRole="CHITIETHOADON" />
           <NavigationProperty Name="MATHANG" Relationship="Self.FK__CHITIETMA__IDMat__1B0907CE" FromRole="CHITIETMATHANG" ToRole="MATHANG" />
@@ -358,10 +365,11 @@
         </EntityType>
         <EntityType Name="HOADON">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDHOADON" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IDKhachHang" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDHOADON" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="IDKhachHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Ngay" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TongTien" Type="Int32" Nullable="false" />
           <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -370,9 +378,10 @@
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDKHACHHANG" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDKHACHHANG" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Ten" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="SDT" Type="Int32" Nullable="false" />
@@ -383,35 +392,42 @@
         </EntityType>
         <EntityType Name="LOAIHANG">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDLOAIHANG" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDLOAIHANG" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="TenLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MATHANGs" Relationship="Self.FK__MATHANG__IDLoaiH__173876EA" FromRole="LOAIHANG" ToRole="MATHANG" />
           <NavigationProperty Name="SUBLOAIHANGs" Relationship="Self.FK__SUBLOAIHA__IDLoa__145C0A3F" FromRole="LOAIHANG" ToRole="SUBLOAIHANG" />
         </EntityType>
         <EntityType Name="MATHANG">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDMATHANG" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDMATHANG" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="TenMH" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IDLoaiHang" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IDSubLoaiHang" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IDLoaiHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDSubLoaiHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
           <Property Name="URLHinhAnh1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="URLHinhAnh2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="URLHinhAnh3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GiaMoi" Type="Int32" />
+          <Property Name="GiaCu" Type="Int32" />
           <NavigationProperty Name="CHITIETMATHANGs" Relationship="Self.FK__CHITIETMA__IDMat__1B0907CE" FromRole="MATHANG" ToRole="CHITIETMATHANG" />
           <NavigationProperty Name="LOAIHANG" Relationship="Self.FK__MATHANG__IDLoaiH__173876EA" FromRole="MATHANG" ToRole="LOAIHANG" />
           <NavigationProperty Name="SUBLOAIHANG" Relationship="Self.FK__MATHANG__IDSubLo__182C9B23" FromRole="MATHANG" ToRole="SUBLOAIHANG" />
         </EntityType>
         <EntityType Name="SUBLOAIHANG">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDSUBLH" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IDLoaiHang" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSUBLH" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="IDLoaiHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
           <Property Name="TenLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="LOAIHANG" Relationship="Self.FK__SUBLOAIHA__IDLoa__145C0A3F" FromRole="SUBLOAIHANG" ToRole="LOAIHANG" />
@@ -458,7 +474,7 @@
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CHITIETMATHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDCTMH" />
             </Principal>
             <Dependent Role="CHITIETHOADON">
               <PropertyRef Name="IDChiTietMatHang" />
@@ -470,7 +486,7 @@
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HOADON">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDHOADON" />
             </Principal>
             <Dependent Role="CHITIETHOADON">
               <PropertyRef Name="IDHoaDon" />
@@ -482,7 +498,7 @@
           <End Role="CHITIETMATHANG" Type="Self.CHITIETMATHANG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MATHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDMATHANG" />
             </Principal>
             <Dependent Role="CHITIETMATHANG">
               <PropertyRef Name="IDMatHang" />
@@ -494,7 +510,7 @@
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KHACHHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDKHACHHANG" />
             </Principal>
             <Dependent Role="HOADON">
               <PropertyRef Name="IDKhachHang" />
@@ -506,7 +522,7 @@
           <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LOAIHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDLOAIHANG" />
             </Principal>
             <Dependent Role="MATHANG">
               <PropertyRef Name="IDLoaiHang" />
@@ -518,7 +534,7 @@
           <End Role="SUBLOAIHANG" Type="Self.SUBLOAIHANG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LOAIHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDLOAIHANG" />
             </Principal>
             <Dependent Role="SUBLOAIHANG">
               <PropertyRef Name="IDLoaiHang" />
@@ -530,7 +546,7 @@
           <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SUBLOAIHANG">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDSUBLH" />
             </Principal>
             <Dependent Role="MATHANG">
               <PropertyRef Name="IDSubLoaiHang" />
@@ -595,9 +611,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SHOPModelStoreContainer" CdmEntityContainer="SHOPEntities">
+        <EntityContainerMapping StorageEntityContainer="SHOP2ModelStoreContainer" CdmEntityContainer="SHOPEntities">
           <EntitySetMapping Name="ACCOUNTs">
-            <EntityTypeMapping TypeName="SHOPModel.ACCOUNT">
+            <EntityTypeMapping TypeName="SHOP2Model.ACCOUNT">
               <MappingFragment StoreEntitySet="ACCOUNT">
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -606,7 +622,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACCOUNTADMINs">
-            <EntityTypeMapping TypeName="SHOPModel.ACCOUNTADMIN">
+            <EntityTypeMapping TypeName="SHOP2Model.ACCOUNTADMIN">
               <MappingFragment StoreEntitySet="ACCOUNTADMIN">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
@@ -617,7 +633,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ACCOUNTTYPEs">
-            <EntityTypeMapping TypeName="SHOPModel.ACCOUNTTYPE">
+            <EntityTypeMapping TypeName="SHOP2Model.ACCOUNTTYPE">
               <MappingFragment StoreEntitySet="ACCOUNTTYPE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
@@ -625,9 +641,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CHITIETHOADONs">
-            <EntityTypeMapping TypeName="SHOPModel.CHITIETHOADON">
+            <EntityTypeMapping TypeName="SHOP2Model.CHITIETHOADON">
               <MappingFragment StoreEntitySet="CHITIETHOADON">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDCTHD" ColumnName="IDCTHD" />
                 <ScalarProperty Name="IDChiTietMatHang" ColumnName="IDChiTietMatHang" />
                 <ScalarProperty Name="IDHoaDon" ColumnName="IDHoaDon" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
@@ -635,21 +652,19 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CHITIETMATHANGs">
-            <EntityTypeMapping TypeName="SHOPModel.CHITIETMATHANG">
+            <EntityTypeMapping TypeName="SHOP2Model.CHITIETMATHANG">
               <MappingFragment StoreEntitySet="CHITIETMATHANG">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDCTMH" ColumnName="IDCTMH" />
                 <ScalarProperty Name="IDMatHang" ColumnName="IDMatHang" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="MauSac" ColumnName="MauSac" />
                 <ScalarProperty Name="Size" ColumnName="Size" />
                 <ScalarProperty Name="Gia" ColumnName="Gia" />
-                <ScalarProperty Name="Loai" ColumnName="Loai" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CUAHANGs">
-            <EntityTypeMapping TypeName="SHOPModel.CUAHANG">
+            <EntityTypeMapping TypeName="SHOP2Model.CUAHANG">
               <MappingFragment StoreEntitySet="CUAHANG">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TenCH" ColumnName="TenCH" />
@@ -660,9 +675,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HOADONs">
-            <EntityTypeMapping TypeName="SHOPModel.HOADON">
+            <EntityTypeMapping TypeName="SHOP2Model.HOADON">
               <MappingFragment StoreEntitySet="HOADON">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDHOADON" ColumnName="IDHOADON" />
                 <ScalarProperty Name="IDKhachHang" ColumnName="IDKhachHang" />
                 <ScalarProperty Name="Ngay" ColumnName="Ngay" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
@@ -671,9 +687,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KHACHHANGs">
-            <EntityTypeMapping TypeName="SHOPModel.KHACHHANG">
+            <EntityTypeMapping TypeName="SHOP2Model.KHACHHANG">
               <MappingFragment StoreEntitySet="KHACHHANG">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDKHACHHANG" ColumnName="IDKHACHHANG" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
@@ -683,31 +700,38 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LOAIHANGs">
-            <EntityTypeMapping TypeName="SHOPModel.LOAIHANG">
+            <EntityTypeMapping TypeName="SHOP2Model.LOAIHANG">
               <MappingFragment StoreEntitySet="LOAIHANG">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDLOAIHANG" ColumnName="IDLOAIHANG" />
                 <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MATHANGs">
-            <EntityTypeMapping TypeName="SHOPModel.MATHANG">
+            <EntityTypeMapping TypeName="SHOP2Model.MATHANG">
               <MappingFragment StoreEntitySet="MATHANG">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDMATHANG" ColumnName="IDMATHANG" />
                 <ScalarProperty Name="TenMH" ColumnName="TenMH" />
                 <ScalarProperty Name="IDLoaiHang" ColumnName="IDLoaiHang" />
                 <ScalarProperty Name="IDSubLoaiHang" ColumnName="IDSubLoaiHang" />
                 <ScalarProperty Name="URLHinhAnh1" ColumnName="URLHinhAnh1" />
                 <ScalarProperty Name="URLHinhAnh2" ColumnName="URLHinhAnh2" />
                 <ScalarProperty Name="URLHinhAnh3" ColumnName="URLHinhAnh3" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="GiaMoi" ColumnName="GiaMoi" />
+                <ScalarProperty Name="GiaCu" ColumnName="GiaCu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SUBLOAIHANGs">
-            <EntityTypeMapping TypeName="SHOPModel.SUBLOAIHANG">
+            <EntityTypeMapping TypeName="SHOP2Model.SUBLOAIHANG">
               <MappingFragment StoreEntitySet="SUBLOAIHANG">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDSUBLH" ColumnName="IDSUBLH" />
                 <ScalarProperty Name="IDLoaiHang" ColumnName="IDLoaiHang" />
                 <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />

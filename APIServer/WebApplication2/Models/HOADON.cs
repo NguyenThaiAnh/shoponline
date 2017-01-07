@@ -20,7 +20,8 @@ namespace WebApplication2.Models
             this.CHITIETHOADONs = new HashSet<CHITIETHOADON>();
         }
     
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string IDHOADON { get; set; }
         public string IDKhachHang { get; set; }
         public System.DateTime Ngay { get; set; }
         public int TongTien { get; set; }

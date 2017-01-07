@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="SHOPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="SHOP2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="ACCOUNT">
     <Key>
       <PropertyRef Name="Username" />
@@ -27,24 +27,23 @@
   </EntityType>
   <EntityType Name="CHITIETHOADON">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDCTHD" />
     </Key>
-    <Property Name="ID" Type="varchar" MaxLength="6" Nullable="false" />
-    <Property Name="IDChiTietMatHang" Type="varchar" MaxLength="6" Nullable="false" />
-    <Property Name="IDHoaDon" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDCTHD" Type="varchar" MaxLength="11" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="IDChiTietMatHang" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="IDHoaDon" Type="varchar" MaxLength="8" Nullable="false" />
     <Property Name="SoLuong" Type="int" />
   </EntityType>
   <EntityType Name="CHITIETMATHANG">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDCTMH" />
     </Key>
-    <Property Name="ID" Type="varchar" MaxLength="6" Nullable="false" />
-    <Property Name="IDMatHang" Type="varchar" MaxLength="6" Nullable="false" />
-    <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
-    <Property Name="MauSac" Type="nvarchar" MaxLength="20" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDCTMH" Type="varchar" MaxLength="9" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="IDMatHang" Type="varchar" MaxLength="7" Nullable="false" />
     <Property Name="Size" Type="varchar" MaxLength="3" />
     <Property Name="Gia" Type="int" />
-    <Property Name="Loai" Type="varchar" MaxLength="3" />
     <Property Name="SoLuong" Type="int" />
   </EntityType>
   <EntityType Name="CUAHANG">
@@ -59,19 +58,21 @@
   </EntityType>
   <EntityType Name="HOADON">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDHOADON" />
     </Key>
-    <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
-    <Property Name="IDKhachHang" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDHOADON" Type="varchar" MaxLength="8" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="IDKhachHang" Type="varchar" MaxLength="6" Nullable="false" />
     <Property Name="Ngay" Type="date" Nullable="false" />
     <Property Name="TongTien" Type="int" Nullable="false" />
     <Property Name="TinhTrang" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="KHACHHANG">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDKHACHHANG" />
     </Key>
-    <Property Name="ID" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDKHACHHANG" Type="varchar" MaxLength="6" StoreGeneratedPattern="Computed" Nullable="false" />
     <Property Name="Ten" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="30" />
     <Property Name="SDT" Type="int" Nullable="false" />
@@ -80,30 +81,37 @@
   </EntityType>
   <EntityType Name="LOAIHANG">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDLOAIHANG" />
     </Key>
-    <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDLOAIHANG" Type="varchar" MaxLength="6" StoreGeneratedPattern="Computed" Nullable="false" />
     <Property Name="TenLoai" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="MoTa" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="MATHANG">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDMATHANG" />
     </Key>
-    <Property Name="ID" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDMATHANG" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" Nullable="false" />
     <Property Name="TenMH" Type="nvarchar" MaxLength="40" Nullable="false" />
-    <Property Name="IDLoaiHang" Type="varchar" MaxLength="5" Nullable="false" />
-    <Property Name="IDSubLoaiHang" Type="varchar" MaxLength="5" />
+    <Property Name="IDLoaiHang" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="IDSubLoaiHang" Type="varchar" MaxLength="6" />
     <Property Name="URLHinhAnh1" Type="varchar" MaxLength="100" />
     <Property Name="URLHinhAnh2" Type="varchar" MaxLength="100" />
     <Property Name="URLHinhAnh3" Type="varchar" MaxLength="100" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
+    <Property Name="GiaMoi" Type="int" />
+    <Property Name="GiaCu" Type="int" />
   </EntityType>
   <EntityType Name="SUBLOAIHANG">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="IDSUBLH" />
     </Key>
-    <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
-    <Property Name="IDLoaiHang" Type="varchar" MaxLength="5" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDSUBLH" Type="varchar" MaxLength="6" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="IDLoaiHang" Type="varchar" MaxLength="6" />
     <Property Name="TenLoai" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="MoTa" Type="nvarchar" MaxLength="50" />
   </EntityType>
@@ -136,7 +144,7 @@
     <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CHITIETMATHANG">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="IDCTMH" />
       </Principal>
       <Dependent Role="CHITIETHOADON">
         <PropertyRef Name="IDChiTietMatHang" />
@@ -148,7 +156,7 @@
     <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="HOADON">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="IDHOADON" />
       </Principal>
       <Dependent Role="CHITIETHOADON">
         <PropertyRef Name="IDHoaDon" />
@@ -160,7 +168,7 @@
     <End Role="CHITIETMATHANG" Type="Self.CHITIETMATHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MATHANG">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="IDMATHANG" />
       </Principal>
       <Dependent Role="CHITIETMATHANG">
         <PropertyRef Name="IDMatHang" />
@@ -172,7 +180,7 @@
     <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="KHACHHANG">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="IDKHACHHANG" />
       </Principal>
       <Dependent Role="HOADON">
         <PropertyRef Name="IDKhachHang" />
@@ -196,7 +204,7 @@
     <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="LOAIHANG">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="IDLOAIHANG" />
       </Principal>
       <Dependent Role="MATHANG">
         <PropertyRef Name="IDLoaiHang" />
@@ -208,7 +216,7 @@
     <End Role="MATHANG" Type="Self.MATHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SUBLOAIHANG">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="IDSUBLH" />
       </Principal>
       <Dependent Role="MATHANG">
         <PropertyRef Name="IDSubLoaiHang" />
@@ -220,14 +228,14 @@
     <End Role="SUBLOAIHANG" Type="Self.SUBLOAIHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="LOAIHANG">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="IDLOAIHANG" />
       </Principal>
       <Dependent Role="SUBLOAIHANG">
         <PropertyRef Name="IDLoaiHang" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="SHOPModelStoreContainer">
+  <EntityContainer Name="SHOP2ModelStoreContainer">
     <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ACCOUNTADMIN" EntityType="Self.ACCOUNTADMIN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ACCOUNTTYPE" EntityType="Self.ACCOUNTTYPE" Schema="dbo" store:Type="Tables" />

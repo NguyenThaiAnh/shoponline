@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="SHOPModelStoreContainer" CdmEntityContainer="SHOPEntities">
+  <EntityContainerMapping StorageEntityContainer="SHOP2ModelStoreContainer" CdmEntityContainer="SHOPEntities">
     <EntitySetMapping Name="ACCOUNTs">
-      <EntityTypeMapping TypeName="SHOPModel.ACCOUNT">
+      <EntityTypeMapping TypeName="SHOP2Model.ACCOUNT">
         <MappingFragment StoreEntitySet="ACCOUNT">
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Password" ColumnName="Password" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ACCOUNTADMINs">
-      <EntityTypeMapping TypeName="SHOPModel.ACCOUNTADMIN">
+      <EntityTypeMapping TypeName="SHOP2Model.ACCOUNTADMIN">
         <MappingFragment StoreEntitySet="ACCOUNTADMIN">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Ten" ColumnName="Ten" />
@@ -22,7 +22,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ACCOUNTTYPEs">
-      <EntityTypeMapping TypeName="SHOPModel.ACCOUNTTYPE">
+      <EntityTypeMapping TypeName="SHOP2Model.ACCOUNTTYPE">
         <MappingFragment StoreEntitySet="ACCOUNTTYPE">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
@@ -30,9 +30,10 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CHITIETHOADONs">
-      <EntityTypeMapping TypeName="SHOPModel.CHITIETHOADON">
+      <EntityTypeMapping TypeName="SHOP2Model.CHITIETHOADON">
         <MappingFragment StoreEntitySet="CHITIETHOADON">
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDCTHD" ColumnName="IDCTHD" />
           <ScalarProperty Name="IDChiTietMatHang" ColumnName="IDChiTietMatHang" />
           <ScalarProperty Name="IDHoaDon" ColumnName="IDHoaDon" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
@@ -40,21 +41,19 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CHITIETMATHANGs">
-      <EntityTypeMapping TypeName="SHOPModel.CHITIETMATHANG">
+      <EntityTypeMapping TypeName="SHOP2Model.CHITIETMATHANG">
         <MappingFragment StoreEntitySet="CHITIETMATHANG">
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDCTMH" ColumnName="IDCTMH" />
           <ScalarProperty Name="IDMatHang" ColumnName="IDMatHang" />
-          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-          <ScalarProperty Name="MauSac" ColumnName="MauSac" />
           <ScalarProperty Name="Size" ColumnName="Size" />
           <ScalarProperty Name="Gia" ColumnName="Gia" />
-          <ScalarProperty Name="Loai" ColumnName="Loai" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CUAHANGs">
-      <EntityTypeMapping TypeName="SHOPModel.CUAHANG">
+      <EntityTypeMapping TypeName="SHOP2Model.CUAHANG">
         <MappingFragment StoreEntitySet="CUAHANG">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="TenCH" ColumnName="TenCH" />
@@ -65,9 +64,10 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="HOADONs">
-      <EntityTypeMapping TypeName="SHOPModel.HOADON">
+      <EntityTypeMapping TypeName="SHOP2Model.HOADON">
         <MappingFragment StoreEntitySet="HOADON">
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDHOADON" ColumnName="IDHOADON" />
           <ScalarProperty Name="IDKhachHang" ColumnName="IDKhachHang" />
           <ScalarProperty Name="Ngay" ColumnName="Ngay" />
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
@@ -76,9 +76,10 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="KHACHHANGs">
-      <EntityTypeMapping TypeName="SHOPModel.KHACHHANG">
+      <EntityTypeMapping TypeName="SHOP2Model.KHACHHANG">
         <MappingFragment StoreEntitySet="KHACHHANG">
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDKHACHHANG" ColumnName="IDKHACHHANG" />
           <ScalarProperty Name="Ten" ColumnName="Ten" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="SDT" ColumnName="SDT" />
@@ -88,31 +89,38 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="LOAIHANGs">
-      <EntityTypeMapping TypeName="SHOPModel.LOAIHANG">
+      <EntityTypeMapping TypeName="SHOP2Model.LOAIHANG">
         <MappingFragment StoreEntitySet="LOAIHANG">
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDLOAIHANG" ColumnName="IDLOAIHANG" />
           <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MATHANGs">
-      <EntityTypeMapping TypeName="SHOPModel.MATHANG">
+      <EntityTypeMapping TypeName="SHOP2Model.MATHANG">
         <MappingFragment StoreEntitySet="MATHANG">
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDMATHANG" ColumnName="IDMATHANG" />
           <ScalarProperty Name="TenMH" ColumnName="TenMH" />
           <ScalarProperty Name="IDLoaiHang" ColumnName="IDLoaiHang" />
           <ScalarProperty Name="IDSubLoaiHang" ColumnName="IDSubLoaiHang" />
           <ScalarProperty Name="URLHinhAnh1" ColumnName="URLHinhAnh1" />
           <ScalarProperty Name="URLHinhAnh2" ColumnName="URLHinhAnh2" />
           <ScalarProperty Name="URLHinhAnh3" ColumnName="URLHinhAnh3" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="GiaMoi" ColumnName="GiaMoi" />
+          <ScalarProperty Name="GiaCu" ColumnName="GiaCu" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SUBLOAIHANGs">
-      <EntityTypeMapping TypeName="SHOPModel.SUBLOAIHANG">
+      <EntityTypeMapping TypeName="SHOP2Model.SUBLOAIHANG">
         <MappingFragment StoreEntitySet="SUBLOAIHANG">
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDSUBLH" ColumnName="IDSUBLH" />
           <ScalarProperty Name="IDLoaiHang" ColumnName="IDLoaiHang" />
           <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />

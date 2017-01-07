@@ -255,13 +255,6 @@
     <Compile Include="AudienceStore.cs" />
     <Compile Include="AudienceToken.cs" />
     <Compile Include="Controllers\AudienceController.cs" />
-    <Compile Include="Controllers\ServerAPIController.cs" />
-    <Compile Include="CustomJwtFormat.cs" />
-    <Compile Include="CustomOAuthProvider.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AccInfor.cs" />
     <Compile Include="Models\ACCOUNT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -271,7 +264,6 @@
     <Compile Include="Models\ACCOUNTTYPE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ChiTietHD.cs" />
     <Compile Include="Models\CHITIETHOADON.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -281,17 +273,22 @@
     <Compile Include="Models\CUAHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\dbMatHang.cs" />
     <Compile Include="Models\dbUser.cs" />
+    <Compile Include="Controllers\ServerAPIController.cs" />
+    <Compile Include="CustomJwtFormat.cs" />
+    <Compile Include="CustomOAuthProvider.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccInfor.cs" />
+    <Compile Include="Models\ChiTietHD.cs" />
     <Compile Include="Models\HOADON.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDonKH.cs" />
-    <Compile Include="Models\itemMatHang.cs" />
     <Compile Include="Models\KHACHHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\listMatHang.cs" />
     <Compile Include="Models\LOAIHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -313,6 +310,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\sellingItem.cs" />
+    <Compile Include="Models\subItemMatHang.cs" />
+    <Compile Include="Models\listMatHang.cs" />
+    <Compile Include="Models\itemMatHang.cs" />
     <Compile Include="Models\SUBLOAIHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

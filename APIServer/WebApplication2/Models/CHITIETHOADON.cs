@@ -14,7 +14,8 @@ namespace WebApplication2.Models
     
     public partial class CHITIETHOADON
     {
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string IDCTHD { get; set; }
         public string IDChiTietMatHang { get; set; }
         public string IDHoaDon { get; set; }
         public Nullable<int> SoLuong { get; set; }

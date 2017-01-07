@@ -20,7 +20,8 @@ namespace WebApplication2.Models
             this.MATHANGs = new HashSet<MATHANG>();
         }
     
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string IDSUBLH { get; set; }
         public string IDLoaiHang { get; set; }
         public string TenLoai { get; set; }
         public string MoTa { get; set; }

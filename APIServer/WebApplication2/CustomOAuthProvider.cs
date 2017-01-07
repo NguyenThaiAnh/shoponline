@@ -62,6 +62,7 @@ namespace WebApplication2
 
             var q = (from e in db.ACCOUNTs
                      join m in db.ACCOUNTTYPEs on e.IDType equals m.ID
+                     where context.UserName == e.Username
                      select m).FirstOrDefault();
             if(q.TenLoai == "ACCOUNT ADMIN")
             {

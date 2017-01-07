@@ -21,8 +21,10 @@ namespace WebApplication2.Models
             this.SUBLOAIHANGs = new HashSet<SUBLOAIHANG>();
         }
     
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string IDLOAIHANG { get; set; }
         public string TenLoai { get; set; }
+        public string Gender { get; set; }
         public string MoTa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
