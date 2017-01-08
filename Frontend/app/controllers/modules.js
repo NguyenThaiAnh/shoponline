@@ -1,7 +1,11 @@
-/**
- * Created by Lucifer on 01/01/2017.
- */
+'use strict';
 angular.module('shop', [
     'ui.router',
-    'menCtrl'
+    'LocalStorageModule',
+    'angular-flexslider',
+    'menCtrl',
+    'menItemCtrl',
+    'indexCtrl',
+    'signupCtrl',
+    'loginCtrl'
 ]);

@@ -1,6 +1,3 @@
-/**
- * Created by Lucifer on 31/12/2016.
- */
 'use strict';
 
 var menCtrl = angular.module('menCtrl', []);
@@ -8,7 +5,11 @@ var menCtrl = angular.module('menCtrl', []);
 // Url general API
 var url_api = "http://localhost:57919/api/v1/";
 
-menCtrl.controller('menCtrl', ['$scope', '$http', 'url', function ($scope, $http, url) {
+menCtrl.controller('menCtrl', ['$scope', '$http', 'url', 'Services', '$rootScope',
+    function ($scope, $http, url, Services, $rootScope) {
+
+    $rootScope.abc = Services.dsdathang().length;
+
     // Get list product of men
     $http.get(url_api + url)
         .success(function (response) {
@@ -19,9 +20,9 @@ menCtrl.controller('menCtrl', ['$scope', '$http', 'url', function ($scope, $http
             $scope.numberOfPages = function () {
                 return Math.ceil($scope.mathang.length/$scope.pageSize);
             };
-
             console.log(response);
-        })
+        });
+
 }]);
 
 menCtrl.filter('startFrom', function() {

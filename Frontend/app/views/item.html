@@ -1,19 +1,4 @@
-<link href="/css/owl.carousel.css" rel="stylesheet">
-<script src="/js/owl.carousel.js"></script>
-<script>
-    $(document).ready(function() {
-        $("#owl-demo").owlCarousel({
-            items : 1,
-            lazyLoad : true,
-            autoPlay : true,
-            navigation : false,
-            navigationText :  false,
-            pagination : true,
-        });
-    });
-</script>
-
-<div class="content" id="menItemCtrl" ng-controller="menItemCtrl">
+<div class="content">
     <!--single-->
     <div class="single-wl3">
         <div class="container">
@@ -21,19 +6,19 @@
                 <div class="col-md-9 single-grid">
                     <div clas="single-top">
                         <div class="single-left">
-                            <div class="flexslider">
-                                <ul class="slides">
-                                    <li data-thumb={{mathang.URLHinhAnh1}}>
-                                        <div class="thumb-image"> <img src={{mathang.URLHinhAnh1}} data-imagezoom="true" class="img-responsive"> </div>
-                                    </li>
-                                    <li data-thumb={{mathang.URLHinhAnh2}}>
-                                        <div class="thumb-image"> <img src={{mathang.URLHinhAnh2}} data-imagezoom="true" class="img-responsive"> </div>
-                                    </li>
-                                    <li data-thumb={{mathang.URLHinhAnh3}}>
-                                        <div class="thumb-image"> <img src={{mathang.URLHinhAnh3}} data-imagezoom="true" class="img-responsive"> </div>
-                                    </li>
-                                </ul>
-                            </div>
+                            <flex-slider slider-id="slider" flex-slide="image in images track by $index" animation="fade" animation-loop="true" sync="#carousel" slideshow="true" control-nav="false" init-delay="5" randomize="true">
+
+                                <li>
+                                    <img ng-src="{{image}}" data-imagezoom="true" class="img-responsive">
+                                </li>
+
+                            </flex-slider>
+
+                            <!--<flex-slider slider-id="carousel" flex-slide="image in images track by $index" animation="slide" animation-loop="false" item-width="100" item-margin="5" as-nav-for="#slider" slideshow="false" control-nav="false">-->
+                                <!--<li>-->
+                                    <!--<img ng-src="{{image}}">-->
+                                <!--</li>-->
+                            <!--</flex-slider>-->
                         </div>
                         <div class="single-right simpleCart_shelfItem">
                             <h4>{{mathang.Ten}}</h4>
@@ -59,7 +44,7 @@
                                 </div>
                             </div>
                             <div class="women">
-                                <a ui-sref="#" data-text="Add To Cart" class="my-cart-b item_add" target="_self">Thêm vào giỏ</a>
+                                <a ng-click="datmua(mathang)" data-text="Add To Cart" class="my-cart-b item_add" target="_self">Thêm vào giỏ</a>
                             </div>
                             <div class="social-icon">
                                 <a href="https://www.facebook.com/lucifer293"><i class="icon"></i></a>

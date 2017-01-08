@@ -125,10 +125,15 @@ addproductCtrl.controller('addproductCtrl', ['$stateParams', '$scope', '$http', 
 
     //Them san pham vao database
     $scope.themSanPham = function () {
-        $scope.item.giacu = 0; $scope.item.giamoi = 0;
-        $scope.subItems[0].Gia = 0; $scope.subItems[0].SoLuong = 0;
-        $scope.subItems[1].Gia = 0; $scope.subItems[1].SoLuong = 0;
-        $scope.subItems[2].Gia = 0; $scope.subItems[2].SoLuong = 0;
+        if ($scope.item.giacu == undefined){$scope.item.giacu = "0";}
+        if ($scope.item.giamoi == undefined){$scope.item.giamoi = "0";}
+        if ($scope.subItems[0].Gia == undefined){$scope.subItems[0].Gia = "0";}
+        if ($scope.subItems[0].SoLuong == undefined){$scope.subItems[0].SoLuong = "0";}
+        if ($scope.subItems[1].Gia == undefined){$scope.subItems[1].Gia = "0";}
+        if ($scope.subItems[1].SoLuong == undefined){$scope.subItems[1].SoLuong = "0";}
+        if ($scope.subItems[2].Gia == undefined){$scope.subItems[2].Gia = "0";}
+        if ($scope.subItems[2].SoLuong == undefined){$scope.subItems[2].SoLuong = "0";}
+
         var item = {
             ID: '',
             Loai: $scope.item.loai,

@@ -1,0 +1,60 @@
+<!--banner-->
+<div class="banner1">
+    <div class="container">
+        <h3><a ui-sref="home">Trang chủ</a> / <span>Đăng ký</span></h3>
+    </div>
+</div>
+<!--banner-->
+
+<!--content-->
+<div class="content">
+    <!--login-->
+    <div class="login">
+        <div class="main-agileits">
+            <div class="form-w3agile form1">
+                <h3>Đăng ký</h3>
+                <form>
+                    <div class="key">
+                        <i class="fa fa-fw fa-star" aria-hidden="true"></i>
+                        <input  type="text" value="Họ tên" ng-model="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tên';}" required="">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="key">
+                        <i class="fa fa-fw fa-user" aria-hidden="true"></i>
+                        <input  type="text" value="Tên đăng nhập" ng-model="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tên đăng nhập';}" required="">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="key">
+                        <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
+                        <input  type="text" value="Email" ng-model="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="key">
+                        <i class="fa fa-fw fa-lock" aria-hidden="true"></i>
+                        <input  type="password" value="Mật khẩu" ng-model="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mật khẩu';}" required="">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="key">
+                        <i class="fa fa-fw fa-lock" aria-hidden="true"></i>
+                        <input  type="password" value="Mật khẩu" ng-model="repassword" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mật khẩu';}" required="">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="key">
+                        <i class="fa fa-fw fa-street-view" aria-hidden="true"></i>
+                        <input  type="text" value="Địa chỉ" ng-model="address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Địa chỉ';}" required="">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="key">
+                        <i class="fa fa-fw fa-phone" aria-hidden="true"></i>
+                        <input  type="text" value="Điện thoại" ng-model="phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Điện thoại';}" required="">
+                        <div class="clearfix"></div>
+                    </div>
+                    <input type="submit" ng-click="signup()" value="Đăng ký">
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!--login-->
+</div>
+<!--content-->

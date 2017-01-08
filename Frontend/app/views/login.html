@@ -1,0 +1,39 @@
+<!--banner-->
+<div class="banner1">
+    <div class="container">
+        <h3><a ui-sref="login">Trang chủ</a> / <span>Đăng nhập</span></h3>
+    </div>
+</div>
+<!--banner-->
+
+<!--content-->
+<div class="content">
+    <!--login-->
+    <div class="login">
+        <div class="main-agileits">
+            <div class="form-w3agile">
+                <h3>Đăng nhập</h3>
+                <form>
+                    <div class="key">
+                        <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
+                        <input  type="text" ng-model="user.username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tên đăng nhập';}" required="">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="key">
+                        <i class="fa fa-fw fa-lock" aria-hidden="true"></i>
+                        <input  type="password" ng-model="user.password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mật khẩu';}" required="">
+                        <div class="clearfix"></div>
+                    </div>
+                    <input type="submit" ng-click="login()" value="Đăng nhập">
+                </form>
+            </div>
+            <div class="forg">
+                <!--<a href="#" class="forg-left">Forgot Password</a>-->
+                <a ui-sref="signup" class="forg-right">Đăng ký</a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--login-->
+</div>
+<!--content-->

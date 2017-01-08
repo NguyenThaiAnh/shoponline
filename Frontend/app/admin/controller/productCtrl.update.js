@@ -131,6 +131,7 @@ updateproductCtrl.controller('updateproductCtrl', ['$stateParams', '$scope', '$h
     //Them san pham vao database
     $scope.capnhatSanPham = function () {
         if ($scope.item.GiaCu == undefined){$scope.item.GiaCu = "0";}
+        if ($scope.item.GiaMoi == undefined){$scope.item.GiaMoi = "0";}
         if ($scope.item.Items[0].Gia == undefined){$scope.item.Items[0].Gia = "0";}
         if ($scope.item.Items[0].SoLuong == undefined){$scope.item.Items[0].SoLuong = "0";}
         if ($scope.item.Items[1].Gia == undefined){$scope.item.Items[1].Gia = "0";}

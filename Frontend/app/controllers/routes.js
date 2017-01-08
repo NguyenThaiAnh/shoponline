@@ -4,7 +4,8 @@ angular.module('shop')
         $stateProvider
             .state("home", {
                 url: "/",
-                templateUrl: "views/index2.html"
+                templateUrl: "views/index2.html",
+                controller: 'indexCtrl'
             })
             .state("menProduct", {
                 url: "/nam",
@@ -158,14 +159,33 @@ angular.module('shop')
                 templateUrl: "views/women.html",
                 controller: 'womenCtrl'
             })
-            // .state("menItemProduct", {
-            //     url: "/men/:id",
-            //     templateUrl: "/view/item.html",
-            //     controller: 'menItemCtrl'
-            // })
+
+            .state("products", {
+                url: "/san-pham",
+                template: "<ui-view></ui-view>",
+                abstract: true
+            })
+
+            .state("products.Item", {
+                url: "/:id",
+                templateUrl: "/views/item.html",
+                controller: 'menItemCtrl'
+            })
+
             .state("checkout", {
                 url: "/checkout",
-                templateUrl: "views/checkout.html"
+                templateUrl: "views/checkout.html",
+                controller: 'indexCtrl'
+            })
+            .state("login", {
+                url: "/login",
+                templateUrl: "views/login.html",
+                controller: 'loginCtrl'
+            })
+            .state("signup", {
+                url: "/signup",
+                templateUrl: "views/signup.html",
+                controller: 'signupCtrl'
             })
             .state('otherwise', {
                 url: '/404',
@@ -179,4 +199,9 @@ angular.module('shop')
             requireBase: true,
             rewriteLinks: false
         });
+});
+angular.module('shop').run(function ($rootScope, $state, Services) {
+    $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
+
+    })
 });

@@ -225,14 +225,16 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Giá</label>
-                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[0].Gia" ng-init="item.Items[0].Gia = 0" required>
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[0].Gia" ng-init="item.Items[0].Gia = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                             <p class="help-block">Đơn vị: VNĐ</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Số lượng</label>
-                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[0].SoLuong" ng-init="item.Items[0].SoLuong = 0" required>
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[0].SoLuong" ng-init="item.Items[0].SoLuong = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -241,20 +243,22 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Loại Size 2</label>
-                            <input class="form-control" placeholder="M hoặc 29" ng-model="item.Items[1].Size" ng-init="item.Items[1].Size = 'M'">
+                            <input class="form-control" placeholder="M hoặc 29" ng-model="item.Items[1].Size" ng-init="item.Items[1].Size = 'M'" >
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Giá</label>
-                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[1].Gia" ng-init="item.Items[1].Gia = 0">
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[1].Gia" ng-init="item.Items[1].Gia = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                             <p class="help-block">Đơn vị: VNĐ</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Số lượng</label>
-                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[1].SoLuong" ng-init="item.Items[1].SoLuong = 0">
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[1].SoLuong" ng-init="item.Items[1].SoLuong = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -269,14 +273,16 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Giá</label>
-                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[2].Gia" ng-init="item.Items[2].Gia = 0">
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[2].Gia" ng-init="item.Items[2].Gia = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                             <p class="help-block">Đơn vị: VNĐ</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Số lượng</label>
-                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[2].SoLuong" ng-init="item.Items[2].SoLuong = 0">
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[2].SoLuong" ng-init="item.Items[2].SoLuong = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                         </div>
                     </div>
 

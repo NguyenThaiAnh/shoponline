@@ -222,14 +222,16 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Giá</label>
-                            <input type="text" maxlength="10" class="form-control" ng-model="subItems[0].Gia" ng-init="subItems[0].Gia = 0">
+                            <input type="text" maxlength="10" class="form-control" ng-model="subItems[0].Gia" ng-init="subItems[0].Gia = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                             <p class="help-block">Đơn vị: VNĐ</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Số lượng</label>
-                            <input type="text" maxlength="10" class="form-control" ng-model="subItems[0].SoLuong" ng-init="subItems[0].SoLuong = 0">
+                            <input type="text" maxlength="10" class="form-control" ng-model="subItems[0].SoLuong" ng-init="subItems[0].SoLuong = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -244,14 +246,16 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Giá</label>
-                            <input type="number" min="0" step="1000" class="form-control" ng-model="subItems[1].Gia" ng-init="subItems[1].Gia = 0">
+                            <input type="number" min="0" step="1000" class="form-control" ng-model="subItems[1].Gia" ng-init="subItems[1].Gia = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                             <p class="help-block">Đơn vị: VNĐ</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Số lượng</label>
-                            <input type="number" min="0" step="1" class="form-control" ng-model="subItems[1].SoLuong" ng-init="subItems[1].SoLuong = 0">
+                            <input type="number" min="0" step="1" class="form-control" ng-model="subItems[1].SoLuong" ng-init="subItems[1].SoLuong = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -266,14 +270,16 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Giá</label>
-                            <input type="number" min="0" step="1000" class="form-control" ng-model="subItems[2].Gia" ng-init="subItems[2].Gia = 0">
+                            <input type="number" min="0" step="1000" class="form-control" ng-model="subItems[2].Gia" ng-init="subItems[2].Gia = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                             <p class="help-block">Đơn vị: VNĐ</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label>Số lượng</label>
-                            <input type="number" min="0" step="1" class="form-control" ng-model="subItems[2].SoLuong" ng-init="subItems[2].SoLuong = 0">
+                            <input type="number" min="0" step="1" class="form-control" ng-model="subItems[2].SoLuong" ng-init="subItems[2].SoLuong = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                         </div>
                     </div>
 

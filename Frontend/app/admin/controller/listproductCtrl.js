@@ -5,7 +5,7 @@ var listproductCtrl = angular.module('listproductCtrl', []);
 // Url general API
 var url_api = "http://localhost:57919/api/v1/";
 
-listproductCtrl.controller('listproductCtrl', ['$scope', '$http', '$state', 'ngDialog', function ($scope, $http, $state, ngDialog) {
+listproductCtrl.controller('listproductCtrl', ['$scope', '$http', '$state', 'ngDialog', '$window', function ($scope, $http, $state, ngDialog, $window) {
     // Get list product of men
     $http.get(url_api + 'mathang')
         .success(function (response) {
@@ -33,7 +33,7 @@ listproductCtrl.controller('listproductCtrl', ['$scope', '$http', '$state', 'ngD
         console.log(IDMATHANG);
         ngDialog.open({
             template: 'views/product.delete.html',
-            controller: ['$scope', '$state', function($scope, $state) {
+            controller: ['$scope', '$state', '$window', function($scope, $state, $window) {
                 $scope.IDMH = IDMATHANG;
                 $scope.yes = function () {
                     $http.delete(url_api+'MatHang?ID='+IDMATHANG)

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><! <html lang="en" ng-app="myApp" class="no-js"> <![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="shop" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="shop" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="shop" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><! <html lang="en" ng-app="shop" class="no-js"> <![endif]-->
 <html ng-app="shop">
 <head>
   <meta charset="utf-8">
@@ -24,22 +24,18 @@
   <script src="/js/main.js"></script>
   <!--search jQuery-->
   <script src="/js/responsiveslides.min.js"></script>
-  <script>
-    $(function () {
-      $("#slider").responsiveSlides({
-        auto: true,
-        nav: true,
-        speed: 500,
-        namespace: "callbacks",
-        pager: true,
-      });
-    });
-  </script>
   <!--mycart-->
   <script type="text/javascript" src="/js/bootstrap-3.1.1.min.js"></script>
   <!-- cart -->
   <script src="/js/simpleCart.min.js"></script>
   <!-- cart -->
+
+  <!--Flex slider-->
+  <link rel="stylesheet" href="/css/flexslider.css">
+  <script src="/js/jquery.flexslider-min.js"></script>
+  <script src="/js/jquery.flexslider.js"></script>
+
+  <script src="/js/imagezoom.js"></script>
   <!--start-rate-->
   <script src="/js/jstarbox.js"></script>
   <link rel="stylesheet" href="/css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
@@ -65,25 +61,14 @@
     });
   </script>
   <!--//End-rate-->
-
-
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <script src="/js/owl.carousel.js"></script>
   <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">-->
-  <link rel="stylesheet" href="/bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="/app.css">
-  <script src="/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  <script defer src="/js/jquery.flexslider.js"></script>
-  <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
-  <script src="/js/imagezoom.js"></script>
-  <script>
-    // Can also be used with $(document).ready()
-    $(window).load(function() {
-      $('.flexslider').flexslider({
-        animation: "slide",
-        controlNav: "thumbnails"
-      });
-    });
-  </script>
+  <!--/<link rel="stylesheet" href="/bower_components/html5-boilerplate/dist/css/main.css">-->
+  <link rel="stylesheet" href="/css/app.css">
+  <!--<script src="/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>-->
   <!--//End-rate-->
+
   <base href="/">
 </head>
 <body>
@@ -95,10 +80,11 @@
         <a href="#"> Trợ giúp  <i class="glyphicon glyphicon-phone" aria-hidden="true"></i> 097 5187 293</a>
       </div>
       <div class="top-right">
-        <ul>
+        <ul ng-controller="indexCtrl">
           <li><a ui-sref="checkout">Thanh toán</a></li>
-          <li><a ui-sref="login.html">Đăng nhập</a></li>
-          <li><a ui-sref="registered.html"> Đăng ký </a></li>
+          <li><a ng-show="!isLoged" ui-sref="login">Đăng nhập</a></li>
+          <li><a ng-show="!isLoged" ui-sref="signup"> Đăng ký </a></li>
+          <li><a href="" ng-show="isLoged" ng-click="DangXuat()"> Đăng xuất </a></li>
         </ul>
       </div>
       <div class="clearfix"></div>
@@ -209,10 +195,10 @@
           </div>
         </div>
         <div class="header-right2">
-          <div class="cart box_1">
-            <a href="view/checkout.html">
+          <div class="cart box_1" ng-controller="indexCtrl">
+            <a ui-sref="checkout">
               <h3> <div class="total">
-                <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> sản phẩm)</div>
+                <span> {{TongGia}} VNĐ </span> ({{abc}} sản phẩm)</div>
                 <img src="images/bag.png" alt="" />
               </h3>
             </a>
@@ -244,7 +230,7 @@
       <div class="col-md-3 footer-grid">
         <h4>Tài khoản</h4>
         <ul>
-          <li><a href="view/checkout.html">Thanh toán</a></li>
+          <li><a ui-sref="checkout">Thanh toán</a></li>
           <li><a href="login.html">Đăng nhập</a></li>
           <li><a href="registered.html"> Đăng ký </a></li>
         </ul>
@@ -284,17 +270,22 @@
   </div>
 </div>
 
-<!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
--->
+<!--References-->
 <script src="/bower_components/angular/angular.js"></script>
-<!--<script src="bower_components/angular-route/angular-route.js"></script>-->
+<script src="/js/angular-local-storage.js"></script>
 <script src="/js/angular-ui-router.js"></script>
-<!--<script src="app.js"></script>-->
+<script src="/js/angular-flexslider.js"></script>
+
+
+<!--My Controller-->
 <script src="/controllers/modules.js"></script>
+<script src="/services/services.js"></script>
 <script src="/controllers/routes.js"></script>
 <script src="/controllers/menctrl.js"></script>
 <script src="/controllers/menItemCtrl.js"></script>
+<script src="/controllers/indexCtrl.js"></script>
+<script src="/controllers/loginCtrl.js"></script>
+<script src="/controllers/signupCtrl.js"></script>
 <!--<script src="components/version/version.js"></script>-->
 <!--<script src="components/version/version-directive.js"></script>-->
 <!--<script src="components/version/interpolate-filter.js"></script>-->
