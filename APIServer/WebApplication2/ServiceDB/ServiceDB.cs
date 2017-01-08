@@ -9,14 +9,15 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApplication2.Models;
-
+using Twilio;
 
 namespace WebApplication2.ServiceDB
 {
     public class Service
     {
         SHOPEntities db = new SHOPEntities();
-
+        private string AccountSid = "ACb38aaa20d08ac4a9bfcd15614e4d7a7f";
+        private string AuthToken = "66f0883bcabaa29356549da6788f86bb";
 
 
         public bool checkAcc(string _userName, string _passWord)
@@ -433,6 +434,10 @@ namespace WebApplication2.ServiceDB
                 hd.TongTien = _hd.TongTien;
                 db.HOADONs.Add(hd);
                 db.SaveChanges();
+                var twilio = new TwilioRestClient(AccountSid, AuthToken);
+
+                twilio.SendMessage("+13473345984", "+84963225084", "KH:" + _hd.IDKhachHang + "tong tien:" + _hd.TongTien);
+
                 return true;
             }
             catch (Exception e)
