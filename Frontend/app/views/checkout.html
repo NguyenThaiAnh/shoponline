@@ -1,7 +1,7 @@
 <!--banner-->
 <div class="banner1">
 	<div class="container">
-		<h3><a href="./">Trang chủ</a> / <span>Thanh toán</span></h3>
+		<h3><a ui-sref="home">Trang chủ</a> / <span>Thanh toán</span></h3>
 	</div>
 </div>
 <!--banner-->
@@ -21,6 +21,7 @@
 			   </script>
 
 			 <div class="cart-header" ng-repeat="hang in hangdadat">
+				 <div class="close1" ng-click="XoaHang(hang.ID)"> </div>
 				 <div class="cart-sec simpleCart_shelfItem">
 						<div class="cart-item cyc">
 							 <img ng-src="{{hang.URLHinhAnh1}}" alt="" class="img-thumbnail">
@@ -39,9 +40,6 @@
 							 <span>Thời gian đặt hàng: {{hang.GiaCu}} </span>
 							 <div class="clearfix"></div>
 						</div>
-						   <div class="delivery">
-							   <button class="btn btn-warning" ng-click="XoaHang(hang.ID)">Xoá khỏi giỏ hàng</button>
-						   </div>
 					   </div>
 					   <div class="clearfix"></div>
 
@@ -50,9 +48,11 @@
 
 
 		</div>
+
+
 		<div class="container">
-			<div align="right"><p><h3>Tổng tiền: <span style="color: darkblue;"> {{TongGia}} </span> VND</h3></p></div>
-			<div align="right" ng-show="TongGia!=0"><button class="btn btn-info btn-lg" ng-click="ThanhToan()">Thanh toán</button> </div>
+			<div align="right"><p><h3>Tổng tiền: <span style="color: darkblue;"> {{TongGia}} </span> VND</h3></p><br></div>
+			<div align="right" class="form-w3agile" ng-show="TongGia!=0"><input type="submit" ng-click="ThanhToan()" value="Thanh toán"> </div>
 		</div>
 	</div>
 

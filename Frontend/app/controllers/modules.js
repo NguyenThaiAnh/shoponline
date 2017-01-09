@@ -7,5 +7,7 @@ angular.module('shop', [
     'menItemCtrl',
     'indexCtrl',
     'signupCtrl',
-    'loginCtrl'
+    'loginCtrl',
+    'homeCtrl',
+    'searchCtrl'
 ]);

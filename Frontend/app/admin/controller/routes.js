@@ -57,6 +57,18 @@ angular.module('admin')
                 controller: 'updateproductCtrl'
             })
 
+            //Khai báo route danh sach hoa don
+            .state("bills", {
+                url: "/bills",
+                template: "<ui-view></ui-view>",
+                abstract: true
+            })
+            .state("bills.list", {
+                url: "/",
+                templateUrl: "views/bills.html",
+                controller: 'listbillCtrl'
+            })
+
             .state('otherwise', {
                 url: '/404',
                 templateUrl: 'views/404.html'

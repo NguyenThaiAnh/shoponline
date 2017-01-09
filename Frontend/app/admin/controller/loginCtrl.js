@@ -25,6 +25,7 @@ angular.module('admin')
 angular.module('admin').controller('InsideCtrl', function($scope, AuthService, API_ENDPOINT, $http, $window) {
 
         var username = window.sessionStorage.getItem('username');
+        $scope.isAuth = AuthService.isAuthenticated();
 
         $scope.destroySession = function() {
             AuthService.logout();
@@ -42,9 +43,11 @@ angular.module('admin').controller('InsideCtrl', function($scope, AuthService, A
             .success(function (response) {
                 $scope.ten =  response;
                 console.log(response);
+                $scope.isAuth = AuthService.isAuthenticated();
             })
             .error(function (error) {
                 console.log(error);
                 AuthService.logout();
+                $scope.isAuth = AuthService.isAuthenticated();
         })
     });

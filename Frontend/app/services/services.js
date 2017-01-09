@@ -1,6 +1,6 @@
 angular.module('shop')
     .service('Services', function ($http, $q) {
-    var TOKEN = false;
+    var TOKEN = false; var INFO_USER = 'KH';
     var DSDATHANG_KEY = 'dsdathang';
     var dsdathang = [];
     var isLoged = false;
@@ -9,13 +9,13 @@ angular.module('shop')
 
     function LoadDangNhap() {
         var check_token = window.sessionStorage.getItem(TOKEN);
-        infouser = JSON.parse(window.sessionStorage.getItem('USER'));
+        infouser = JSON.parse(window.sessionStorage.getItem(INFO_USER));
         console.log(check_token);
         if (check_token != undefined) {
             isLoged = true;
             $http.defaults.headers.common.Authorization = 'bearer '+check_token;
             token = window.sessionStorage.getItem(TOKEN);
-            if (infouser == null || infouser===''){
+            if (infouser == null || infouser == ""){
                 infouser = {};
             }
             console.log(infouser);
@@ -61,57 +61,86 @@ angular.module('shop')
         return s;
     }
 
+    function DangKy(user) {
+        return $q(function(resolve, reject) {
+            var config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            $http.post(url_api + 'NguoiDung', user, config)
+                .success(function (data) {
+                    console.log(data);
+                    resolve(data);
+                })
+                .error(function (data) {
+                    console.log(data);
+                    reject(data);
+                });
+        })
+    };
+
     function DangNhap(user) {
         return $q(function(resolve, reject) {
+            var url = 'http://localhost:57919/api/audience/getAudience';
 
-        $http({
-            method: 'POST',
-            url: 'http://localhost:57919/api/audience/getAudience',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            transformRequest: function(obj) {
-                var str = [];
-                for (var p in obj)
-                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-                return str.join("&");
-            },
-            data: {Name: "MD5"}
-        }).success(function (data) {
-            console.log(data);
-            user.client_id = data.ClientId;
+            var config = {
+                headers : {
+                    'Content-Type': 'application/json'
+                }
+            };
 
-            $http({
-                method: 'POST',
-                url: 'http://localhost:57919/oauth2/token',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                transformRequest: function(obj) {
-                    var str = [];
-                    for (var p in obj)
-                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-                    return str.join("&");
-                },
-                data: user
-            }).success(function (data) {
-                console.log(data);
-                resolve(data.access_token);
-                isLoged = true;
-                token = 'bearer '+ data.access_token;
-                infouser = user;
-                console.log(infouser);
-                $http.defaults.headers.common.Authorization = token;
-                window.sessionStorage.setItem(TOKEN, data.access_token);
-                window.sessionStorage.setItem('USER', JSON.stringify(user));
-            }).error(function (data) {
-                console.log(data);
-                reject(data);
-            });
-        }).error(function (data) {
-            console.log(data);
-        });
+            $http.post(url, {Name: "MD5"}, config)
+                .success(function (data) {
+                    console.log(data);
+
+                    user.client_id = data.ClientId;
+                    console.log(user);
+
+                    $http({
+                        method: 'POST',
+                        url: 'http://localhost:57919/oauth2/token',
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                        transformRequest: function(obj) {
+                            var str = [];
+                            for (var p in obj)
+                                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                            return str.join("&");
+                        },
+                        data: user
+                    }).success(function (data) {
+                        console.log(data);
+
+                        isLoged = true;
+                        token = 'bearer '+ data.access_token;
+                        infouser = user;
+                        console.log(infouser);
+
+                        $http.defaults.headers.common.Authorization = token;
+
+                        window.sessionStorage.setItem(TOKEN, data.access_token);
+                        window.sessionStorage.setItem(INFO_USER, JSON.stringify(user));
+
+                        resolve(data.access_token);
+                    }).error(function (data) {
+                        console.log(data);
+                        reject(data);
+                    });
+
+                })
+                .error(function (data) {
+                    console.log(data);
+
+                });
+
+
     }
         )}
 
     function DangXuat() {
         isLoged = false;
+        infouser = {};
         token = '';
         $http.defaults.headers.common.Authorization = undefined;
         window.sessionStorage.removeItem(TOKEN);
@@ -127,6 +156,7 @@ angular.module('shop')
         xoadathang: XoaDatHang,
         xoatatca: XoaTatCaDatHang,
         tongtien: TongTien,
+        signup: DangKy,
         login: DangNhap,
         logout: DangXuat,
         isLoged: function() {return isLoged;},

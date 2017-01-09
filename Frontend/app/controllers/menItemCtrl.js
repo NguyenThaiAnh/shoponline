@@ -8,7 +8,6 @@ var url_api = "http://localhost:57919/api/v1/";
 menItemCtrl.controller('menItemCtrl', ['$stateParams', '$scope', '$http','Services', '$rootScope','$window', '$state',
     function ($stateParams, $scope, $http, Services, $rootScope, $window, $state) {
 
-    $rootScope.abc = Services.dsdathang().length;
     $scope.mathang = '';$scope.soluong = [];$scope.soluongMax = [];
     // Get list product of men
     $http.get(url_api + 'mathang?id='+$stateParams.id)
@@ -37,7 +36,7 @@ menItemCtrl.controller('menItemCtrl', ['$stateParams', '$scope', '$http','Servic
         } else {
             $window.alert('Bạn chưa chọn số lượng!');
 
-        };
+        }
 
     };
 

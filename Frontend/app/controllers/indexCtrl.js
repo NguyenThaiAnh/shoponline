@@ -4,17 +4,12 @@ var indexCtrl = angular.module('indexCtrl', []);
 // Url general API
 var url_api = "http://localhost:57919/api/v1/";
 
-indexCtrl.controller('indexCtrl', ['$scope', '$http', 'Services','$rootScope', '$state','$window',
-    function ($scope, $http, Services, $rootScope, $state, $window) {
+indexCtrl.controller('indexCtrl', ['$scope', '$http', 'Services','$rootScope', '$state','$window','sharedService',
+    function ($scope, $http, Services, $rootScope, $state, $window, sharedService) {
 
-    $rootScope.isLoged = Services.isLoged();
-    console.log($rootScope.isLoged);
     $scope.hangdadat = [];
     $scope.hangdadat = Services.dsdathang();
     console.log($scope.hangdadat);
-    $rootScope.TongGia = Services.tongtien();
-    $rootScope.abc = Services.dsdathang().length;
-
 
     $scope.XoaHang = function (mathang) {
         Services.xoadathang(mathang);
@@ -69,7 +64,6 @@ indexCtrl.controller('indexCtrl', ['$scope', '$http', 'Services','$rootScope', '
                             Services.xoatatca();
                             $rootScope.abc = Services.dsdathang().length;
                             $window.alert("Bạn đã đặt hàng thành công!");
-                            $state.go('home');
 
                         })
                         .error(function (data, status, header, config) {
@@ -89,6 +83,20 @@ indexCtrl.controller('indexCtrl', ['$scope', '$http', 'Services','$rootScope', '
     $scope.DangXuat = function () {
         $rootScope.isLoged = false;
         Services.logout();
+    };
 
-    }
+    $scope.tukhoa =""; $scope.closeSearch = false;
+    $scope.timkiem = function (keyEvent) {
+        if (keyEvent.which === 13){
+            // console.log('search');
+            // $http.get(url_api + 'mathang?tukhoa='+$scope.keyword)
+            //     .success(function (response) {
+            //         $scope.mhsearch = response;
+            //         console.log(response);
+            //     });
+            sharedService.setkeyword($scope.tukhoa);
+            $scope.closeSearch = true;
+            $state.go('result');
+        }
+    };
 }]);

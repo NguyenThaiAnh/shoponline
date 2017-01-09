@@ -7,7 +7,8 @@ angular.module('admin', [
     'listproductCtrl',
     'viewproductCtrl',
     'addproductCtrl',
-    'updateproductCtrl'
+    'updateproductCtrl',
+    'listbillCtrl'
 ]);
 
 angular.module('admin')

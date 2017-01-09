@@ -18,6 +18,14 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
   <script src="/js/jquery.min.js"></script>
+
+  <!--Angular-->
+
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/js/angular-local-storage.js"></script>
+  <script src="/js/angular-ui-router.js"></script>
+  <script src="/js/angular-flexslider.js"></script>
+
   <link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
   <link href='//fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300' rel='stylesheet' type='text/css'>
   <!--search jQuery-->
@@ -82,9 +90,8 @@
       <div class="top-right">
         <ul ng-controller="indexCtrl">
           <li><a ui-sref="checkout">Thanh toán</a></li>
-          <li><a ng-show="!isLoged" ui-sref="login">Đăng nhập</a></li>
-          <li><a ng-show="!isLoged" ui-sref="signup"> Đăng ký </a></li>
-          <li><a href="" ng-show="isLoged" ng-click="DangXuat()"> Đăng xuất </a></li>
+          <li><a ng-show="!isLoged" ui-sref="login">Đăng nhập</a><a ng-show="isLoged">Xin chào, {{infouser.username}}</a></li>
+          <li><a ng-show="!isLoged" ui-sref="signup"> Đăng ký </a><a href="" ng-show="isLoged" ng-click="DangXuat()"> Đăng xuất </a></li>
         </ul>
       </div>
       <div class="clearfix"></div>
@@ -178,8 +185,7 @@
                     </div>
                   </ul>
                 </li>
-                <li><a href="codes.html">Dịch vụ</a></li>
-                <li><a href="mail.html">Liên hệ</a></li>
+                <li><a ui-sref="contact">Liên hệ</a></li>
               </ul>
             </div>
           </nav>
@@ -189,8 +195,8 @@
             <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
           </ul> <!-- cd-header-buttons -->
           <div id="cd-search" class="cd-search">
-            <form action="#" method="post">
-              <input name="Search" type="search" placeholder="Tìm kiếm...">
+            <form ng-controller="indexCtrl">
+              <input name="Search" type="search" placeholder="Tìm kiếm..." ng-keypress="timkiem($event)" ng-model="tukhoa" ng-hide="closeSearch == true">
             </form>
           </div>
         </div>
@@ -230,9 +236,10 @@
       <div class="col-md-3 footer-grid">
         <h4>Tài khoản</h4>
         <ul>
+          <li><div id="fb-root"></div></li>
           <li><a ui-sref="checkout">Thanh toán</a></li>
-          <li><a href="login.html">Đăng nhập</a></li>
-          <li><a href="registered.html"> Đăng ký </a></li>
+          <li><a ui-sref="login" ng-show="!isLoged">Đăng nhập</a><a href="" ng-show="isLoged" ng-click="DangXuat()"> Đăng xuất </a></li>
+          <li><a ui-sref="login" ng-show="!isLoged"> Đăng ký </a></li>
         </ul>
       </div>
       <div class="col-md-3 footer-grid">
@@ -241,8 +248,7 @@
           <li><a ui-sref="home">Trang chủ</a></li>
           <li><a ui-sref="menProduct.nam" ui-sref-active="activeState" >Đồ Nam</a></li>
           <li><a ui-sref="women">Đồ Nữ</a></li>
-          <li><a href="mail.html">Dịch vụ</a></li>
-          <li><a href="products1.html">Liên hệ</a></li>
+          <li><a ui-sref="contact">Liên hệ</a></li>
         </ul>
       </div>
       <div class="col-md-3 footer-grid foot">
@@ -270,22 +276,22 @@
   </div>
 </div>
 
-<!--References-->
-<script src="/bower_components/angular/angular.js"></script>
-<script src="/js/angular-local-storage.js"></script>
-<script src="/js/angular-ui-router.js"></script>
-<script src="/js/angular-flexslider.js"></script>
-
+<!--Facebook-->
+<script src="/js/all.js"></script>
+<script src="/js/sdk.js"></script>
 
 <!--My Controller-->
 <script src="/controllers/modules.js"></script>
 <script src="/services/services.js"></script>
+<script src="/services/shared.js"></script>
 <script src="/controllers/routes.js"></script>
+<script src="/controllers/indexCtrl.js"></script>
+<script src="/controllers/homeCtrl.js"></script>
 <script src="/controllers/menctrl.js"></script>
 <script src="/controllers/menItemCtrl.js"></script>
-<script src="/controllers/indexCtrl.js"></script>
 <script src="/controllers/loginCtrl.js"></script>
 <script src="/controllers/signupCtrl.js"></script>
+<script src="/controllers/searchCtrl.js"></script>
 <!--<script src="components/version/version.js"></script>-->
 <!--<script src="components/version/version-directive.js"></script>-->
 <!--<script src="components/version/interpolate-filter.js"></script>-->

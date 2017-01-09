@@ -8,8 +8,6 @@ var url_api = "http://localhost:57919/api/v1/";
 menCtrl.controller('menCtrl', ['$scope', '$http', 'url', 'Services', '$rootScope',
     function ($scope, $http, url, Services, $rootScope) {
 
-    $rootScope.abc = Services.dsdathang().length;
-
     // Get list product of men
     $http.get(url_api + url)
         .success(function (response) {

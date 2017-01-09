@@ -5,7 +5,7 @@ angular.module('shop')
             .state("home", {
                 url: "/",
                 templateUrl: "views/index2.html",
-                controller: 'indexCtrl'
+                controller: 'homeCtrl'
             })
             .state("menProduct", {
                 url: "/nam",
@@ -178,14 +178,23 @@ angular.module('shop')
                 controller: 'indexCtrl'
             })
             .state("login", {
-                url: "/login",
+                url: "/dang-nhap",
                 templateUrl: "views/login.html",
                 controller: 'loginCtrl'
             })
             .state("signup", {
-                url: "/signup",
+                url: "/dang-ky",
                 templateUrl: "views/signup.html",
                 controller: 'signupCtrl'
+            })
+            .state("contact", {
+                url: "/lien-he",
+                templateUrl: "views/contact.html"
+            })
+            .state("result", {
+                url: "/tim-kiem",
+                templateUrl: "views/result.html",
+                controller: 'searchCtrl'
             })
             .state('otherwise', {
                 url: '/404',
@@ -199,9 +208,33 @@ angular.module('shop')
             requireBase: true,
             rewriteLinks: false
         });
-});
-angular.module('shop').run(function ($rootScope, $state, Services) {
-    $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
 
-    })
+        // FacebookProvider.init('619254434951876');
+});
+angular.module('shop').run(function ($rootScope, $state, Services, $window) {
+    $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
+        $rootScope.abc = Services.dsdathang().length;
+        $rootScope.TongGia = Services.tongtien();
+
+        if (!Services.isLoged()){
+            $rootScope.isLoged = false;
+            $rootScope.infouser = {username: "", password:""};
+        }
+        else {
+            $rootScope.isLoged = true;
+            $rootScope.infouser = Services.infouser();
+
+        }
+
+        $window.fbAsyncInit = function() {
+            FB.init({
+                appId: '619254434951876',
+                status: true,
+                cookie: true,
+                xfbml: true,
+                version: 'v2.4'
+            });
+        };
+
+    });
 });
