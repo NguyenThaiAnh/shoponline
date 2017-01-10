@@ -12,5 +12,6 @@ namespace WebApplication2.Models
         public System.DateTime Ngay { get; set; }
         public int TongTien { get; set; }
         public string TinhTrang { get; set; }
-    }
+        public string TenKH { get; set; }
+    } 
 }

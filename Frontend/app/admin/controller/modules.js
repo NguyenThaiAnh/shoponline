@@ -8,7 +8,10 @@ angular.module('admin', [
     'viewproductCtrl',
     'addproductCtrl',
     'updateproductCtrl',
-    'listbillCtrl'
+    'listbillCtrl',
+    'viewbillCtrl',
+    'updatebillCtrl',
+    'listcustomerCtrl'
 ]);
 
 angular.module('admin')

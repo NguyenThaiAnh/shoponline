@@ -18,7 +18,6 @@ namespace WebApplication2.Models
         public ACCOUNT()
         {
             this.ACCOUNTADMINs = new HashSet<ACCOUNTADMIN>();
-            this.KHACHHANGs = new HashSet<KHACHHANG>();
         }
     
         public string Username { get; set; }
@@ -28,7 +27,5 @@ namespace WebApplication2.Models
         public virtual ACCOUNTTYPE ACCOUNTTYPE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ACCOUNTADMIN> ACCOUNTADMINs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KHACHHANG> KHACHHANGs { get; set; }
     }
 }

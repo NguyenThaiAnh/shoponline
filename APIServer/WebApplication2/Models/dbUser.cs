@@ -12,8 +12,6 @@ namespace WebApplication2.Models
         public string Email { get; set; }
         public int SDT { get; set; }
         public string DiaChi { get; set; }
-        public string IDAccount { get; set; }
-
         public string UserName { get; set; }
         public string PassWord { get; set; }
 

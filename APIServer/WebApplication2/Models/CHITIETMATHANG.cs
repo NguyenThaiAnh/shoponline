@@ -14,12 +14,6 @@ namespace WebApplication2.Models
     
     public partial class CHITIETMATHANG
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CHITIETMATHANG()
-        {
-            this.CHITIETHOADONs = new HashSet<CHITIETHOADON>();
-        }
-    
         public int ID { get; set; }
         public string IDCTMH { get; set; }
         public string IDMatHang { get; set; }
@@ -27,8 +21,6 @@ namespace WebApplication2.Models
         public Nullable<int> Gia { get; set; }
         public Nullable<int> SoLuong { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETHOADON> CHITIETHOADONs { get; set; }
         public virtual MATHANG MATHANG { get; set; }
     }
 }

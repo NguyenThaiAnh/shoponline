@@ -46,7 +46,8 @@
                     </div>
                     <div class="key">
                         <i class="fa fa-fw fa-phone" aria-hidden="true"></i>
-                        <input  type="text" placeholder="Điện thoại" ng-model="user.SDT" required>
+                        <input  type="text" placeholder="Điện thoại" maxlength="20" ng-model="user.SDT" required
+                                onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
                         <div class="clearfix"></div>
                     </div>
                     <input type="submit" ng-click="signup()" value="Đăng ký">

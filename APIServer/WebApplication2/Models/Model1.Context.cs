@@ -30,11 +30,13 @@ namespace WebApplication2.Models
         public virtual DbSet<ACCOUNTTYPE> ACCOUNTTYPEs { get; set; }
         public virtual DbSet<CHITIETHOADON> CHITIETHOADONs { get; set; }
         public virtual DbSet<CHITIETMATHANG> CHITIETMATHANGs { get; set; }
+        public virtual DbSet<CHITIETMATHANG_BACKLOG> CHITIETMATHANG_BACKLOG { get; set; }
         public virtual DbSet<CUAHANG> CUAHANGs { get; set; }
         public virtual DbSet<HOADON> HOADONs { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<LOAIHANG> LOAIHANGs { get; set; }
         public virtual DbSet<MATHANG> MATHANGs { get; set; }
+        public virtual DbSet<MATHANG_BACKLOG> MATHANG_BACKLOG { get; set; }
         public virtual DbSet<SUBLOAIHANG> SUBLOAIHANGs { get; set; }
     }
 }

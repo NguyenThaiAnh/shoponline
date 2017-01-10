@@ -17,9 +17,9 @@ signupCtrl.controller('signupCtrl', ['$scope', '$http', 'Services', '$window',
         $scope.signup = function () {
             var item = $scope.user;
 
-            if ($scope.user.Ten == "" || $scope.user.UserName == "" || $scope.user.Email == "" ||
-                $scope.user.PassWord == "" || $scope.user.repassword != $scope.user.PassWord ||
-                $scope.user.DiaChi == "" || $scope.user.SDT == "") {
+            if ($scope.user.Ten == undefined || $scope.user.UserName == undefined || $scope.user.Email == undefined ||
+                $scope.user.PassWord == undefined || $scope.user.repassword != $scope.user.PassWord ||
+                $scope.user.DiaChi == undefined || $scope.user.SDT == undefined) {
 
                 $window.alert("Vui lòng kiểm tra lại thông tin!");
 

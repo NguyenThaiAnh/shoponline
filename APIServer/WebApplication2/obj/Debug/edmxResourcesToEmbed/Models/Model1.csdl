@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="SHOP2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="SHOPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="ACCOUNT">
     <Key>
       <PropertyRef Name="Username" />
@@ -9,7 +9,6 @@
     <Property Name="IDType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="ACCOUNTTYPE" Relationship="Self.FK__ACCOUNT__IDType__1FCDBCEB" FromRole="ACCOUNT" ToRole="ACCOUNTTYPE" />
     <NavigationProperty Name="ACCOUNTADMINs" Relationship="Self.FK__ACCOUNTAD__Accou__22AA2996" FromRole="ACCOUNT" ToRole="ACCOUNTADMIN" />
-    <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__IDAcc__25869641" FromRole="ACCOUNT" ToRole="KHACHHANG" />
   </EntityType>
   <EntityType Name="ACCOUNTADMIN">
     <Key>
@@ -35,25 +34,34 @@
       <PropertyRef Name="IDCTHD" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDCTHD" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="IDCTHD" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDChiTietMatHang" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="IDHoaDon" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="SoLuong" Type="Int32" />
-    <NavigationProperty Name="CHITIETMATHANG" Relationship="Self.FK__CHITIETHO__IDChi__2B3F6F97" FromRole="CHITIETHOADON" ToRole="CHITIETMATHANG" />
-    <NavigationProperty Name="HOADON" Relationship="Self.FK__CHITIETHO__IDHoa__2C3393D0" FromRole="CHITIETHOADON" ToRole="HOADON" />
+    <NavigationProperty Name="HOADON" Relationship="Self.FK__CHITIETHO__IDHoa__2A4B4B5E" FromRole="CHITIETHOADON" ToRole="HOADON" />
   </EntityType>
   <EntityType Name="CHITIETMATHANG">
     <Key>
       <PropertyRef Name="IDCTMH" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDCTMH" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="IDCTMH" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDMatHang" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Size" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
     <Property Name="Gia" Type="Int32" />
     <Property Name="SoLuong" Type="Int32" />
-    <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHO__IDChi__2B3F6F97" FromRole="CHITIETMATHANG" ToRole="CHITIETHOADON" />
     <NavigationProperty Name="MATHANG" Relationship="Self.FK__CHITIETMA__IDMat__1B0907CE" FromRole="CHITIETMATHANG" ToRole="MATHANG" />
+  </EntityType>
+  <EntityType Name="CHITIETMATHANG_BACKLOG">
+    <Key>
+      <PropertyRef Name="IDCTMH" />
+    </Key>
+    <Property Name="IDCTMH" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDMatHang" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Size" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Gia" Type="Int32" />
+    <Property Name="SoLuong" Type="Int32" />
+    <NavigationProperty Name="MATHANG_BACKLOG" Relationship="Self.FK__CHITIETMA__IDMat__2F10007B" FromRole="CHITIETMATHANG_BACKLOG" ToRole="MATHANG_BACKLOG" />
   </EntityType>
   <EntityType Name="CUAHANG">
     <Key>
@@ -70,34 +78,33 @@
       <PropertyRef Name="IDHOADON" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDHOADON" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="IDHOADON" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDKhachHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Ngay" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="TongTien" Type="Int32" Nullable="false" />
     <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHO__IDHoa__2C3393D0" FromRole="HOADON" ToRole="CHITIETHOADON" />
-    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__IDKhachH__286302EC" FromRole="HOADON" ToRole="KHACHHANG" />
+    <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHO__IDHoa__2A4B4B5E" FromRole="HOADON" ToRole="CHITIETHOADON" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__IDKhachH__276EDEB3" FromRole="HOADON" ToRole="KHACHHANG" />
   </EntityType>
   <EntityType Name="KHACHHANG">
     <Key>
       <PropertyRef Name="IDKHACHHANG" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDKHACHHANG" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="IDKHACHHANG" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Ten" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="SDT" Type="Int32" Nullable="false" />
     <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IDAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="ACCOUNT" Relationship="Self.FK__KHACHHANG__IDAcc__25869641" FromRole="KHACHHANG" ToRole="ACCOUNT" />
-    <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__IDKhachH__286302EC" FromRole="KHACHHANG" ToRole="HOADON" />
+    <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__IDKhachH__276EDEB3" FromRole="KHACHHANG" ToRole="HOADON" />
   </EntityType>
   <EntityType Name="LOAIHANG">
     <Key>
       <PropertyRef Name="IDLOAIHANG" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDLOAIHANG" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="IDLOAIHANG" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -109,7 +116,7 @@
       <PropertyRef Name="IDMATHANG" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDMATHANG" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="IDMATHANG" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenMH" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="IDLoaiHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="IDSubLoaiHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
@@ -123,12 +130,28 @@
     <NavigationProperty Name="LOAIHANG" Relationship="Self.FK__MATHANG__IDLoaiH__173876EA" FromRole="MATHANG" ToRole="LOAIHANG" />
     <NavigationProperty Name="SUBLOAIHANG" Relationship="Self.FK__MATHANG__IDSubLo__182C9B23" FromRole="MATHANG" ToRole="SUBLOAIHANG" />
   </EntityType>
+  <EntityType Name="MATHANG_BACKLOG">
+    <Key>
+      <PropertyRef Name="IDMATHANG" />
+    </Key>
+    <Property Name="IDMATHANG" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenMH" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDLoaiHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDSubLoaiHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="URLHinhAnh1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="URLHinhAnh2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="URLHinhAnh3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GiaMoi" Type="Int32" />
+    <Property Name="GiaCu" Type="Int32" />
+    <NavigationProperty Name="CHITIETMATHANG_BACKLOG" Relationship="Self.FK__CHITIETMA__IDMat__2F10007B" FromRole="MATHANG_BACKLOG" ToRole="CHITIETMATHANG_BACKLOG" />
+  </EntityType>
   <EntityType Name="SUBLOAIHANG">
     <Key>
       <PropertyRef Name="IDSUBLH" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDSUBLH" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="IDSUBLH" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDLoaiHang" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
     <Property Name="TenLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -159,31 +182,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__KHACHHANG__IDAcc__25869641">
-    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
-    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ACCOUNT">
-        <PropertyRef Name="Username" />
-      </Principal>
-      <Dependent Role="KHACHHANG">
-        <PropertyRef Name="IDAccount" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__CHITIETHO__IDChi__2B3F6F97">
-    <End Role="CHITIETMATHANG" Type="Self.CHITIETMATHANG" Multiplicity="1" />
-    <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CHITIETMATHANG">
-        <PropertyRef Name="IDCTMH" />
-      </Principal>
-      <Dependent Role="CHITIETHOADON">
-        <PropertyRef Name="IDChiTietMatHang" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__CHITIETHO__IDHoa__2C3393D0">
+  <Association Name="FK__CHITIETHO__IDHoa__2A4B4B5E">
     <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
     <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
     <ReferentialConstraint>
@@ -207,7 +206,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HOADON__IDKhachH__286302EC">
+  <Association Name="FK__CHITIETMA__IDMat__2F10007B">
+    <End Role="MATHANG_BACKLOG" Type="Self.MATHANG_BACKLOG" Multiplicity="1" />
+    <End Role="CHITIETMATHANG_BACKLOG" Type="Self.CHITIETMATHANG_BACKLOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATHANG_BACKLOG">
+        <PropertyRef Name="IDMATHANG" />
+      </Principal>
+      <Dependent Role="CHITIETMATHANG_BACKLOG">
+        <PropertyRef Name="IDMatHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADON__IDKhachH__276EDEB3">
     <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
     <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
     <ReferentialConstraint>
@@ -261,11 +272,13 @@
     <EntitySet Name="ACCOUNTTYPEs" EntityType="Self.ACCOUNTTYPE" />
     <EntitySet Name="CHITIETHOADONs" EntityType="Self.CHITIETHOADON" />
     <EntitySet Name="CHITIETMATHANGs" EntityType="Self.CHITIETMATHANG" />
+    <EntitySet Name="CHITIETMATHANG_BACKLOG" EntityType="Self.CHITIETMATHANG_BACKLOG" />
     <EntitySet Name="CUAHANGs" EntityType="Self.CUAHANG" />
     <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
     <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
     <EntitySet Name="LOAIHANGs" EntityType="Self.LOAIHANG" />
     <EntitySet Name="MATHANGs" EntityType="Self.MATHANG" />
+    <EntitySet Name="MATHANG_BACKLOG" EntityType="Self.MATHANG_BACKLOG" />
     <EntitySet Name="SUBLOAIHANGs" EntityType="Self.SUBLOAIHANG" />
     <AssociationSet Name="FK__ACCOUNT__IDType__1FCDBCEB" Association="Self.FK__ACCOUNT__IDType__1FCDBCEB">
       <End Role="ACCOUNTTYPE" EntitySet="ACCOUNTTYPEs" />
@@ -275,15 +288,7 @@
       <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
       <End Role="ACCOUNTADMIN" EntitySet="ACCOUNTADMINs" />
     </AssociationSet>
-    <AssociationSet Name="FK__KHACHHANG__IDAcc__25869641" Association="Self.FK__KHACHHANG__IDAcc__25869641">
-      <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
-      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__CHITIETHO__IDChi__2B3F6F97" Association="Self.FK__CHITIETHO__IDChi__2B3F6F97">
-      <End Role="CHITIETMATHANG" EntitySet="CHITIETMATHANGs" />
-      <End Role="CHITIETHOADON" EntitySet="CHITIETHOADONs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__CHITIETHO__IDHoa__2C3393D0" Association="Self.FK__CHITIETHO__IDHoa__2C3393D0">
+    <AssociationSet Name="FK__CHITIETHO__IDHoa__2A4B4B5E" Association="Self.FK__CHITIETHO__IDHoa__2A4B4B5E">
       <End Role="HOADON" EntitySet="HOADONs" />
       <End Role="CHITIETHOADON" EntitySet="CHITIETHOADONs" />
     </AssociationSet>
@@ -291,7 +296,11 @@
       <End Role="MATHANG" EntitySet="MATHANGs" />
       <End Role="CHITIETMATHANG" EntitySet="CHITIETMATHANGs" />
     </AssociationSet>
-    <AssociationSet Name="FK__HOADON__IDKhachH__286302EC" Association="Self.FK__HOADON__IDKhachH__286302EC">
+    <AssociationSet Name="FK__CHITIETMA__IDMat__2F10007B" Association="Self.FK__CHITIETMA__IDMat__2F10007B">
+      <End Role="MATHANG_BACKLOG" EntitySet="MATHANG_BACKLOG" />
+      <End Role="CHITIETMATHANG_BACKLOG" EntitySet="CHITIETMATHANG_BACKLOG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADON__IDKhachH__276EDEB3" Association="Self.FK__HOADON__IDKhachH__276EDEB3">
       <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
       <End Role="HOADON" EntitySet="HOADONs" />
     </AssociationSet>

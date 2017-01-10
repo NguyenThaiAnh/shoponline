@@ -12,6 +12,6 @@ namespace WebApplication2.Models
         public string TenMH { get; set; }
         public string IDChiTietMatHang { get; set; }
         public string IDHoaDon { get; set; }
-        public Nullable<int> SoLuong { get; set; }
+        public string SoLuong { get; set; }
     }
 }

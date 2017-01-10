@@ -211,7 +211,7 @@ angular.module('shop')
 
         // FacebookProvider.init('619254434951876');
 });
-angular.module('shop').run(function ($rootScope, $state, Services, $window) {
+angular.module('shop').run(function ($rootScope, $state, Services) {
     $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
         $rootScope.abc = Services.dsdathang().length;
         $rootScope.TongGia = Services.tongtien();
@@ -223,18 +223,10 @@ angular.module('shop').run(function ($rootScope, $state, Services, $window) {
         else {
             $rootScope.isLoged = true;
             $rootScope.infouser = Services.infouser();
-
+            if (next.name == 'login' || next.name == 'signup'){
+                event.preventDefault();
+                $state.go('home');
+            }
         }
-
-        $window.fbAsyncInit = function() {
-            FB.init({
-                appId: '619254434951876',
-                status: true,
-                cookie: true,
-                xfbml: true,
-                version: 'v2.4'
-            });
-        };
-
     });
 });

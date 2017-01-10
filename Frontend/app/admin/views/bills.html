@@ -40,6 +40,7 @@
                     <table class="table table-bordered table-hover table-striped">
                         <thead>
                         <tr>
+                            <th> STT </th>
                             <th> ID </th>
                             <th> Khách hàng </th>
                             <th> Ngày </th>
@@ -50,15 +51,16 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="hd in hoadon | startFrom:currentPage*pageSize | limitTo:pageSize | filter:search">
+                            <td> {{$index+1}} </td>
                             <td>{{hd.ID}}</td>
                             <td>{{hd.TenKH}}</td>
                             <td>{{hd.Ngay}}</td>
                             <td>{{hd.TongTien}}</td>
                             <td>{{hd.TinhTrang}}</td>
                             <td align="center">
-                                <button class="btn btn-info btn-sm" ui-sref="parentproducts.view.child({id: hang.ID})" disabled><i class="fa fa-fw fa-search"></i></button>
-                                <button class="btn btn-warning btn-sm" ui-sref="parentproducts.update.child({id: hang.ID})" disabled><i class="fa fa-fw fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm" ng-click="xoaSanPham(hang.ID)" disabled><i class="fa fa-fw fa-remove"></i></button>
+                                <button class="btn btn-info btn-sm" ui-sref="bills.view.child({id: hd.ID})"><i class="fa fa-fw fa-search"></i></button>
+                                <button class="btn btn-warning btn-sm" ui-sref="bills.update.child({id: hd.ID})"><i class="fa fa-fw fa-edit"></i></button>
+                                <!--<button class="btn btn-danger btn-sm" ng-click="xoaSanPham(hang.ID)" disabled><i class="fa fa-fw fa-remove"></i></button>-->
                             </td>
                         </tr>
                         </tbody>

@@ -19,13 +19,6 @@
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
   <script src="/js/jquery.min.js"></script>
 
-  <!--Angular-->
-
-  <script src="/bower_components/angular/angular.js"></script>
-  <script src="/js/angular-local-storage.js"></script>
-  <script src="/js/angular-ui-router.js"></script>
-  <script src="/js/angular-flexslider.js"></script>
-
   <link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
   <link href='//fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300' rel='stylesheet' type='text/css'>
   <!--search jQuery-->
@@ -76,6 +69,10 @@
   <link rel="stylesheet" href="/css/app.css">
   <!--<script src="/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>-->
   <!--//End-rate-->
+
+  <!--Dialog-->
+  <link href="/css/ngDialog.css" rel="stylesheet" type="text/css">
+  <link href="/css/ngDialog-theme-default.css" rel="stylesheet" type="text/css">
 
   <base href="/">
 </head>
@@ -153,33 +150,33 @@
                     </div>
                   </ul>
                 </li>
-                <li class="active"><a ui-sref="womenProduct" class="act" style="padding-right: initial;">Đồ Nữ</a></li>
+                <li class="active"><a href="" class="act" style="padding-right: initial;">Đồ Nữ</a></li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
                   <ul class="dropdown-menu multi-column columns-3">
                     <div class="row">
                       <div class="col-sm-3  multi-gd-img">
                         <ul class="multi-column-dropdown">
                           <h6>Áo</h6>
-                          <li><a href="products.html">Áo kiểu</a></li>
-                          <li><a href="products.html">Đầm nữ</a></li>
-                          <li><a href="products.html">Sơmi tay ngắn</a></li>
-                          <li><a href="products.html">Sơmi tay dài</a></li>
-                          <li><a href="products.html">Thun ngắn</a></li>
-                          <li><a href="products.html">Thun dài</a></li>
+                          <li><a href="">Áo kiểu</a></li>
+                          <li><a href="">Đầm nữ</a></li>
+                          <li><a href="">Sơmi tay ngắn</a></li>
+                          <li><a href="">Sơmi tay dài</a></li>
+                          <li><a href="">Thun ngắn</a></li>
+                          <li><a href="">Thun dài</a></li>
                         </ul>
                       </div>
                       <div class="col-sm-3  multi-gd-img">
                         <ul class="multi-column-dropdown">
                           <h6>Quần</h6>
-                          <li><a href="products.html">Jean</a></li>
+                          <li><a href="">Jean</a></li>
                         </ul>
                       </div>
                       <div class="col-sm-3  multi-gd-img">
-                        <a href="products1.html"><img src="images/woo.jpg" alt=" "/></a>
+                        <a href=""><img src="images/woo.jpg" alt=" "/></a>
                       </div>
                       <div class="col-sm-3  multi-gd-img">
-                        <a href="products1.html"><img src="images/woo1.jpg" alt=" "/></a>
+                        <a href=""><img src="images/woo1.jpg" alt=" "/></a>
                       </div>
                       <div class="clearfix"></div>
                     </div>
@@ -235,8 +232,7 @@
       </div>
       <div class="col-md-3 footer-grid">
         <h4>Tài khoản</h4>
-        <ul>
-          <li><div id="fb-root"></div></li>
+        <ul ng-controller="indexCtrl">
           <li><a ui-sref="checkout">Thanh toán</a></li>
           <li><a ui-sref="login" ng-show="!isLoged">Đăng nhập</a><a href="" ng-show="isLoged" ng-click="DangXuat()"> Đăng xuất </a></li>
           <li><a ui-sref="login" ng-show="!isLoged"> Đăng ký </a></li>
@@ -247,7 +243,7 @@
         <ul>
           <li><a ui-sref="home">Trang chủ</a></li>
           <li><a ui-sref="menProduct.nam" ui-sref-active="activeState" >Đồ Nam</a></li>
-          <li><a ui-sref="women">Đồ Nữ</a></li>
+          <li><a href="">Đồ Nữ</a></li>
           <li><a ui-sref="contact">Liên hệ</a></li>
         </ul>
       </div>
@@ -276,9 +272,12 @@
   </div>
 </div>
 
-<!--Facebook-->
-<script src="/js/all.js"></script>
-<script src="/js/sdk.js"></script>
+<!--Angular-->
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/js/angular-local-storage.js"></script>
+<script src="/js/angular-ui-router.js"></script>
+<script src="/js/angular-flexslider.js"></script>
+<script src="/js/ngDialog.min.js"></script>
 
 <!--My Controller-->
 <script src="/controllers/modules.js"></script>

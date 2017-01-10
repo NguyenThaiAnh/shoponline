@@ -1,0 +1,118 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Xem hoá đơn {{hd.ID}}
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>  <a ui-sref="home">Dashboard</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-money"></i>  <a ui-sref="bills.list">Danh sách hoá đơn</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-search"></i> Hoá đơn {{IDHD}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-fw fa-newspaper-o"></i> Thông tin chung</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Tên khách hàng</label>
+                                <p class="form-control-static">{{hd[0].TenKH}}</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Ngày lập hoá đơn</label>
+                                <p class="form-control-static">{{hd[0].Ngay}}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Tổng tiền</label>
+                                <p class="form-control-static">{{hd[0].TongTien}}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Tình trạng</label>
+                                <input type="text" class="form-control" value={{hd[0].TinhTrang}} disabled>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-fw fa-image"></i> Chi tiết hoá đơn</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th> STT </th>
+                                <th> ID </th>
+                                <th> Sản phẩm </th>
+                                <th> Size </th>
+                                <th> Số lượng </th>
+                                <th> Đơn giá </th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="ct in hd | startFrom:currentPage*pageSize | limitTo:pageSize | filter:search">
+                                <td> {{$index+1}} </td>
+                                <td>{{ct.ID}}</td>
+                                <td>{{ct.TenMH}}</td>
+                                <td>{{ct.Size}}</td>
+                                <td>{{ct.SoLuong}}</td>
+                                <td>{{ct.DonGia}}</td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+
+
+            <div class="row">
+                <div class="col-lg-offset-10">
+                    <div class="form-group">
+                        <button class="btn btn-success" ui-sref="bills.list"><i class="fa fa-fw fa-backward"></i>&nbsp;Trở lại</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->

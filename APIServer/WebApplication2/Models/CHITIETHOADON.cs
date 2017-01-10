@@ -20,7 +20,6 @@ namespace WebApplication2.Models
         public string IDHoaDon { get; set; }
         public Nullable<int> SoLuong { get; set; }
     
-        public virtual CHITIETMATHANG CHITIETMATHANG { get; set; }
         public virtual HOADON HOADON { get; set; }
     }
 }

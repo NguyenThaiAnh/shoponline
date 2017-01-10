@@ -9,17 +9,16 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApplication2.Models;
-using Twilio;
+
 
 namespace WebApplication2.ServiceDB
 {
     public class Service
     {
         SHOPEntities db = new SHOPEntities();
-        private string AccountSid = "ACb38aaa20d08ac4a9bfcd15614e4d7a7f";
-        private string AuthToken = "66f0883bcabaa29356549da6788f86bb";
 
 
+        //Kiem tra tai khoan 
         public bool checkAcc(string _userName, string _passWord)
         {
             var q = (from e in db.ACCOUNTs
@@ -38,7 +37,6 @@ namespace WebApplication2.ServiceDB
         }
 
 
-        //Cai nay phai dieu chinh lai dataBase de dieu chinh lai khoa ngoai giua KHACHHANG, ADMIN toi ACCOUNT. Thieu mat IDACCOUT
         // lay inforAccount
         public AccInfor getAccInfor(string _userName, string _passWord)
         {
@@ -103,7 +101,6 @@ namespace WebApplication2.ServiceDB
         }
 
         //lay danh sach cac loai hang (khong lay chi tiet)
-
         public List<listMatHang> getListMatHang()
         {
             List<listMatHang> result = new List<listMatHang>();
@@ -119,7 +116,8 @@ namespace WebApplication2.ServiceDB
                          url1 = e.URLHinhAnh1,
                          url2 = e.URLHinhAnh2,
                          url3 = e.URLHinhAnh3,
-
+                         giacu = e.GiaCu,
+                         giamoi = e.GiaMoi
                      }).ToList();
             for (int i = 0; i < q.Count; i++)
             {
@@ -131,6 +129,8 @@ namespace WebApplication2.ServiceDB
                 item.URLHinhAnh1 = q[i].url1;
                 item.URLHinhAnh2 = q[i].url2;
                 item.URLHinhAnh3 = q[i].url3;
+                item.GiaCu = q[i].giacu.ToString();
+                item.GiaMoi = q[i].giamoi.ToString();
                 result.Add(item);
             }
 
@@ -186,7 +186,28 @@ namespace WebApplication2.ServiceDB
 
         //xoa mat hang
         public bool deleteItem(string ID)
-        {                   
+        {
+            //Sao chep du lieu vao BACKLOG                          
+            if (db.MATHANGs.Find(ID) != null)
+            {
+                MATHANG tmp1 = db.MATHANGs.Find(ID);
+                MATHANG_BACKLOG tmp2 = new MATHANG_BACKLOG();
+
+                tmp2.IDMATHANG = ID;
+                tmp2.TenMH = tmp1.TenMH;
+                tmp2.MoTa = tmp1.MoTa;
+                tmp2.IDLoaiHang = tmp1.IDLoaiHang;
+                tmp2.IDSubLoaiHang = tmp1.IDSubLoaiHang;
+                tmp2.URLHinhAnh1 = tmp1.URLHinhAnh1;
+                tmp2.URLHinhAnh2 = tmp1.URLHinhAnh2;
+                tmp2.URLHinhAnh3 = tmp1.URLHinhAnh3;
+                tmp2.GiaMoi = tmp1.GiaMoi;
+                tmp2.GiaCu = tmp1.GiaCu;
+
+                db.MATHANG_BACKLOG.Add(tmp2);
+                db.SaveChanges();
+            }
+
             var q = (from e in db.CHITIETMATHANGs
                      where ID == e.IDMatHang
                      select new
@@ -198,6 +219,16 @@ namespace WebApplication2.ServiceDB
                 if (db.CHITIETMATHANGs.Find(q[i].IDCTMH) != null)
                 {
                     CHITIETMATHANG tmp = db.CHITIETMATHANGs.Find(q[i].IDCTMH);
+                    CHITIETMATHANG_BACKLOG tmp2 = new CHITIETMATHANG_BACKLOG();
+                    tmp2.IDMatHang = ID;
+                    tmp2.IDCTMH = tmp.IDCTMH;
+                    tmp2.Size = tmp.Size;
+                    tmp2.Gia = tmp.Gia;
+                    tmp2.SoLuong = tmp.SoLuong;
+
+                    db.CHITIETMATHANG_BACKLOG.Add(tmp2);
+                    db.SaveChanges();
+
                     db.CHITIETMATHANGs.Remove(tmp);
                     db.SaveChanges();
                 }
@@ -212,6 +243,36 @@ namespace WebApplication2.ServiceDB
             }
 
             return true;
+        }
+
+        //lay danh sach tat ca hoa don
+        internal List<HoaDonKH> listallHoaDon()
+        {
+            List<HoaDonKH> tmp = new List<HoaDonKH>();
+            var q = (from e in db.HOADONs
+                     join k in db.KHACHHANGs on e.IDKhachHang equals k.IDKHACHHANG
+                     select new
+                     {
+                         ID = e.IDHOADON,
+                         IDKhachHang = e.IDKhachHang,
+                         TenKH = k.Ten,
+                         Ngay = e.Ngay,
+                         TongTien = e.TongTien,
+                         TinhTrang = e.TinhTrang
+                     }).ToList();
+            
+            for (int i=0; i<q.Count; i++)
+            {
+                HoaDonKH tmp2 = new HoaDonKH();
+                tmp2.ID = q[i].ID;
+                tmp2.IDKhachHang = q[i].IDKhachHang;
+                tmp2.TenKH = q[i].TenKH;
+                tmp2.TongTien = q[i].TongTien;
+                tmp2.TinhTrang = q[i].TinhTrang;
+                tmp.Add(tmp2);
+            }
+
+            return tmp;
         }
 
         //cap nhat mat hang bao gom cap nhat chi tiet 
@@ -251,8 +312,6 @@ namespace WebApplication2.ServiceDB
 
             return true;
         }
-
-
 
         //them mat hang bao gom them chi tiet 
         public bool addItem(itemMatHang input)
@@ -295,6 +354,36 @@ namespace WebApplication2.ServiceDB
                 db.SaveChanges();
             }
             return true;
+        }
+
+        public List<dbUser> getlistCusInfor()
+        {
+            List<dbUser> result = new List<dbUser>();
+            var q = (from e in db.KHACHHANGs
+                     //join k in db.LOAIHANGs on e.IDLoaiHang equals k.IDLOAIHANG
+                     //join m in db.SUBLOAIHANGs on e.IDSubLoaiHang equals m.IDSUBLH
+                     select new
+                     {
+                         id = e.IDKHACHHANG,
+                         user = e.IDAccount,
+                         ten = e.Ten,
+                         email = e.Email,
+                         diachi = e.DiaChi,
+                         sdt = e.SDT
+                     }).ToList();
+            for (int i = 0; i < q.Count; i++)
+            {
+                dbUser item = new dbUser();
+                item.ID = q[i].id;
+                item.UserName = q[i].user;
+                item.Ten = q[i].ten;
+                item.Email = q[i].email;
+                item.DiaChi = q[i].diachi;
+                item.SDT = q[i].sdt;
+                result.Add(item);
+            }
+
+            return result;
         }
 
         //lay chi tiet 1 mat hang voi id cu the
@@ -365,7 +454,6 @@ namespace WebApplication2.ServiceDB
         }
 
         //lay danh sach hoa don cua 1 khach hang
-
         public List<HoaDonKH> listHoaDon(string id)
         {
             List<HoaDonKH> result = new List<HoaDonKH>();
@@ -392,58 +480,72 @@ namespace WebApplication2.ServiceDB
         }
 
         //lay chi tiet cua 1 hoa don
-
-        public List<ChiTietHD> chiTietHD(string idHD)
+        public List<CTHD> chiTietHD(string idHD)
         {
-            List<ChiTietHD> result = new List<ChiTietHD>();
+            List<CTHD> result = new List<CTHD>();
             var q = (from e in db.CHITIETHOADONs
                      join k in db.CHITIETMATHANGs on e.IDChiTietMatHang equals k.IDCTMH
                      join l in db.MATHANGs on k.IDMatHang equals l.IDMATHANG
+                     join m in db.HOADONs on e.IDHoaDon equals m.IDHOADON
+                     join n in db.KHACHHANGs on m.IDKhachHang equals n.IDKHACHHANG
                      where e.IDHoaDon == idHD
                      select new
                      {
                          id = e.IDCTHD,
-                         IdChiTietMH = e.IDChiTietMatHang,
+                         idKhachHang = n.IDKHACHHANG,
                          tenMatHang = l.TenMH,
-                         idHD = e.IDHoaDon,
-                         soLuong = e.SoLuong
+                         size = k.Size,
+                         soluong = e.SoLuong,
+                         dongia = k.Gia,
+                         ngay = m.Ngay,
+                         tenKH = n.Ten,
+                         tongtien = m.TongTien,
+                         tinhtrang = m.TinhTrang
                      }).ToList();
             for (int i = 0; i < q.Count; i++)
             {
-                ChiTietHD item = new ChiTietHD();
+                CTHD item = new CTHD();
                 item.ID = q[i].id;
-                item.IDChiTietMatHang = q[i].IdChiTietMH;
-                item.IDHoaDon = q[i].idHD;
-                item.SoLuong = q[i].soLuong;
+                item.IDKhachHang = q[i].idKhachHang;
                 item.TenMH = q[i].tenMatHang;
+                item.Size = q[i].size;
+                item.SoLuong = q[i].soluong.ToString();
+                item.DonGia = q[i].dongia.ToString();
+                item.Ngay = q[i].ngay;
+                item.TenKH = q[i].tenKH;
+                item.TongTien = q[i].tongtien.ToString();
+                item.TinhTrang = q[i].tinhtrang;
                 result.Add(item);
             }
             return result;
         }
 
-        //them hoa don
-        public bool themHD(HoaDonKH _hd)
+        //them hoa don bao gom them chi tiet hoa don
+        public bool themHD(itemHoaDon _hd)
         {
-            try
+            HOADON hd = new HOADON();
+            hd.IDKhachHang = _hd.IDKhachHang;
+            hd.Ngay = _hd.Ngay;
+            hd.TinhTrang = _hd.TinhTrang;
+            hd.TongTien = _hd.TongTien;
+
+            db.HOADONs.Add(hd);
+            db.SaveChanges();
+            db.Entry(hd).GetDatabaseValues();
+            string idHoaDon = hd.IDHOADON;
+                
+            for(int i=0; i<_hd.Items.Count; i++)
             {
-                HOADON hd = new HOADON();
-                hd.IDHOADON = _hd.ID;
-                hd.IDKhachHang = _hd.IDKhachHang;
-                hd.Ngay = _hd.Ngay;
-                hd.TinhTrang = _hd.TinhTrang;
-                hd.TongTien = _hd.TongTien;
-                db.HOADONs.Add(hd);
+                CHITIETHOADON tmp = new CHITIETHOADON();
+                tmp.IDHoaDon = idHoaDon;
+                tmp.SoLuong = int.Parse(_hd.Items[i].SoLuong);
+                tmp.IDChiTietMatHang = _hd.Items[i].IDChiTietMatHang;
+                db.CHITIETHOADONs.Add(tmp);
                 db.SaveChanges();
-                var twilio = new TwilioRestClient(AccountSid, AuthToken);
-
-                twilio.SendMessage("+13473345984", "+84963225084", "KH:" + _hd.IDKhachHang + "tong tien:" + _hd.TongTien);
-
-                return true;
             }
-            catch (Exception e)
-            {
-                return false;
-            }
+
+            return true;
+            
         }
 
         //Lay list loai theo gioi tinh
@@ -483,8 +585,6 @@ namespace WebApplication2.ServiceDB
             return tmp;
         }
 
-
-
         //them chi tiet hoa don
         public bool themChiTietHD(ChiTietHD _CTHD)
         {
@@ -492,7 +592,7 @@ namespace WebApplication2.ServiceDB
             ct.IDCTHD = _CTHD.ID;
             ct.IDChiTietMatHang = _CTHD.IDChiTietMatHang;
             ct.IDHoaDon = _CTHD.IDHoaDon;
-            ct.SoLuong = _CTHD.SoLuong;
+            ct.SoLuong = int.Parse(_CTHD.SoLuong);
             try
             {
                 db.CHITIETHOADONs.Add(ct);
@@ -506,7 +606,6 @@ namespace WebApplication2.ServiceDB
         }
 
         //get list mat hang voi loai xac dinh(VD: Quan)
-
         public List<listMatHang> listLoaiHang(string loai)
         {
             List<listMatHang> result = new List<listMatHang>();
@@ -586,47 +685,17 @@ namespace WebApplication2.ServiceDB
 
         }
 
-
-        //Tao tk hoac dang nhap tu thong tin tk fb
-        public int taotkfb(string displayName, string fbId, string displayEmail,
-                            string Gender, string dateOfBirth, string Phone, string Email)
-        {
-            
-            ACCOUNT acc = new ACCOUNT();
-            acc = db.ACCOUNTs.Find(fbId);
-            if (acc != null)
-                return 2;
-            else
-            {
-                acc = new ACCOUNT();
-                acc.Username = fbId;
-                acc.Password = fbId;
-                acc.IDType = "TYP03";
-                db.ACCOUNTs.Add(acc);
-                db.SaveChanges();
-                KHACHHANG kh = new KHACHHANG();
-                kh.IDAccount = fbId;
-                kh.Ten = displayName;
-                kh.Email = Email;
-                kh.SDT = Convert.ToInt32(Phone);
-                db.KHACHHANGs.Add(kh);
-                db.SaveChanges();
-                return 1;
-            }
-        }
-
         //Lay danh sach cac mat hang theo thu tu ban chay nhat
-
         public List<sellingItem> mathangchaynhat()
         {
             List<sellingItem> result = new List<sellingItem>();
-            
+
             var q = (from e in db.CHITIETHOADONs
                      join m in db.CHITIETMATHANGs on e.IDChiTietMatHang equals m.IDCTMH
                      join k in db.MATHANGs on m.IDMatHang equals k.IDMATHANG
                      select new
                      {
-                         id = k.ID,
+                         id = k.IDMATHANG,
                          loai = k.LOAIHANG,
                          subloai = k.SUBLOAIHANG,
                          ten = k.TenMH,
@@ -641,10 +710,10 @@ namespace WebApplication2.ServiceDB
             for (int i = 0; i < h.Count; i++)
             {
                 sellingItem tmp = new sellingItem();
-                tmp.ID = h[i].id.ToString();
+                tmp.ID = h[i].id;
                 tmp.soluong = Convert.ToInt32(h[i].total);
                 var k = (from e in db.MATHANGs
-                         where e.ID.ToString() == tmp.ID
+                         where e.IDMATHANG == tmp.ID
                          select new
                          {
                              loai = e.IDLoaiHang,
@@ -652,34 +721,37 @@ namespace WebApplication2.ServiceDB
                              ten = e.TenMH,
                              url1 = e.URLHinhAnh1,
                              url2 = e.URLHinhAnh2,
-                             url3 = e.URLHinhAnh3
-                         }).ToList();
+                             url3 = e.URLHinhAnh3,
+                             giamoi = e.GiaMoi,
+                             giacu = e.GiaCu
+                         }).FirstOrDefault();
 
-                tmp.Loai = k[0].loai;
-                tmp.SubLoai = k[0].subloai;
-                tmp.Ten = k[0].ten;
-                tmp.URLHinhAnh1 = k[0].url1;
-                tmp.URLHinhAnh2 = k[0].url2;
-                tmp.URLHinhAnh3 = k[0].url3;
+                tmp.Loai = k.loai;
+                tmp.SubLoai = k.subloai;
+                tmp.Ten = k.ten;
+                tmp.URLHinhAnh1 = k.url1;
+                tmp.URLHinhAnh2 = k.url2;
+                tmp.URLHinhAnh3 = k.url3;
+                tmp.GiaMoi = k.giamoi.ToString();
+                tmp.GiaCu = k.giacu.ToString();
                 result.Add(tmp);
             }
             result.OrderByDescending(m => m.soluong);
             return result;
         }
 
+        //tim kiem mat hang 
         public List<listMatHang> timkiem(string search)
         {
-            string lower = search.ToLower();
+            string lower = search;
             lower = string.Join(" ", lower.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
             List<listMatHang> result = new List<listMatHang>();
 
             var q = (from e in db.MATHANGs
-                     
+
                      select new
                      {
                          id = e.IDMATHANG,
-                         
-                         
                          ten = e.TenMH,
                          url1 = e.URLHinhAnh1,
                          url2 = e.URLHinhAnh2,
@@ -687,15 +759,13 @@ namespace WebApplication2.ServiceDB
                          giacu = e.GiaCu,
                          giamoi = e.GiaMoi,
                          Mota = e.MoTa
-
                      }).ToList();
 
             var m = q.Where(x => x.ten.Contains(lower)).ToList();
-            for(int i = 0; i < m.Count; i++)
+            for (int i = 0; i < m.Count; i++)
             {
                 listMatHang tmp = new listMatHang();
                 tmp.ID = m[i].id;
-                
                 tmp.Ten = q[i].ten;
                 tmp.URLHinhAnh1 = q[i].url1;
                 tmp.URLHinhAnh2 = q[i].url2;

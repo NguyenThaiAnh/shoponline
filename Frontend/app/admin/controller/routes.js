@@ -23,7 +23,7 @@ angular.module('admin')
             //Khai bao route them san pham
             .state("parentproducts.add", {
                 url: "/add-product",
-                templateUrl: "views/products.add.html",
+                templateUrl: "views/product.add.html",
                 controller: 'addproductCtrl'
             })
 
@@ -38,7 +38,7 @@ angular.module('admin')
                 params: {
                     id: null
                 },
-                templateUrl: "views/products.view.html",
+                templateUrl: "views/product.view.html",
                 controller: 'viewproductCtrl'
             })
 
@@ -53,7 +53,7 @@ angular.module('admin')
                 params: {
                     id: null
                 },
-                templateUrl: "views/products.update.html",
+                templateUrl: "views/product.update.html",
                 controller: 'updateproductCtrl'
             })
 
@@ -67,6 +67,48 @@ angular.module('admin')
                 url: "/",
                 templateUrl: "views/bills.html",
                 controller: 'listbillCtrl'
+            })
+
+            //Khai bao route hien thi hoa don
+            .state("bills.view", {
+                url: "/view-bill",
+                template: "<ui-view></ui-view>",
+                abstract: true
+            })
+            .state("bills.view.child", {
+                url: "/",
+                params: {
+                    id: null
+                },
+                templateUrl: "views/bill.view.html",
+                controller: 'viewbillCtrl'
+            })
+
+            //Khai bao route cap nhat hoa don
+            .state("bills.update", {
+                url: "/update-bill",
+                template: "<ui-view></ui-view>",
+                abstract: true
+            })
+            .state("bills.update.child", {
+                url: "/",
+                params: {
+                    id: null
+                },
+                templateUrl: "views/bill.update.html",
+                controller: 'updatebillCtrl'
+            })
+
+            //Khai báo route danh sach khack hang
+            .state("customers", {
+                url: "/customers",
+                template: "<ui-view></ui-view>",
+                abstract: true
+            })
+            .state("customers.list", {
+                url: "/",
+                templateUrl: "views/customers.html",
+                controller: 'listcustomerCtrl'
             })
 
             .state('otherwise', {

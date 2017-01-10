@@ -36,7 +36,7 @@ indexCtrl.controller('indexCtrl', ['$scope', '$http', 'Services','$rootScope', '
             }
             console.log(tmp);
 
-            $http.get(url_api + 'User?Username='+Services.infouser().username+'&Password='+Services.infouser().password)
+            $http.get(url_api + 'NguoiDung?Username='+Services.infouser().username+'&Password='+Services.infouser().password)
                 .success(function (response) {
                     $scope.person = response;
                     console.log(response);
@@ -62,7 +62,7 @@ indexCtrl.controller('indexCtrl', ['$scope', '$http', 'Services','$rootScope', '
                         .success(function (data, status, headers, config) {
                             console.log(data);
                             Services.xoatatca();
-                            $rootScope.abc = Services.dsdathang().length;
+                            $state.go('home');
                             $window.alert("Bạn đã đặt hàng thành công!");
 
                         })

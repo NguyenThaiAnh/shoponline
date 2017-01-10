@@ -172,6 +172,44 @@ namespace WebApplication2.Controllers
             }
         }
 
+        /// <summary>
+        /// lay danh sach cac mat hang ban chay
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("MatHangBanChay")]
+        public List<sellingItem> thutumathang()
+        {
+            try
+            {
+                return Service.mathangchaynhat();
+            }
+            catch (Exception e)
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, false));
+
+            }
+        }
+
+        /// <summary>
+        /// lay danh sach cac mat hang theo tu khoa
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("MatHang")]
+        public List<listMatHang> tukhoa(string search)
+        {
+            try
+            {
+                return Service.timkiem(search);
+            }
+            catch (Exception e)
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, false));
+
+            }
+        }
+
         #endregion
 
         #region POST
@@ -256,19 +294,40 @@ namespace WebApplication2.Controllers
         #region GET
 
         /// <summary>
+        /// lay danh sach tat ca hoa don
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Authorize(Roles = "Manager")]
+        [Route("HoaDon")]
+        public List<HoaDonKH> listHD()
+        {
+            List<HoaDonKH> result = new List<HoaDonKH>();
+            try
+            {
+                result = Service.listallHoaDon();
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, e.ToString()));
+            }
+        }
+
+        /// <summary>
         /// lay danh sach hoa don cua 1 khach hang
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [Authorize]
         [HttpGet]
-        [Route("inforHoaDon")]
-        public List<HoaDonKH> inforHD(string id)
+        [Route("HoaDon")]
+        public List<HoaDonKH> inforHD(string idkhachhang)
         {
             List<HoaDonKH> result = new List<HoaDonKH>();
             try
             {
-                result = Service.listHoaDon(id);
+                result = Service.listHoaDon(idkhachhang);
                 return result;
             }
             catch (Exception e)
@@ -282,12 +341,12 @@ namespace WebApplication2.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize(Roles = "Manager")]
         [HttpGet]
-        [Route("chiTietHD")]
-        public List<ChiTietHD> chiTiet(string id)
+        [Route("HoaDon")]
+        public List<CTHD> chiTiet(string id)
         {
-            List<ChiTietHD> result = new List<ChiTietHD>();
+            List<CTHD> result = new List<CTHD>();
             try
             {
                 result = Service.chiTietHD(id);
@@ -311,36 +370,15 @@ namespace WebApplication2.Controllers
         /// <returns></returns>
         [Authorize]
         [HttpPost]
-        [Route("themHD")]
-        public bool themHD(HoaDonKH _input)
+        [Route("HoaDon")]
+        public bool themHD(itemHoaDon _input)
         {
             try
             {
                 Service.themHD(_input);
                 return true;
             }
-            catch (Exception)
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, false));
-            }
-        }
-
-        /// <summary>
-        /// Them chi tiet hoa don cu the
-        /// </summary>
-        /// <param name="_input"></param>
-        /// <returns></returns>
-        [Authorize]
-        [HttpPost]
-        [Route("themCTHD")]
-        public bool themCTHD(ChiTietHD _input)
-        {
-            try
-            {
-                Service.themChiTietHD(_input);
-                return true;
-            }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, false));
             }
@@ -350,9 +388,9 @@ namespace WebApplication2.Controllers
 
         #region PUT
 
-        [Authorize]
+        [Authorize(Roles = "Manager")]
         [HttpPut]
-        [Route("SuaHoaDon")]
+        [Route("HoaDon")]
         public bool suaHD(string id, string status)
         {
             try
@@ -381,19 +419,35 @@ namespace WebApplication2.Controllers
         #region GET
 
         /// <summary>
-        /// Lay chi tiet 1 account cu the
+        /// Lay danh sach khach hang
         /// </summary>
-        /// <param name="UseName"></param>
-        /// <param name="PassWord"></param>
         /// <returns></returns>
         [Authorize]
         [HttpGet]
-        [Route("accInfor")]
-
-        public AccInfor getAccInfor(string UseName, string PassWord)
+        [Route("NguoiDung")]
+        public List<dbUser> getlistCusInfor()
         {
+            List <dbUser> result = Service.getlistCusInfor();
+            if (result != null)
+            {
+                return result;
+            }
+            else
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, "no user"));
+        }
 
-            AccInfor result = Service.getAccInfor(UseName, PassWord);
+        /// <summary>
+        /// Lay chi tiet 1 account cu the
+        /// </summary>
+        /// <param name="Username"></param>
+        /// <param name="Password"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        [Route("NguoiDung")]
+        public AccInfor getAccInfor(string Username, string Password)
+        {
+            AccInfor result = Service.getAccInfor(Username, Password);
             if (result != null)
             {
                 return result;
@@ -402,9 +456,9 @@ namespace WebApplication2.Controllers
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, "invalid account"));
         }
 
-        [Authorize(Roles = "Manager")]
+        //Lay ten cua nguoi dung
         [HttpGet]
-        [Route("user")]
+        [Route("NguoiDung")]
         public string inforUser(string username)
         {
             try
@@ -435,7 +489,7 @@ namespace WebApplication2.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("themUser")]
+        [Route("NguoiDung")]
         public bool themUser(dbUser input)
         {
             try
@@ -445,14 +499,16 @@ namespace WebApplication2.Controllers
                 acc.Username = input.UserName;
                 acc.Password = input.PassWord;
                 acc.IDType = "TYP03";
+
                 db.ACCOUNTs.Add(acc);
                 db.SaveChanges();
+
                 kh.DiaChi = input.DiaChi;
                 kh.Email = input.Email;
-                kh.IDKHACHHANG = input.ID;
-                kh.IDAccount = input.IDAccount;
+                kh.IDAccount = input.UserName;
                 kh.SDT = input.SDT;
                 kh.Ten = input.Ten;
+
                 db.KHACHHANGs.Add(kh);
                 db.SaveChanges();
                 return true;
@@ -470,19 +526,19 @@ namespace WebApplication2.Controllers
         #region
 
         /// <summary>
-        /// sua user chi sua duoc password, ten dia chi, email
+        /// sua user chi sua duoc password, ten dia chi, email, dia chi, sdt
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPut]
-        [Route("suaUser")]
+        [Route("NguoiDung")]
         public bool suaUser(dbUser input)
         {
             try
             {
                 ACCOUNT acc = new ACCOUNT();
                 KHACHHANG kh = new KHACHHANG();
-                db.ACCOUNTs.Find(input.IDAccount);
+                db.ACCOUNTs.Find(input.UserName);
                 db.KHACHHANGs.Find(input.ID);
                 acc.Password = input.PassWord;
                 db.SaveChanges();
@@ -501,61 +557,9 @@ namespace WebApplication2.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("themtkfb")]
-        public bool themtk(string displayName, string fbId, string displayEmail,
-                            string Gender, string dateOfBirth, string Phone, string Email)
-        {
-            try
-            {
-                Service.taotkfb(displayName, fbId, displayEmail, Gender, dateOfBirth, Phone, Email);
-                return true;
-            }
-            catch(Exception e)
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, false));
-
-            }
-        }
-
-
         #endregion
 
         //----------------------------------------------------//
-
-        #region api thong ke va tim kiem
-
-        [HttpGet]
-        [Route("doanhsomathang")]
-        public List<sellingItem> thutumathang()
-        {
-            try
-            {
-                return Service.mathangchaynhat();
-            }
-            catch (Exception e)
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, false));
-
-            }
-        }
-
-        [HttpGet]
-        [Route("timkiem")]
-        public List<listMatHang> result(string search)
-        {
-            try
-            {
-                return Service.timkiem(search);
-            }
-            catch(Exception e)
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, false));
-
-            }
-        }
-        #endregion
-
 
 
     }
