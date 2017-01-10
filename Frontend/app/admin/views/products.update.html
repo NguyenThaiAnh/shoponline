@@ -1,0 +1,314 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Chỉnh sửa sản phẩm {{item.ID}}
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>  <a ui-sref="home">Dashboard</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-table"></i>  <a ui-sref="parentproducts.list">Danh sách sản phẩm</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-edit"></i> Chỉnh sửa sản phẩm
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="col-lg-10 col-lg-offset-1">
+            <form>
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-fw fa-newspaper-o"></i> Thông tin chung</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Tên sản phẩm (*)</label>
+                            <input class="form-control" placeholder="Nhập tên sản phẩm..." required ng-model="item.Ten" maxlength="20">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label>Giới tính (*)</label>
+                            <select class="form-control" ng-model="item.GioiTinh" ng-change="gioitinh_change()" required>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label>Loại (*)</label>
+                            <select class="form-control" ng-model="item.Loai" ng-change="loai_change()" required>
+                                <option ng-repeat="loaihang in listloai" value={{loaihang}}>{{loaihang}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label>Sub loại (*)</label>
+                            <select class="form-control" ng-model="item.SubLoai"required>
+                                <option ng-repeat="sublh in listsubloai" value={{sublh}}>{{sublh}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label>Giá cũ</label>
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.GiaCu" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
+                            <p class="help-block">Đơn vị: VNĐ</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label>Giá mới</label>
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.GiaMoi" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
+                            <p class="help-block">Đơn vị: VNĐ</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-fw fa-image"></i> Mô tả và hình ảnh sản phẩm</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Mô tả</label>
+                            <textarea style="resize: none;" class="form-control" rows="10" cols="100" ng-model="item.mota" ng-init="item.mota = ''"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 image-frame">
+                        <div class="form-group">
+                            <div class="col-lg-12"align="center">
+                                <label>Hình ảnh chính </label>
+                                <br>
+                                <span ng-show="!file.result">Link hiện tại: </span><span ng-show="file.result">Link mới: </span> {{item.URLHinhAnh1}}
+                                <br>
+                                <span class="progress" ng-show="file.progress >= 0">
+                                    <div class="progress-bar progress-bar-success" aria-valuenow="{{file.progress}}" aria-valuemax="100" aria-valuemin="0" style="width:{{file.progress}}%"
+                                         ng-bind="file.progress + '%'"><span class="sr-only">{{file.progress}}% Complete (warning)</span></div>
+                                  </span>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12" align="center">
+                                <img ng-src={{item.URLHinhAnh1}} class="img-thumbnail thumb">
+                                <br><br><span>File: {{file.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}} </span>
+                                <br>{{errorMsg}}
+                                <i style="color:red" ng-show="errorFile.size">Dung lượng ảnh
+                                    {{errorFile.size / 1000000|number:1}}MB: Tối đa 2M</i>
+                                <span ng-show="file.result" style="color: green">Tải ảnh lên thành công!</span>
+                                <br><br>
+                            </div>
+                            <div class="form-group" align="center">
+                                <button class="btn btn-success btn-sm" type="file" ngf-select accept=".bmp, .png, .jpg" ngf-max-size="2MB" ng-model="file" required
+                                        ngf-model-invalid="errorFile">
+                                    <i class="fa fa-fw fa-plus"></i> Chọn ảnh</button>
+                                <button class="btn btn-danger btn-sm" ng-click="file = null"  ng-disabled="file.result||!file"><i class="fa fa-fw fa-refresh"></i> Xoá ảnh</button>
+                                <button class="btn btn-primary btn-sm" ng-disabled="file.result||!file"
+                                        ng-click="uploadFiles(file)"><i class="fa fa-fw fa-upload"></i> Tải ảnh</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-lg-6 image-frame">
+                        <div class="form-group">
+                            <div class="col-lg-12"align="center">
+                                <label>Hình ảnh chi tiết 1 </label>
+                                <br>
+                                <span ng-show="!file.result">Link hiện tại: </span><span ng-show="file.result">Link mới: </span> {{item.URLHinhAnh2}}
+                                <br>
+                                <span class="progress" ng-show="file1.progress >= 0">
+                                    <div class="progress-bar progress-bar-success" aria-valuenow="{{file1.progress}}" aria-valuemax="100" aria-valuemin="0" style="width:{{file1.progress}}%"
+                                         ng-bind="file1.progress + '%'"><span class="sr-only">{{file1.progress}}% Complete (warning)</span></div>
+                                  </span>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12" align="center">
+                                <img ng-src={{item.URLHinhAnh2}} class="img-thumbnail thumb">
+                                <br><br><span>File: {{file1.name}} {{errFile1.name}} {{errFile1.$error}} {{errFile1.$errorParam}} </span>
+                                <br>{{errorMsg}}
+                                <i style="color:red" ng-show="errorFile1.size">Dung lượng ảnh
+                                    {{errorFile1.size / 1000000|number:1}}MB: Tối đa 2M</i>
+                                <span ng-show="file1.result" style="color: green">Tải ảnh lên thành công!</span>
+                                <br><br>
+                            </div>
+                            <div class="form-group" align="center">
+                                <button class="btn btn-success btn-sm" type="file" ngf-select accept=".bmp, .png, .jpg" ngf-max-size="2MB" ng-model="file1" required
+                                        ngf-model-invalid="errorFile1">
+                                    <i class="fa fa-fw fa-plus"></i> Chọn ảnh</button>
+                                <button class="btn btn-danger btn-sm" ng-click="file1 = null"  ng-disabled="!file1"><i class="fa fa-fw fa-refresh"></i> Xoá ảnh</button>
+                                <button class="btn btn-primary btn-sm" ng-disabled="!file1"
+                                        ng-click="uploadFiles1(file1)"><i class="fa fa-fw fa-upload"></i> Tải ảnh</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 image-frame">
+                        <div class="form-group">
+                            <div class="col-lg-12"align="center">
+                                <label>Hình ảnh chi tiết 2 </label>
+                                <br>
+                                <span ng-show="!file.result">Link hiện tại: </span><span ng-show="file.result">Link mới: </span> {{item.URLHinhAnh3}}
+                                <br>
+                                <span class="progress" ng-show="file2.progress >= 0">
+                                    <div class="progress-bar progress-bar-success" aria-valuenow="{{file2.progress}}" aria-valuemax="100" aria-valuemin="0" style="width:{{file2.progress}}%"
+                                         ng-bind="file2.progress + '%'"><span class="sr-only">{{file2.progress}}% Complete (warning)</span></div>
+                                  </span>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12" align="center">
+                                <img ng-src={{item.URLHinhAnh3}} class="img-thumbnail thumb">
+                                <br><br><span>File: {{file2.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}} </span>
+                                <br>{{errorMsg}}
+                                <i style="color:red" ng-show="errorFile2.size">Dung lượng ảnh
+                                    {{errorFile2.size / 1000000|number:1}}MB: Tối đa 2M</i>
+                                <span ng-show="file2.result" style="color: green">Tải ảnh lên thành công!</span>
+                                <br><br>
+                            </div>
+                            <div class="form-group" align="center">
+                                <button class="btn btn-success btn-sm" type="file" ngf-select accept=".bmp, .png, .jpg" ngf-max-size="2MB" ng-model="file2" required
+                                        ngf-model-invalid="errorFile2">
+                                    <i class="fa fa-fw fa-plus"></i> Chọn ảnh</button>
+                                <button class="btn btn-danger btn-sm" ng-click="file2 = null"  ng-disabled="!file2"><i class="fa fa-fw fa-refresh"></i> Xoá ảnh</button>
+                                <button class="btn btn-primary btn-sm" ng-disabled="!file2"
+                                        ng-click="uploadFiles2(file2)"><i class="fa fa-fw fa-upload"></i> Tải ảnh</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-fw fa-list"></i> Thông tin chi tiết sản phẩm</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Loại Size 1</label>
+                            <input class="form-control" placeholder="S hoặc 28" ng-model="item.Items[0].Size" ng-init="item.Items[0].Size = 'S'" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Giá</label>
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[0].Gia" ng-init="item.Items[0].Gia = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
+                            <p class="help-block">Đơn vị: VNĐ</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Số lượng</label>
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[0].SoLuong" ng-init="item.Items[0].SoLuong = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Loại Size 2</label>
+                            <input class="form-control" placeholder="M hoặc 29" ng-model="item.Items[1].Size" ng-init="item.Items[1].Size = 'M'" >
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Giá</label>
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[1].Gia" ng-init="item.Items[1].Gia = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
+                            <p class="help-block">Đơn vị: VNĐ</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Số lượng</label>
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[1].SoLuong" ng-init="item.Items[1].SoLuong = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Loại Size 3</label>
+                            <input class="form-control" placeholder="L hoặc 30" ng-model="item.Items[2].Size" ng-init="item.Items[2].Size = 'L'">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Giá</label>
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[2].Gia" ng-init="item.Items[2].Gia = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
+                            <p class="help-block">Đơn vị: VNĐ</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label>Số lượng</label>
+                            <input type="text" maxlength="10" class="form-control" ng-model="item.Items[2].SoLuong" ng-init="item.Items[2].SoLuong = 0" required
+                                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.keyCode == 8'>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="row">
+                <div class="col-lg-7">
+                    <div class="alert alert-danger">
+                        <strong> (*) </strong> Bắt buộc không được bỏ trống
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary" type="reset"><i class="fa fa-fw fa-refresh"></i> Đặt lại</button>
+                    <button class="btn btn-success" type="submit" ng-click="capnhatSanPham()"><i class="fa fa-fw fa-save"></i> Hoàn tất</button>
+                    <button class="btn btn-danger" ui-sref="parentproducts.list"><i class="fa fa-fw fa-remove"></i> Huỷ bỏ</button>
+                </div>
+        </div>
+            </form>
+    </div>
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->

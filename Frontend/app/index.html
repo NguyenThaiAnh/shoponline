@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="shop" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="shop" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="shop" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><! <html lang="en" ng-app="shop" class="no-js"> <![endif]-->
+<html ng-app="shop">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Rain Shop</title>
+  <!--css-->
+  <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+  <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <!--css-->
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+  <script src="/js/jquery.min.js"></script>
+
+  <!--Angular-->
+
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/js/angular-local-storage.js"></script>
+  <script src="/js/angular-ui-router.js"></script>
+  <script src="/js/angular-flexslider.js"></script>
+
+  <link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300' rel='stylesheet' type='text/css'>
+  <!--search jQuery-->
+  <script src="/js/main.js"></script>
+  <!--search jQuery-->
+  <script src="/js/responsiveslides.min.js"></script>
+  <!--mycart-->
+  <script type="text/javascript" src="/js/bootstrap-3.1.1.min.js"></script>
+  <!-- cart -->
+  <script src="/js/simpleCart.min.js"></script>
+  <!-- cart -->
+
+  <!--Flex slider-->
+  <link rel="stylesheet" href="/css/flexslider.css">
+  <script src="/js/jquery.flexslider-min.js"></script>
+  <script src="/js/jquery.flexslider.js"></script>
+
+  <script src="/js/imagezoom.js"></script>
+  <!--start-rate-->
+  <script src="/js/jstarbox.js"></script>
+  <link rel="stylesheet" href="/css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
+  <script type="text/javascript">
+    jQuery(function() {
+      jQuery('.starbox').each(function() {
+        var starbox = jQuery(this);
+        starbox.starbox({
+          average: starbox.attr('data-start-value'),
+          changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+          ghosting: starbox.hasClass('ghosting'),
+          autoUpdateAverage: starbox.hasClass('autoupdate'),
+          buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+          stars: starbox.attr('data-star-count') || 5
+        }).bind('starbox-value-changed', function(event, value) {
+          if(starbox.hasClass('random')) {
+            var val = Math.random();
+            starbox.next().text(' '+val);
+            return val;
+          }
+        })
+      });
+    });
+  </script>
+  <!--//End-rate-->
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <script src="/js/owl.carousel.js"></script>
+  <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">-->
+  <!--/<link rel="stylesheet" href="/bower_components/html5-boilerplate/dist/css/main.css">-->
+  <link rel="stylesheet" href="/css/app.css">
+  <!--<script src="/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>-->
+  <!--//End-rate-->
+
+  <base href="/">
+</head>
+<body>
+<!--header-->
+<div class="header">
+  <div class="header-top">
+    <div class="container">
+      <div class="top-left">
+        <a href="#"> Trợ giúp  <i class="glyphicon glyphicon-phone" aria-hidden="true"></i> 097 5187 293</a>
+      </div>
+      <div class="top-right">
+        <ul ng-controller="indexCtrl">
+          <li><a ui-sref="checkout">Thanh toán</a></li>
+          <li><a ng-show="!isLoged" ui-sref="login">Đăng nhập</a><a ng-show="isLoged">Xin chào, {{infouser.username}}</a></li>
+          <li><a ng-show="!isLoged" ui-sref="signup"> Đăng ký </a><a href="" ng-show="isLoged" ng-click="DangXuat()"> Đăng xuất </a></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="heder-bottom">
+    <div class="container">
+      <div class="logo-nav">
+        <div class="logo-nav-left">
+          <h1><a ui-sref="home">Rain Shop <span>Tung tăng mua sắm</span></a></h1>
+        </div>
+        <div class="logo-nav-left1">
+          <nav class="navbar navbar-default">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header nav_2">
+              <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+              <ul class="nav navbar-nav">
+                <li class="active"><a ui-sref="home" class="act">Trang chủ</a></li>
+                <!-- Mega Menu -->
+                <li class="active"><a ui-sref="menProduct.nam" ui-sref-active="activeState" class="act" style="padding-right: initial;">Đồ nam</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+                  <ul class="dropdown-menu multi-column columns-3">
+                    <div class="row">
+                      <div class="col-sm-3  multi-gd-img">
+                        <ul class="multi-column-dropdown">
+                          <h6><a ui-sref="menProduct.quan" style="color: #0d59af"> Quần</a></h6>
+                          <li><a ui-sref="menProduct.quanjean">Jean</a></li>
+                          <li><a ui-sref="menProduct.quankaki">Kaki</a></li>
+                          <li><a ui-sref="menProduct.quanjogger">Jogger</a></li>
+                          <li><a ui-sref="menProduct.shortjean">Short Jean</a></li>
+                          <li><a ui-sref="menProduct.shortkaki">Short Kaki</a></li>
+                          <li><a ui-sref="menProduct.shortthun">Short Thun</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-3  multi-gd-img">
+                        <ul class="multi-column-dropdown">
+                          <h6><a ui-sref="menProduct.ao" style="color: #0d59af"> Áo</a></h6>
+                          <li><a ui-sref="menProduct.aosomitayngan">Sơmi tay ngắn</a></li>
+                          <li><a ui-sref="menProduct.aothuntaydai">Sơmi tay dài</a></li>
+                          <li><a ui-sref="menProduct.aosomitayngan">Thun ngắn</a></li>
+                          <li><a ui-sref="menProduct.aothuntaydai">Thun dài</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-3  multi-gd-img">
+                        <a ui-sref="menProduct.quan"><img src="images/woo3.jpg" alt=" "/></a>
+                      </div>
+                      <div class="col-sm-3  multi-gd-img">
+                        <a ui-sref="menProduct.ao"><img src="images/woo4.jpg" alt=" "/></a>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                  </ul>
+                </li>
+                <li class="active"><a ui-sref="womenProduct" class="act" style="padding-right: initial;">Đồ Nữ</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+                  <ul class="dropdown-menu multi-column columns-3">
+                    <div class="row">
+                      <div class="col-sm-3  multi-gd-img">
+                        <ul class="multi-column-dropdown">
+                          <h6>Áo</h6>
+                          <li><a href="products.html">Áo kiểu</a></li>
+                          <li><a href="products.html">Đầm nữ</a></li>
+                          <li><a href="products.html">Sơmi tay ngắn</a></li>
+                          <li><a href="products.html">Sơmi tay dài</a></li>
+                          <li><a href="products.html">Thun ngắn</a></li>
+                          <li><a href="products.html">Thun dài</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-3  multi-gd-img">
+                        <ul class="multi-column-dropdown">
+                          <h6>Quần</h6>
+                          <li><a href="products.html">Jean</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-3  multi-gd-img">
+                        <a href="products1.html"><img src="images/woo.jpg" alt=" "/></a>
+                      </div>
+                      <div class="col-sm-3  multi-gd-img">
+                        <a href="products1.html"><img src="images/woo1.jpg" alt=" "/></a>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                  </ul>
+                </li>
+                <li><a ui-sref="contact">Liên hệ</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="logo-nav-right">
+          <ul class="cd-header-buttons">
+            <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+          </ul> <!-- cd-header-buttons -->
+          <div id="cd-search" class="cd-search">
+            <form ng-controller="indexCtrl">
+              <input name="Search" type="search" placeholder="Tìm kiếm..." ng-keypress="timkiem($event)" ng-model="tukhoa" ng-hide="closeSearch == true">
+            </form>
+          </div>
+        </div>
+        <div class="header-right2">
+          <div class="cart box_1" ng-controller="indexCtrl">
+            <a ui-sref="checkout">
+              <h3> <div class="total">
+                <span> {{TongGia}} VNĐ </span> ({{abc}} sản phẩm)</div>
+                <img src="images/bag.png" alt="" />
+              </h3>
+            </a>
+            <p><a href="javascript:;" class="simpleCart_empty">Giỏ hàng</a></p>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--header-->
+<ui-view ng-animate="'view'"></ui-view>
+<!---footer--->
+<div class="footer-w3l">
+  <div class="container">
+    <div class="footer-grids">
+      <div class="col-md-3 footer-grid">
+        <h4>Giới thiệu </h4>
+        <p>Rain Shop - cửa hàng thời trang dành riêng cho giới trẻ luôn không ngừng phấn đấu và nâng cao chất lượng phục vụ nhằm mang đến những sản phẩm thời trang tốt nhất, đẹp nhất cho khách hàng thân yêu</p>
+        <div class="social-icon">
+          <a href="https://www.facebook.com/lucifer293"><i class="icon"></i></a>
+          <a href="https://plus.google.com/109592349197751841035?hl=vi"><i class="icon1"></i></a>
+          <a href="#"><i class="icon2"></i></a>
+          <a href="#"><i class="icon3"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3 footer-grid">
+        <h4>Tài khoản</h4>
+        <ul>
+          <li><div id="fb-root"></div></li>
+          <li><a ui-sref="checkout">Thanh toán</a></li>
+          <li><a ui-sref="login" ng-show="!isLoged">Đăng nhập</a><a href="" ng-show="isLoged" ng-click="DangXuat()"> Đăng xuất </a></li>
+          <li><a ui-sref="login" ng-show="!isLoged"> Đăng ký </a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 footer-grid">
+        <h4>Điều hướng</h4>
+        <ul>
+          <li><a ui-sref="home">Trang chủ</a></li>
+          <li><a ui-sref="menProduct.nam" ui-sref-active="activeState" >Đồ Nam</a></li>
+          <li><a ui-sref="women">Đồ Nữ</a></li>
+          <li><a ui-sref="contact">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 footer-grid foot">
+        <h4>Liên hệ</h4>
+        <ul>
+          <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i><a href="#">28 Nhật Tảo, phường 4, Quận 10</a></li>
+          <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i><a href="#">097 5187 293</a></li>
+          <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:example@mail.com"> cuongthinhtuan2006@gmail.com</a></li>
+
+        </ul>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+
+  </div>
+</div>
+<!---footer--->
+<!--copy-->
+<div class="copy-section">
+  <div class="container">
+    <div class="copy-left">
+      <p>&copy; 2016 Rain Shop . Website độc quyền HCMUS| Thiết kế bời <a href="http://w3layouts.com">Xuân Thịnh</a></p>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<!--Facebook-->
+<script src="/js/all.js"></script>
+<script src="/js/sdk.js"></script>
+
+<!--My Controller-->
+<script src="/controllers/modules.js"></script>
+<script src="/services/services.js"></script>
+<script src="/services/shared.js"></script>
+<script src="/controllers/routes.js"></script>
+<script src="/controllers/indexCtrl.js"></script>
+<script src="/controllers/homeCtrl.js"></script>
+<script src="/controllers/menctrl.js"></script>
+<script src="/controllers/menItemCtrl.js"></script>
+<script src="/controllers/loginCtrl.js"></script>
+<script src="/controllers/signupCtrl.js"></script>
+<script src="/controllers/searchCtrl.js"></script>
+<!--<script src="components/version/version.js"></script>-->
+<!--<script src="components/version/version-directive.js"></script>-->
+<!--<script src="components/version/interpolate-filter.js"></script>-->
+</body>
+</html>

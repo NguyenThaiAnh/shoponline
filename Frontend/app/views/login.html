@@ -1,0 +1,42 @@
+<!--banner-->
+<div class="banner1">
+    <div class="container">
+        <h3><a ui-sref="login">Trang chủ</a> / <span>Đăng nhập</span></h3>
+    </div>
+</div>
+<!--banner-->
+
+<!--content-->
+<div class="content">
+    <!--login-->
+    <div class="login">
+        <div class="main-agileits">
+            <div class="form-w3agile">
+                <h3><i class="fa fa-fw fa-lock"></i> Đăng nhập</h3>
+                <form>
+                    <div class="key">
+                        <i class="fa fa-fw fa-user" aria-hidden="true"></i>
+                        <input  type="text" ng-model="user.username" placeholder="Tên đăng nhập" required>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="key">
+                        <i class="fa fa-fw fa-lock" aria-hidden="true"></i>
+                        <input  type="password" ng-model="user.password" placeholder="Mật khẩu" required>
+                        <div class="clearfix"></div>
+                    </div>
+                    <input type="submit" ng-click="login()" value="Đăng nhập">
+                </form>
+            </div>
+            <div class="forg">
+                <!--<a href="#" class="forg-left">Forgot Password</a>-->
+                <!--<a href="" class="forg-left" ng-click="loginfb()">Đăng nhập với Facebook</a>-->
+
+                <a ui-sref="signup" class="forg-right">Đăng ký</a>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--login-->
+</div>
+<!--content-->

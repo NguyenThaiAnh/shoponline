@@ -1,0 +1,89 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Danh sách sản phẩm
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>  <a ui-sref="home">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-table"></i> Danh sách sản phẩm
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+
+
+                <div class="col-lg-12 form-group input-group">
+                    <div class="col-lg-6">
+                        <h2 >Danh sách sản phẩm </h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <span class="input-group-btn"><input type="text" class="form-control" ng-model="search"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-lg-offset-1">
+                            <div class="form-group">
+                                <button class="btn btn-success btn-group-sm" ui-sref="parentproducts.add"><i class="fa fa-fw fa-plus"></i> Thêm mới</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th> ID </th>
+                            <th> Tên sản phẩm </th>
+                            <th> Loại sản phẩm </th>
+                            <th> Giá </th>
+                            <th> Quản lý </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="hang in mathang | startFrom:currentPage*pageSize | limitTo:pageSize | filter:search">
+                            <td>{{hang.ID}}</td>
+                            <td>{{hang.Ten}}</td>
+                            <td>{{hang.Loai}} --> {{hang.SubLoai}}</td>
+                            <td>{{hang.GiaMoi}}</td>
+                            <td align="center">
+                                <button class="btn btn-info btn-sm" ui-sref="parentproducts.view.child({id: hang.ID})"><i class="fa fa-fw fa-search"></i></button>
+                                <button class="btn btn-warning btn-sm" ui-sref="parentproducts.update.child({id: hang.ID})"><i class="fa fa-fw fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm" ng-click="xoaSanPham(hang.ID)"><i class="fa fa-fw fa-remove"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="btnbackforward" align="center">
+                        <button class="btn btn-default btn-sm" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+                            <i class="fa fa-fw fa-backward"></i>&nbsp;Trang trước
+                        </button>
+                        {{currentPage+1}}/{{numberOfPages()}}
+                        <button class="btn btn-default btn-sm" ng-disabled="currentPage >= mathang.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+                            Trang sau &nbsp;<i class="fa fa-fw fa-forward"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
